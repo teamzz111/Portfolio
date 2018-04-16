@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*
+=================================
+INICIALIZACIÓN
+=================================
+*/
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fuente/iconos.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Josefin";
+  src: url("fuentes/Josefin/Dosis-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Great";
+  src: url("fuentes/GreaVibes/GreatVibes-Regular.ttf?#iefix") format("truetype");
+}
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fuentes/Roboto.ttf") format("truetype");
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  font-size: 1.85em;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+
+
+
+@import "header";
+@import "main";
+@import "about";
+
+@media screen and (max-width: 800px) {
+
+  header {
+    .der {
+      display: none;
+    }
+  }
+  main {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  section#about{
+    height: 100%;
+    .contenedor{
+      .padre{
+        flex-direction: column;
+        .img{
+          width: 100%;  
+        }
+        .text{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header{
+    height: 8vh;
+    .contenedor{
+      .normal{
+        ul{
+          justify-content: left;
+        }
+        .izq{
+          .responsive{
+            display: block;
+          }
+          img{
+            display: none;
+          }
+          p{
+            font-size: 1.35em;
+            margin-left: 2%;
+          }
+        }
+        .der{
+          display: none;
+        }
+      }
+    }
+  }
+}
