@@ -1,0 +1,328 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*
+=================================
+INICIALIZACIÓN
+=================================
+*/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("fuente/iconos.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Josefin";
+  src: url("fuentes/Josefin/Dosis-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Great";
+  src: url("fuentes/GreaVibes/GreatVibes-Regular.ttf?#iefix") format("truetype");
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sans";
+  src: url("fuentes/Sans/OpenSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fuentes/Roboto.ttf") format("truetype");
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  font-size: 1.85em;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: auto;
+  height: 100%;
+}
+
+/*
+=================================
+HEADER
+=================================
+*/
+header {
+  background: #191a18;
+  -webkit-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+header .fors {
+  background: black;
+  margin-left: -100%;
+  z-index: 10;
+}
+
+header .fors .barra {
+  height: 100vh;
+  background: white;
+  position: fixed;
+  width: 60%;
+  max-width: 200px;
+}
+
+header .fors h3 {
+  margin: 4%;
+  font-weight: 300;
+  font-size: 2em;
+  color: #606362;
+}
+
+header .fors ul {
+  margin: 0;
+  padding: 0;
+}
+
+header .fors li {
+  display: block;
+  list-style-type: none;
+  padding: 5%;
+}
+
+header .fors li a {
+  text-decoration: none;
+  color: #161d1b;
+  font-size: 1.5em;
+  font-family: Roboto;
+}
+
+header .normal {
+  height: 100%;
+}
+
+header .normal .izq {
+  width: 30%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+header .normal .izq p {
+  margin-left: 10%;
+}
+
+header .normal .izq img {
+  width: 50%;
+  max-width: 50px;
+}
+
+header .normal .izq .responsive {
+  display: none;
+}
+
+header .normal .der {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-items: center;
+  align-items: center;
+}
+
+header .normal ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+header .normal ul li {
+  list-style-type: none;
+  height: 100%;
+}
+
+header .normal ul li:hover {
+  transition: 1s linear;
+  background: #f4bf57;
+  color: white;
+}
+
+header .normal ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-family: "Roboto";
+  font-size: 1.3em;
+  white-space: nowrap;
+  height: 100%;
+  padding: 10%;
+}
+
+main {
+  background: url(../img/fondo.jpg);
+  background-position: center;
+  background-size: cover;
+  z-index: 0;
+  position: relative;
+  height: 50vh;
+}
+
+main .imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: auto;
+}
+
+main .imagen img {
+  height: 100%;
+  max-height: 210px;
+  margin: 8% auto;
+}
+
+section#about {
+  background: black;
+  height: 44vh;
+}
+
+section#about .contenedor .padre {
+  padding: 6%;
+  display: flex;
+  width: 100%;
+}
+
+section#about .contenedor .padre .img {
+  width: 50%;
+  text-align: center;
+}
+
+section#about .contenedor .padre .img h1 {
+  color: white;
+  margin-top: 5%;
+  font-family: "Sans";
+  font-weight: 300;
+  font-size: 2.5em;
+}
+
+section#about .contenedor .padre .img img {
+  margin-top: 5%;
+  width: 45%;
+  margin-bottom: 5%;
+}
+
+section#about .contenedor .padre .text {
+  margin-top: 2.5%;
+  width: 50%;
+}
+
+section#about .contenedor .padre .text h3 {
+  color: white;
+  font-family: "Sans";
+  font-weight: 300;
+  font-size: 1.9em;
+}
+
+section#about .contenedor .padre .text p {
+  margin-top: 5.5%;
+  color: white;
+  font-family: "Roboto";
+  font-size: 1.3em;
+  text-align: left;
+}
+
+@media screen and (max-width: 800px) {
+  header .der {
+    display: none;
+  }
+  main {
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section#about {
+    height: 100%;
+  }
+  section#about .contenedor .padre {
+    flex-direction: column;
+  }
+  section#about .contenedor .padre .img {
+    width: 100%;
+  }
+  section#about .contenedor .padre .text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    height: 8vh;
+  }
+  header .contenedor .normal ul {
+    justify-content: left;
+  }
+  header .contenedor .normal .izq .responsive {
+    display: block;
+  }
+  header .contenedor .normal .izq img {
+    display: none;
+  }
+  header .contenedor .normal .izq p {
+    font-size: 1.35em;
+    margin-left: 2%;
+  }
+  header .contenedor .normal .der {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */
