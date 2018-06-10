@@ -59,6 +59,11 @@ INICIALIZACIÓN
   src: url("fuentes/Roboto.ttf") format("truetype");
 }
 
+body {
+  background-image: url("../img/fondito.png");
+  background-size: cover;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -85,126 +90,95 @@ INICIALIZACIÓN
   height: 100%;
 }
 
-/*
-=================================
-HEADER
-=================================
-*/
-header {
-  background: #191a18;
-  -webkit-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: -2px 2px 12px -4px rgba(0, 0, 0, 0.75);
+.padre {
+  display: flex;
+}
+
+#izq {
   width: 100%;
-  position: relative;
-  z-index: 1;
-}
-
-header .fors {
-  background: black;
-  margin-left: -100%;
-  z-index: 10;
-}
-
-header .fors .barra {
+  max-width: 240px;
   height: 100vh;
-  background: white;
   position: fixed;
-  width: 60%;
-  max-width: 200px;
+  background: rgba(25, 33, 124, 0.094);
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.199);
 }
 
-header .fors h3 {
-  margin: 4%;
-  font-weight: 300;
-  font-size: 2em;
-  color: #606362;
-}
-
-header .fors ul {
-  margin: 0;
-  padding: 0;
-}
-
-header .fors li {
-  display: block;
-  list-style-type: none;
+#izq .fotocont {
   padding: 5%;
 }
 
-header .fors li a {
-  text-decoration: none;
-  color: #161d1b;
-  font-size: 1.5em;
-  font-family: Roboto;
+#izq .fotocont h2 {
+  margin-top: 0.5em;
+  font-family: 'Raleway';
+  font-weight: 400;
+  color: white;
+  font-size: 1.4em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.475);
 }
 
-header .normal {
-  height: 100%;
+#izq .fotocont h3 {
+  margin-top: 0.5em;
+  font-family: 'Raleway';
+  font-size: 1em;
+  font-weight: 300;
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 
-header .normal .izq {
-  width: 30%;
+#izq .fotocont img {
+  margin-top: 1em;
+  width: 100%;
+  border-radius: 100%;
+  max-width: 150px;
+  border: 6px solid rgba(255, 255, 255, 0.322);
+}
+
+#izq .fotocont i {
+  width: 100%;
   text-align: left;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
+  color: white;
+  font-size: 1.45em;
+  position: absolute;
+  top: 1em;
+  left: 0.5em;
 }
 
-header .normal .izq p {
-  margin-left: 10%;
+#izq .menu {
+  margin-top: 1.9em;
 }
 
-header .normal .izq img {
-  width: 50%;
-  max-width: 50px;
-}
-
-header .normal .izq .responsive {
-  display: none;
-}
-
-header .normal .der {
-  width: 70%;
-  height: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-items: center;
-  align-items: center;
-}
-
-header .normal ul {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding-left: 3%;
-  padding-right: 3%;
-}
-
-header .normal ul li {
+#izq .menu nav li {
   list-style-type: none;
-  height: 100%;
+  transition: .5s linear;
 }
 
-header .normal ul li:hover {
-  transition: 1s linear;
-  background: #f4bf57;
-  color: white;
+#izq .menu nav li:hover {
+  background-color: #fa5351;
 }
 
-header .normal ul li a {
+#izq .menu nav li a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.151);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
   color: white;
-  font-family: "Roboto";
-  font-size: 1.3em;
-  white-space: nowrap;
-  height: 100%;
-  padding: 10%;
+  padding: 6%;
+  padding-left: 6%;
+  text-decoration: none;
+}
+
+#izq .menu nav li a .icon {
+  width: 20%;
+  text-align: left;
+}
+
+#izq .menu nav li a .text {
+  font-family: 'Raleway';
+}
+
+#izq .menu nav li .primero {
+  border-top: 1px solid rgba(255, 255, 255, 0.151);
 }
 
 main {
@@ -228,56 +202,6 @@ main .imagen img {
   height: 100%;
   max-height: 210px;
   margin: 8% auto;
-}
-
-section#about {
-  background: black;
-  height: 44vh;
-}
-
-section#about .contenedor .padre {
-  padding: 6%;
-  display: flex;
-  width: 100%;
-}
-
-section#about .contenedor .padre .img {
-  width: 50%;
-  text-align: center;
-}
-
-section#about .contenedor .padre .img h1 {
-  color: white;
-  margin-top: 5%;
-  font-family: "Sans";
-  font-weight: 300;
-  font-size: 2.5em;
-}
-
-section#about .contenedor .padre .img img {
-  margin-top: 5%;
-  width: 45%;
-  margin-bottom: 5%;
-}
-
-section#about .contenedor .padre .text {
-  margin-top: 2.5%;
-  width: 50%;
-}
-
-section#about .contenedor .padre .text h3 {
-  color: white;
-  font-family: "Sans";
-  font-weight: 300;
-  font-size: 1.9em;
-}
-
-section#about .contenedor .padre .text p {
-  margin-top: 5.5%;
-  color: white;
-  font-family: "Roboto";
-  font-size: 1.3em;
-  text-align: left;
 }
 
 @media screen and (max-width: 800px) {
