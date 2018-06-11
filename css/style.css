@@ -225,7 +225,8 @@ main .imagen img {
   margin: auto;
 }
 
-#der .textabout .contenedor h1, #der .textabout .contenedor h2 {
+#der .textabout .contenedor h1,
+#der .textabout .contenedor h2 {
   text-align: center;
   color: white;
   font-family: 'Raleway';
@@ -255,6 +256,65 @@ main .imagen img {
 #der .textabout .contenedor .iconos a i {
   color: white;
   font-size: 1.9em;
+}
+
+#der .titleabout {
+  background-color: white;
+}
+
+#der .titleabout .text {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Josefin';
+  font-size: 2em;
+  padding-bottom: 0.6em;
+  letter-spacing: 1.2em;
+  padding-top: 1em;
+}
+
+#der .titleabout .contenido {
+  background: rgba(2, 117, 224, 0.5);
+}
+
+#der .titleabout .contenido .padre {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2%;
+  width: 100%;
+  display: block;
+  text-align: center;
+  text-align: center;
+}
+
+#der .titleabout .contenido .padre .foto {
+  width: 100%;
+}
+
+#der .titleabout .contenido .padre .foto img {
+  width: 15%;
+  opacity: .8;
+  border-radius: 100%;
+  transition: 1s linear;
+  border: 6px solid rgba(255, 255, 255, 0.342);
+}
+
+#der .titleabout .contenido .padre .foto img:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.384);
+  cursor: pointer;
+}
+
+#der .titleabout .contenido .padre h2 {
+  margin-bottom: 1em;
+  font-family: 'Raleway';
+}
+
+#der .titleabout .contenido .padre p {
+  font-family: 'Raleway';
+  text-align: justify;
+  font-size: 1.1em;
+  margin-top: 1em;
 }
 
 @media screen and (max-width: 800px) {

@@ -8,16 +8,17 @@
             width: 100%;
             max-width: 1200px;
             margin: auto;
-            h1, h2 {
+            h1,
+            h2 {
                 text-align: center;
                 color: white;
                 font-family: 'Raleway';
             }
-            h1{
+            h1 {
                 font-size: 3em;
                 padding-top: 2em;
             }
-            .iconos{
+            .iconos {
                 margin: auto;
                 max-width: 40em;
                 border-top: 1px solid white;
@@ -25,17 +26,68 @@
                 text-align: center;
                 padding-top: 1em;
                 padding-bottom: 4em;
-                a{
+                a {
                     margin: 1%;
                     text-decoration: none;
                     text-align: center;
-                    i{
+                    i {
                         color: white;
                         font-size: 1.9em;
                     }
                 }
             }
+        }
+    }
+    .titleabout {
+        background-color: white;
+        .text {
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+            font-family: 'Josefin';
+            font-size: 2em;
+            padding-bottom: 0.6em;
+            letter-spacing: 1.2em;
+            padding-top: 1em;
+        }
+        .contenido {
+            background: rgba(2, 117, 224, 0.5);
+            .padre {
+                max-width: 1200px;
+                margin: auto;
+                padding: 2%;
+                width: 100%;
+                display: block;
+                text-align: center;
+                .foto {
+                    width: 100%;
+                    img {
+                        width: 15%;
+                        opacity: .8;
+                        border-radius: 100%;
+                        transition: 1s linear;
+                        border: 6px solid rgba(255, 255, 255, 0.342);
+                        &:hover {
+                            opacity: 1;
+                            border-color: rgba(255, 255, 255, 0.384);
+                            cursor: pointer;
+                        }
+                    }
+                }
                 
+                text-align: center;
+                h2 {
+                    margin-bottom: 1em;
+                    font-family: 'Raleway';
+        
+                }
+                p {
+                    font-family: 'Raleway';
+                    text-align: justify;
+                    font-size: 1.1em;
+                    margin-top: 1em;
+                }
             }
+        }
     }
 }
