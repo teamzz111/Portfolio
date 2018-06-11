@@ -1,42 +1,42 @@
 #izq {
-  width: 100%;
-  max-width: 240px;
+  width: 14.5em;
   height: 100vh;
   position: fixed;
-  background: rgba(25, 33, 124, 0.094);
   text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.199);
+  border-right: 1px solid rgba(71, 71, 71, 0.199);
+  background: #fff;
   .fotocont {
     padding: 5%;
     h2 {
       margin-top: 0.5em;
       font-family: 'Raleway';
       font-weight: 400;
-      color: white;
+      color: black;
       font-size: 1.4em;
       padding-bottom: 0.5em;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.475);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.475);
     }
     h3 {
       margin-top: 0.5em;
       font-family: 'Raleway';
       font-size: 1em;
       font-weight: 300;
-      color: white;
+      color: black;
       display: flex;
       justify-content: center;
     }
     img {
       margin-top: 1em;
-      width: 100%;
-      border-radius: 100%;
-      max-width: 150px;
-      border: 6px solid rgba(255, 255, 255, 0.322);
+      width: 80%;
+      &:hover {
+        border-color: white;
+        cursor: pointer;
+      }
     }
     i {
       width: 100%;
       text-align: left;
-      color: white;
+      color: black;
       font-size: 1.45em;
       position: absolute;
       top: 1em;
@@ -44,31 +44,35 @@
     }
   }
   .menu {
-    margin-top: 1.9em;
+    margin-top:2.8em;
     nav {
       li {
         list-style-type: none;
         transition: .5s linear;
-        &:hover{
-          background-color: #fa5351;
+        &:hover {
+          background-color: #000000;
+          color: white;
+          a{
+            color: white;
+          }
         }
         a {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.151);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.288);
           display: flex;
-          color: white;
+          color: black;
           padding: 6%;
           padding-left: 6%;
           text-decoration: none;
-          .icon{
+          .icon {
             width: 20%;
             text-align: left;
           }
-          .text{
+          .text {
             font-family: 'Raleway';
           }
         }
-        .primero{
-          border-top: 1px solid rgba(255, 255, 255, 0.151);
+        .primero {
+          border-top: 1px solid rgba(0, 0, 0, 0.288);
         }
       }
     }

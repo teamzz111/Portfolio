@@ -1,0 +1,41 @@
+#der {
+    margin-left: 14.5em;
+    .textabout {
+        background: url('../img/fondo.png');
+        background-size: cover;
+        background-position: center;
+        .contenedor {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            h1, h2 {
+                text-align: center;
+                color: white;
+                font-family: 'Raleway';
+            }
+            h1{
+                font-size: 3em;
+                padding-top: 2em;
+            }
+            .iconos{
+                margin: auto;
+                max-width: 40em;
+                border-top: 1px solid white;
+                margin-top: 1em;
+                text-align: center;
+                padding-top: 1em;
+                padding-bottom: 4em;
+                a{
+                    margin: 1%;
+                    text-decoration: none;
+                    text-align: center;
+                    i{
+                        color: white;
+                        font-size: 1.9em;
+                    }
+                }
+            }
+                
+            }
+    }
+}

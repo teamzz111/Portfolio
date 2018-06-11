@@ -60,8 +60,7 @@ INICIALIZACIÓN
 }
 
 body {
-  background-image: url("../img/fondito.png");
-  background-size: cover;
+  background-image: url("../img/dust_scratches.png");
 }
 
 .material-icons {
@@ -95,13 +94,12 @@ body {
 }
 
 #izq {
-  width: 100%;
-  max-width: 240px;
+  width: 14.5em;
   height: 100vh;
   position: fixed;
-  background: rgba(25, 33, 124, 0.094);
   text-align: center;
-  border-right: 1px solid rgba(255, 255, 255, 0.199);
+  border-right: 1px solid rgba(71, 71, 71, 0.199);
+  background: #fff;
 }
 
 #izq .fotocont {
@@ -112,10 +110,10 @@ body {
   margin-top: 0.5em;
   font-family: 'Raleway';
   font-weight: 400;
-  color: white;
+  color: black;
   font-size: 1.4em;
   padding-bottom: 0.5em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.475);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.475);
 }
 
 #izq .fotocont h3 {
@@ -123,23 +121,25 @@ body {
   font-family: 'Raleway';
   font-size: 1em;
   font-weight: 300;
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
 }
 
 #izq .fotocont img {
   margin-top: 1em;
-  width: 100%;
-  border-radius: 100%;
-  max-width: 150px;
-  border: 6px solid rgba(255, 255, 255, 0.322);
+  width: 80%;
+}
+
+#izq .fotocont img:hover {
+  border-color: white;
+  cursor: pointer;
 }
 
 #izq .fotocont i {
   width: 100%;
   text-align: left;
-  color: white;
+  color: black;
   font-size: 1.45em;
   position: absolute;
   top: 1em;
@@ -147,7 +147,7 @@ body {
 }
 
 #izq .menu {
-  margin-top: 1.9em;
+  margin-top: 2.8em;
 }
 
 #izq .menu nav li {
@@ -156,13 +156,18 @@ body {
 }
 
 #izq .menu nav li:hover {
-  background-color: #fa5351;
+  background-color: #000000;
+  color: white;
+}
+
+#izq .menu nav li:hover a {
+  color: white;
 }
 
 #izq .menu nav li a {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.151);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.288);
   display: flex;
-  color: white;
+  color: black;
   padding: 6%;
   padding-left: 6%;
   text-decoration: none;
@@ -178,7 +183,7 @@ body {
 }
 
 #izq .menu nav li .primero {
-  border-top: 1px solid rgba(255, 255, 255, 0.151);
+  border-top: 1px solid rgba(0, 0, 0, 0.288);
 }
 
 main {
@@ -202,6 +207,54 @@ main .imagen img {
   height: 100%;
   max-height: 210px;
   margin: 8% auto;
+}
+
+#der {
+  margin-left: 14.5em;
+}
+
+#der .textabout {
+  background: url("../img/fondo.png");
+  background-size: cover;
+  background-position: center;
+}
+
+#der .textabout .contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#der .textabout .contenedor h1, #der .textabout .contenedor h2 {
+  text-align: center;
+  color: white;
+  font-family: 'Raleway';
+}
+
+#der .textabout .contenedor h1 {
+  font-size: 3em;
+  padding-top: 2em;
+}
+
+#der .textabout .contenedor .iconos {
+  margin: auto;
+  max-width: 40em;
+  border-top: 1px solid white;
+  margin-top: 1em;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 4em;
+}
+
+#der .textabout .contenedor .iconos a {
+  margin: 1%;
+  text-decoration: none;
+  text-align: center;
+}
+
+#der .textabout .contenedor .iconos a i {
+  color: white;
+  font-size: 1.9em;
 }
 
 @media screen and (max-width: 800px) {
