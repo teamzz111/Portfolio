@@ -274,7 +274,7 @@ main .imagen img {
 }
 
 #der .titleabout .contenido {
-  background: rgba(2, 117, 224, 0.5);
+  background: url("../img/weather.png");
 }
 
 #der .titleabout .contenido .padre {
@@ -293,14 +293,14 @@ main .imagen img {
 
 #der .titleabout .contenido .padre .foto img {
   width: 15%;
-  opacity: .8;
+  opacity: 1;
   border-radius: 100%;
   transition: 1s linear;
   border: 6px solid rgba(255, 255, 255, 0.342);
 }
 
 #der .titleabout .contenido .padre .foto img:hover {
-  opacity: 1;
+  opacity: .8;
   border-color: rgba(255, 255, 255, 0.384);
   cursor: pointer;
 }
