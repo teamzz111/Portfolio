@@ -57,11 +57,7 @@
                             background: linear-gradient(to bottom, rgba(100, 100, 100, 0.17), rgba(100, 100, 100, 0.1), transparent);
                             transform: skew(45deg) translate(15px, 5px);
                         }
-                        @keyframes loading {
-                            to {
-                                width: 100%;
-                            }
-                        }
+
                     }
                 }
             }
