@@ -51,7 +51,9 @@
             padding-top: 1em;
         }
         .contenido {
-            background: url('../img/weather.png');
+            background: url('../img/arboles.png');
+            background-size: cover;
+            background-position: center;
             .padre {
                 max-width: 1200px;
                 margin: auto;
@@ -76,6 +78,7 @@
                 }
                 
                 text-align: center;
+                color: white;
                 h2 {
                     margin-bottom: 1em;
                     font-family: 'Raleway';

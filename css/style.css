@@ -274,7 +274,9 @@ main .imagen img {
 }
 
 #der .titleabout .contenido {
-  background: url("../img/weather.png");
+  background: url("../img/arboles.png");
+  background-size: cover;
+  background-position: center;
 }
 
 #der .titleabout .contenido .padre {
@@ -285,6 +287,7 @@ main .imagen img {
   display: block;
   text-align: center;
   text-align: center;
+  color: white;
 }
 
 #der .titleabout .contenido .padre .foto {
