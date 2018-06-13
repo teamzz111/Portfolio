@@ -317,6 +317,45 @@ main .imagen img {
   margin-top: 1em;
 }
 
+#der .caja {
+  background: url("../img/bombillas.png");
+  background-size: cover;
+  background-position: center center;
+}
+
+#der .caja .contenido {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  padding: 2%;
+}
+
+#der .caja .contenido .sub {
+  margin-bottom: 2.5em;
+  margin-top: 2.5em;
+  width: 25%;
+  text-align: center;
+}
+
+#der .caja .contenido .sub .foto {
+  text-align: center;
+}
+
+#der .caja .contenido .sub .foto img {
+  width: 100%;
+  max-width: 110px;
+  margin: auto;
+}
+
+#der .caja .contenido .sub .text {
+  color: white;
+  font-family: 'Raleway';
+}
+
+#der .caja .contenido .sub .text h2 {
+  margin-top: 0.6em;
+}
+
 @media screen and (max-width: 800px) {
   header .der {
     display: none;

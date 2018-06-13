@@ -1,0 +1,34 @@
+#der{
+    .caja{
+        background: url('../img/bombillas.png');
+        background-size: cover;
+        background-position: center center; 
+        .contenido{
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            padding: 2%;
+            .sub{
+                margin-bottom: 2.5em;
+                margin-top: 2.5em;
+                width: 25%;
+                text-align: center;
+                .foto{
+                    text-align: center;
+                    img{
+                        width: 100%;
+                        max-width: 110px;
+                        margin: auto;
+                    }
+                }
+                .text{
+                    color: white;
+                    font-family: 'Raleway';
+                    h2{
+                        margin-top: 0.6em;
+                    }
+                }
+            }
+        }
+    }
+}

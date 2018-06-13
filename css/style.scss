@@ -58,11 +58,11 @@ INICIALIZACIÓN
   font-family: "Roboto";
   src: url("fuentes/Roboto.ttf") format("truetype");
 }
-  body{
-  
-  background-image: url('../img/dust_scratches.png');
 
+body {
+  background-image: url('../img/dust_scratches.png');
 }
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -89,12 +89,14 @@ INICIALIZACIÓN
   height: 100%;
 }
 
-.padre{
+.padre {
   display: flex;
 }
+
 @import "header";
 @import "main";
 @import "about";
+@import "thebest";
 @media screen and (max-width: 800px) {
   header {
     .der {
