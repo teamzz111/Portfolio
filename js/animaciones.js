@@ -1,26 +1,31 @@
 $(document).ready( function(){
-    Check();
+    var $animation_elements = $('.botton');
+    var $window = $(window);
 
-    var click = 0;
+    function check_if_in_view() {
+        console.log('e');
+        var window_height = $window.height();
+        var window_top_position = $window.scrollTop();
+        var window_bottom_position = (window_top_position + window_height);
 
-    $('#botton').click(function(){
-        if(click == 0){
-            $('.fors').animate({
-                "marginLeft":"0"
-            },500);
-            click = 1;
-            
-        }
-        else{
-            $('.fors').animate({
-                "marginLeft": "-100%"
-            }, 500);
-            click = 0;
-        }
-    });
-    function Check(){
-        if($(window).width() < 801){
+        $.each($animation_elements, function () {
+            var $element = $(this);
+            var element_height = $element.outerHeight();
+            var element_top_position = $element.offset().top;
+            var element_bottom_position = (element_top_position + element_height);
 
-        }
+            //check to see if this current container is within viewport
+            if ((element_bottom_position >= window_top_position) &&
+                (element_top_position <= window_bottom_position)) {
+                $('#java').stop().animate({
+                    width: '100%'
+                },1500);
+            } else {
+                $('#java').stop().animate({
+                    width: '0%'
+                }, 0);
+            }
+        });
     }
+    $(window).scroll(check_if_in_view);
 });
