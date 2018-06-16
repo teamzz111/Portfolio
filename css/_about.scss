@@ -1,5 +1,5 @@
 #der {
-    margin-left: 14.5em;
+    //margin-left: 14.5em;
     .textabout {
         background: url('../img/fondo.png');
         background-size: cover;
@@ -57,7 +57,7 @@
             .padre {
                 max-width: 1200px;
                 margin: auto;
-                padding: 2%;
+                padding: 3%;
                 width: 100%;
                 display: block;
                 text-align: center;
@@ -65,6 +65,7 @@
                     width: 100%;
                     img {
                         width: 15%;
+                        min-width: 136px;
                         opacity: 1;
                         border-radius: 100%;
                         transition: 1s linear;
@@ -85,11 +86,21 @@
         
                 }
                 p {
+                    padding: 2%;
                     font-family: 'Raleway';
                     text-align: justify;
                     font-size: 1.1em;
                     margin-top: 1em;
                 }
+            }
+        }
+    }
+}
+@media screen and (max-width: 620px) {
+    #der{
+        .titleabout{
+            .text{
+                letter-spacing: 0.5em;
             }
         }
     }

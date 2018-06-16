@@ -65,3 +65,18 @@
         }
     }
 }
+
+@media screen and (max-width: 620px){
+    #der {
+        .skills {
+            .contenido {
+                .botton{
+                    display: block;
+                    .izq, .der{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

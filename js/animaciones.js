@@ -1,7 +1,7 @@
 $(document).ready( function(){
     var $animation_elements = $('.botton');
     var $window = $(window);
-
+    var $quemado = false;
     function check_if_in_view() {
         var window_height = $window.height();
         var window_top_position = $window.scrollTop();
@@ -15,8 +15,9 @@ $(document).ready( function(){
 
             //check to see if this current container is within viewport
             if ((element_bottom_position >= window_top_position) &&
-                (element_top_position <= window_bottom_position)) {
-                $('#java').stop().animate({
+                (element_top_position <= window_bottom_position) && !$quemado) {
+                    $quemado = true;
+                    $('#java').stop().animate({
                     width: '62%'
                 },1500);
                 $('#pjava').text('62%');
@@ -74,9 +75,6 @@ $(document).ready( function(){
                 $('#ptypescript').text('22%');
 
             } else {
-                $('#java, #javafx, #javaee, #c, #mysql, #android, #kotlin, #html, #css, #javascript, #jquery, #angular, #php, #typescript').stop().animate({
-                    width: '0%'
-                }, 0);
             }
         });
     }

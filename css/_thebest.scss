@@ -7,11 +7,14 @@
             max-width: 1200px;
             margin: auto;
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             padding: 2%;
             .sub{
                 margin-bottom: 2.5em;
                 margin-top: 2.5em;
                 width: 25%;
+                min-width: 162px;
                 text-align: center;
                 .foto{
                     text-align: center;
