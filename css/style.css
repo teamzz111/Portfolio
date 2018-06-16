@@ -391,6 +391,7 @@ main .imagen img {
   margin-bottom: 1.54em;
   max-width: 800px;
   margin: auto;
+  padding: 4%;
 }
 
 #der .skills .contenido .botton {
