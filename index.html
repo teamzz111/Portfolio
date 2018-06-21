@@ -9,6 +9,7 @@
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
+  <link href="js/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -18,7 +19,6 @@
       <div class="fotocont">
         <i class="fas fa-angle-left"></i>
         <br>
-        <!--  <i class="fas fa-align-justify"></i>-->
         <img src="img/logo.png" alt="">
         <h2>CV</h2>
         <h3>OFFICIAL PAGE</h3>
@@ -109,7 +109,7 @@
           ABOUT
         </div>
         <div class="contenido">
-          <div class="padre">
+          <div class="padre"  data-aos="fade-up">
             <div class="foto">
               <h2>Who am I?</h2>
               <img src="img/me.png" alt="">
@@ -129,7 +129,7 @@
 
       <div class="caja">
         <div class="contenido">
-          <div class="sub">
+          <div class="sub" data-aos="zoom-in-down">
             <div class="foto">
               <img src="img/11_104884.png" alt="">
             </div>
@@ -137,7 +137,7 @@
               <h2>Curious</h2>
             </div>
           </div>
-          <div class="sub">
+          <div class="sub" data-aos="zoom-in-down">
             <div class="foto">
               <img src="img/29_104867.png" alt="">
             </div>
@@ -145,7 +145,7 @@
               <h2>Effective</h2>
             </div>
           </div>
-          <div class="sub">
+          <div class="sub" data-aos="zoom-in-down">
             <div class="foto">
               <img src="img/chart.png" alt="">
             </div>
@@ -153,7 +153,7 @@
               <h2>Productive</h2>
             </div>
           </div>
-          <div class="sub">
+          <div class="sub" data-aos="zoom-in-down">
             <div class="foto">
               <img src="img/32_104802.png" alt="">
             </div>
@@ -161,7 +161,7 @@
               <h2>Communicative</h2>
             </div>
           </div>
-          <div class="sub">
+          <div class="sub" data-aos="zoom-in-down">
             <div class="foto">
               <img src="img/9_104878.png" alt="">
             </div>
@@ -305,6 +305,10 @@
   </div>
   <script src="js/jquery.min.js"></script>
   <script src="js/animaciones.js"></script>
+  <script src="js/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>
