@@ -341,9 +341,9 @@ main .imagen img {
 }
 
 #der .caja .contenido .sub {
-  margin-bottom: 2.5em;
-  margin-top: 2.5em;
-  width: 25%;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  width: 20%;
   min-width: 162px;
   text-align: center;
 }
@@ -374,6 +374,7 @@ main .imagen img {
 }
 
 #der .skills .contenido .top {
+  padding: 2%;
   width: 100%;
   font-family: 'Raleway';
   text-align: center;
