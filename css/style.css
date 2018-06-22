@@ -93,98 +93,102 @@ body {
   display: flex;
 }
 
-#izq {
-  width: 14.5em;
-  height: 100vh;
-  position: fixed;
+header {
+  border-bottom: 5px solid rgba(147, 229, 183, 0.842);
+}
+
+header nav.pequeña {
   display: none;
-  text-align: center;
-  border-right: 1px solid rgba(71, 71, 71, 0.199);
-  background: #fff;
+  padding: 4%;
+  background: white;
+  align-items: center;
 }
 
-#izq .fotocont {
-  padding: 5%;
-}
-
-#izq .fotocont h2 {
-  margin-top: 0.5em;
+header nav.pequeña p {
   font-family: 'Raleway';
-  font-weight: 400;
-  color: black;
-  font-size: 1.4em;
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.475);
+  margin-left: 1em;
 }
 
-#izq .fotocont h3 {
-  margin-top: 0.5em;
-  font-family: 'Raleway';
-  font-size: 1em;
-  font-weight: 300;
-  color: black;
+header nav.grande {
   display: flex;
-  justify-content: center;
+  background: white;
 }
 
-#izq .fotocont img {
-  margin-top: 1em;
-  width: 80%;
+header nav.grande .izq {
+  width: 30%;
+  padding: 0.1em;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 
-#izq .fotocont img:hover {
-  border-color: white;
-  cursor: pointer;
+header nav.grande .izq p {
+  margin-left: .5em;
+  font-family: 'Raleway';
 }
 
-#izq .fotocont i {
-  width: 100%;
-  text-align: left;
-  color: black;
-  font-size: 1.45em;
-  position: absolute;
-  top: 1em;
-  left: 0.5em;
+header nav.grande .izq img {
+  width: 17%;
+  margin-left: 0.45em;
+  max-width: 55px;
+  min-width: 55px;
 }
 
-#izq .menu {
-  margin-top: 2.8em;
-}
-
-#izq .menu nav li {
+header nav.grande .der {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   list-style-type: none;
-  transition: .5s linear;
 }
 
-#izq .menu nav li:hover {
-  background-color: #000000;
-  color: white;
-}
-
-#izq .menu nav li:hover a {
-  color: white;
-}
-
-#izq .menu nav li a {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.288);
+header nav.grande .der li {
+  padding: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  transform: skew(20deg);
+  height: 100%;
+  width: 100%;
+  max-width: 80px;
   display: flex;
-  color: black;
-  padding: 6%;
-  padding-left: 6%;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  border-left: 6px solid transparent;
+  transition-duration: 1s;
+}
+
+header nav.grande .der li:hover .ca a {
+  color: white;
+}
+
+header nav.grande .der li:hover {
+  background: black;
+  cursor: pointer;
+  border-color: #05e450;
+}
+
+header nav.grande .der li .ca {
+  transform: skew(-20deg);
+}
+
+header nav.grande .der li .ca a {
   text-decoration: none;
-}
-
-#izq .menu nav li a .icon {
-  width: 20%;
-  text-align: left;
-}
-
-#izq .menu nav li a .text {
+  color: black;
   font-family: 'Raleway';
 }
 
-#izq .menu nav li .primero {
-  border-top: 1px solid rgba(0, 0, 0, 0.288);
+header nav.grande .der #first {
+  margin-right: 0.7em;
+}
+
+@media screen and (max-width: 560px) {
+  header nav.grande {
+    display: none;
+  }
+  header nav.pequeña {
+    display: flex;
+  }
 }
 
 main {
@@ -446,52 +450,6 @@ main .imagen img {
   }
   #der .skills .contenido .botton .izq, #der .skills .contenido .botton .der {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  header .der {
-    display: none;
-  }
-  main {
-    height: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  section#about {
-    height: 100%;
-  }
-  section#about .contenedor .padre {
-    flex-direction: column;
-  }
-  section#about .contenedor .padre .img {
-    width: 100%;
-  }
-  section#about .contenedor .padre .text {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  header {
-    height: 8vh;
-  }
-  header .contenedor .normal ul {
-    justify-content: left;
-  }
-  header .contenedor .normal .izq .responsive {
-    display: block;
-  }
-  header .contenedor .normal .izq img {
-    display: none;
-  }
-  header .contenedor .normal .izq p {
-    font-size: 1.35em;
-    margin-left: 2%;
-  }
-  header .contenedor .normal .der {
-    display: none;
   }
 }
 /*# sourceMappingURL=style.css.map */

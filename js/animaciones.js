@@ -1,7 +1,9 @@
 $(document).ready( function(){
+
     var $animation_elements = $('.botton');
     var $window = $(window);
     var $quemado = false;
+
     function check_if_in_view() {
         var window_height = $window.height();
         var window_top_position = $window.scrollTop();

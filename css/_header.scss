@@ -1,81 +1,89 @@
-#izq {
-  width: 14.5em;
-  height: 100vh;
-  position: fixed;
-  display: none;
-  text-align: center;
-  border-right: 1px solid rgba(71, 71, 71, 0.199);
-  background: #fff;
-  .fotocont {
-    padding: 5%;
-    h2 {
-      margin-top: 0.5em;
+header{
+  border-bottom: 5px solid rgba(147, 229, 183, 0.842);
+  nav.pequeña{
+    display: none;
+    padding: 4%;
+    background: white;
+    align-items: center;
+    p{
       font-family: 'Raleway';
-      font-weight: 400;
-      color: black;
-      font-size: 1.4em;
-      padding-bottom: 0.5em;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.475);
+      margin-left: 1em;
     }
-    h3 {
-      margin-top: 0.5em;
-      font-family: 'Raleway';
-      font-size: 1em;
-      font-weight: 300;
-      color: black;
+  }
+  nav.grande{
+ display: flex;
+    background: white;
+    .izq{
+      width: 30%;
+      padding: 0.1em;
       display: flex;
-      justify-content: center;
-    }
-    img {
-      margin-top: 1em;
-      width: 80%;
-      &:hover {
-        border-color: white;
-        cursor: pointer;
+      align-content: center;
+      align-items: center;
+      p{
+        margin-left: .5em;
+        font-family: 'Raleway';
+      }
+      img{
+        width: 17%;
+        margin-left: 0.45em;
+        max-width: 55px;
+        min-width: 55px;
       }
     }
-    i {
-      width: 100%;
-      text-align: left;
-      color: black;
-      font-size: 1.45em;
-      position: absolute;
-      top: 1em;
-      left: 0.5em;
-    }
-  }
-  .menu {
-    margin-top:2.8em;
-    nav {
-      li {
+    .der{
+      width: 70%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      list-style-type: none;
+      li{
+        padding: 1%;
+        padding-left: 5%;
+        padding-right: 5%;
+        transform: skew(20deg); 
+        height: 100%;
+        width: 100%;
+        max-width: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         list-style-type: none;
-        transition: .5s linear;
-        &:hover {
-          background-color: #000000;
+        border-left: 6px solid transparent;
+        transition-duration: 1s;
+         &:hover .ca a{
           color: white;
-          a{
-            color: white;
-          }
+          
         }
+        &:hover{
+          background: black;
+          cursor: pointer;
+          border-color: rgb(5, 228, 80);
+        }
+        
+        .ca{
+          transform: skew(-20deg);
         a {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.288);
-          display: flex;
-          color: black;
-          padding: 6%;
-          padding-left: 6%;
           text-decoration: none;
-          .icon {
-            width: 20%;
-            text-align: left;
-          }
-          .text {
-            font-family: 'Raleway';
-          }
+          color: black;
+          font-family: 'Raleway';
+
         }
-        .primero {
-          border-top: 1px solid rgba(0, 0, 0, 0.288);
-        }
+      }
+      }
+      #first{
+        margin-right: 0.7em;
       }
     }
   }
+}
+
+@media screen and (max-width: 560px){
+header{
+  nav.grande{
+    display: none;
+  }
+  nav.pequeña{
+    display: flex; 
+  }
+}
 }
