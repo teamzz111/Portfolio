@@ -1,5 +1,21 @@
 header{
   border-bottom: 5px solid rgba(147, 229, 183, 0.842);
+  z-index: 1;
+  .barra{
+    height: 100vh;
+    position: fixed;
+    background: white;
+    width: 100%;
+    text-align: center;
+    padding-top: 1em;
+    max-width: 200px;
+    z-index: 2;
+    img{
+      width: 100%;
+      max-width: 150px;
+      margin: auto;
+    }
+  }
   nav.pequeña{
     display: none;
     padding: 4%;
@@ -86,4 +102,12 @@ header{
     display: flex; 
   }
 }
+}
+.borroso{
+  z-index: 3;
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  filter: blur(1px);
+  background: rgba(0, 0, 0, 0.993);
 }
