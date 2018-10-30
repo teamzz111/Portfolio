@@ -4,12 +4,12 @@ Portafolio personal enfocado al desempeño propio y mostrar las habilidades que 
 
 # Hecho
     HTML
-    JavaScrip
+    JavaScript
     CSS
     
 # Fase
 
-En desarrolloo
+En desarrollo
 
 # View
 
