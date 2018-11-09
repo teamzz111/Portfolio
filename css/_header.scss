@@ -10,7 +10,7 @@ header{
     text-align: center;
     padding-top: 1em;
     max-width: 290px;
-    z-index: 2;
+    z-index: 2000;
     border-right: 1px solid rgba(0, 0, 0, 0.514);
     img{
       width: 100%;
@@ -58,6 +58,7 @@ header{
     width: 100%;
     background: white;
     align-items: center;
+    z-index: 1000;
     p{
       font-family: 'Raleway';
       margin-left: 1em;

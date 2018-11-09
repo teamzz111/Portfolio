@@ -1,3 +1,5 @@
+
+
 $(document).ready( function(){
 
     var $animation_elements = $('.botton');
@@ -80,11 +82,13 @@ $(document).ready( function(){
             }
         });
     }
+
     $(window).scroll(check_if_in_view);
     window.onload = function () {
         AOS.init();
         AOS.refresh();
         window.sr = ScrollReveal();
+        $('.loading').fadeOut(100);
         sr.reveal('.iconos, #der .contenedor h1, #der .contenedor, h2', { duration: 600 }, 50);
      };
 });

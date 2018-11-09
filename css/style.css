@@ -110,7 +110,7 @@ header .barra {
   text-align: center;
   padding-top: 1em;
   max-width: 290px;
-  z-index: 2;
+  z-index: 2000;
   border-right: 1px solid rgba(0, 0, 0, 0.514);
 }
 
@@ -172,6 +172,7 @@ header nav.pequeña {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1000;
 }
 
 header nav.pequeña p {
@@ -722,5 +723,13 @@ main .imagen {
   #der .skills .contenido .botton .izq, #der .skills .contenido .botton .der {
     width: 100%;
   }
+}
+
+.loading {
+  background: black;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 2000;
 }
 /*# sourceMappingURL=style.css.map */
