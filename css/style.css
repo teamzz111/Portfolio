@@ -1,7 +1,8 @@
 @charset "UTF-8";
 * {
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /*
@@ -80,7 +81,8 @@ body {
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
 }
 
 .contenedor {
@@ -90,36 +92,86 @@ body {
 }
 
 .padre {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 header {
-  border-bottom: 5px solid rgba(147, 229, 183, 0.842);
   z-index: 1;
 }
 
 header .barra {
   height: 100vh;
+  display: none;
   position: fixed;
   background: white;
   width: 100%;
   text-align: center;
   padding-top: 1em;
-  max-width: 200px;
+  max-width: 290px;
   z-index: 2;
+  border-right: 1px solid rgba(0, 0, 0, 0.514);
 }
 
 header .barra img {
   width: 100%;
   max-width: 150px;
   margin: auto;
+  margin-top: 1em;
+}
+
+header .barra .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+header .barra .top p {
+  margin-left: 0.5em;
+  font-size: 1.25em;
+  font-weight: 300;
+}
+
+header .barra .top i {
+  margin-left: 0.5em;
+  font-size: 1.6em;
+}
+
+header .barra nav {
+  margin-top: 2em;
+}
+
+header .barra nav #Especial {
+  border-top: 1px solid black;
+}
+
+header .barra nav li {
+  list-style-type: none;
+  padding: 2%;
+  border-bottom: 1px solid black;
+}
+
+header .barra nav li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.22em;
 }
 
 header nav.pequeña {
   display: none;
   padding: 4%;
+  width: 100%;
   background: white;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header nav.pequeña p {
@@ -128,16 +180,26 @@ header nav.pequeña p {
 }
 
 header nav.grande {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   background: white;
+  color: black;
+  position: fixed;
+  width: 100%;
 }
 
 header nav.grande .izq {
   width: 30%;
   padding: 0.1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-content: center;
-  align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header nav.grande .izq p {
@@ -154,9 +216,15 @@ header nav.grande .izq img {
 
 header nav.grande .der {
   width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   list-style-type: none;
 }
 
@@ -164,16 +232,24 @@ header nav.grande .der li {
   padding: 1%;
   padding-left: 5%;
   padding-right: 5%;
-  transform: skew(20deg);
+  -webkit-transform: skew(20deg);
+          transform: skew(20deg);
   height: 100%;
   width: 100%;
   max-width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   list-style-type: none;
   border-left: 6px solid transparent;
-  transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
 }
 
 header nav.grande .der li:hover .ca a {
@@ -187,7 +263,8 @@ header nav.grande .der li:hover {
 }
 
 header nav.grande .der li .ca {
-  transform: skew(-20deg);
+  -webkit-transform: skew(-20deg);
+          transform: skew(-20deg);
 }
 
 header nav.grande .der li .ca a {
@@ -201,11 +278,18 @@ header nav.grande .der #first {
 }
 
 @media screen and (max-width: 560px) {
-  header nav.grande {
+  #der .textabout .contenedor #navGrande {
     display: none;
   }
+  #der .textabout .contenedor .me .contenido {
+    margin-top: 46em;
+  }
   header nav.pequeña {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    position: fixed;
+    width: 100%r;
   }
 }
 
@@ -214,7 +298,8 @@ header nav.grande .der #first {
   height: 100vh;
   width: 100%;
   position: absolute;
-  filter: blur(1px);
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
   background: rgba(0, 0, 0, 0.993);
 }
 
@@ -224,26 +309,29 @@ main {
   background-size: cover;
   z-index: 0;
   position: relative;
+  background-attachment: fixed;
   height: 50vh;
 }
 
 main .imagen {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   margin: auto;
 }
 
-main .imagen img {
-  height: 100%;
-  max-height: 210px;
-  margin: 8% auto;
-}
-
 #der .textabout {
-  background: url("../img/fondo.png");
+  background: url("../img/fondito.png");
   background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
   background-position: center;
 }
 
@@ -253,19 +341,145 @@ main .imagen img {
   margin: auto;
 }
 
-#der .textabout .contenedor h1,
-#der .textabout .contenedor h2 {
+#der .textabout .contenedor #navGrande {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: transparent;
+  color: white;
+}
+
+#der .textabout .contenedor #navGrande .izq {
+  width: 30%;
+  padding: 0.1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#der .textabout .contenedor #navGrande .izq p {
+  margin-left: .5em;
+  font-family: 'Raleway';
+  font-size: 1.5em;
+}
+
+#der .textabout .contenedor #navGrande .izq img {
+  margin-left: 0.45em;
+  max-width: 100px;
+  min-width: 100px;
+}
+
+#der .textabout .contenedor #navGrande .der {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style-type: none;
+}
+
+#der .textabout .contenedor #navGrande .der li {
+  padding: 1%;
+  padding-left: 8%;
+  padding-right: 8%;
+  -webkit-transform: skew(20deg);
+          transform: skew(20deg);
+  height: 100%;
+  width: 100%;
+  max-width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style-type: none;
+  border-left: 6px solid transparent;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  color: white;
+}
+
+#der .textabout .contenedor #navGrande .der li:hover .ca a {
+  color: white;
+}
+
+#der .textabout .contenedor #navGrande .der li:hover {
+  background: black;
+  cursor: pointer;
+  border-color: #05e450;
+}
+
+#der .textabout .contenedor #navGrande .der li .ca {
+  -webkit-transform: skew(-20deg);
+          transform: skew(-20deg);
+}
+
+#der .textabout .contenedor #navGrande .der li .ca a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Raleway';
+  font-size: 1.5em;
+}
+
+#der .textabout .contenedor #navGrande .der #first {
+  margin-right: 0.7em;
+}
+
+#der .textabout .contenedor .me {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#der .textabout .contenedor .me .contenido {
+  margin-top: -12em;
+  text-align: center;
+}
+
+#der .textabout .contenedor .me .contenido img {
+  max-width: 170px;
+  max-height: 170px;
+  border-radius: 100%;
+  border: 5px solid rgba(255, 255, 255, 0.856);
+}
+
+#der .textabout .contenedor .me .contenido h1,
+#der .textabout .contenedor .me .contenido h2 {
   text-align: center;
   color: white;
   font-family: 'Raleway';
 }
 
-#der .textabout .contenedor h1 {
-  font-size: 3em;
-  padding-top: 2em;
+#der .textabout .contenedor .me .contenido h1 {
+  font-size: 2.5em;
+  padding-top: 0.45em;
 }
 
-#der .textabout .contenedor .iconos {
+#der .textabout .contenedor .me .contenido .iconos {
   margin: auto;
   max-width: 40em;
   border-top: 1px solid white;
@@ -273,15 +487,16 @@ main .imagen img {
   text-align: center;
   padding-top: 1em;
   padding-bottom: 4em;
+  width: 100%;
 }
 
-#der .textabout .contenedor .iconos a {
+#der .textabout .contenedor .me .contenido .iconos a {
   margin: 1%;
   text-decoration: none;
   text-align: center;
 }
 
-#der .textabout .contenedor .iconos a i {
+#der .textabout .contenedor .me .contenido .iconos a i {
   color: white;
   font-size: 1.9em;
 }
@@ -304,6 +519,7 @@ main .imagen img {
 #der .titleabout .contenido {
   background: url("../img/arboles.png");
   background-size: cover;
+  background-attachment: fixed;
   background-position: center;
 }
 
@@ -327,6 +543,7 @@ main .imagen img {
   min-width: 136px;
   opacity: 1;
   border-radius: 100%;
+  -webkit-transition: 1s linear;
   transition: 1s linear;
   border: 6px solid rgba(255, 255, 255, 0.342);
 }
@@ -356,18 +573,36 @@ main .imagen img {
   }
 }
 
+@media screen and (max-width: 560px) {
+  #der .textabout .contenedor #navGrande {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #der .textabout .contenedor .me .contenido {
+    margin-top: 4em;
+  }
+}
+
 #der .caja {
   background: url("../img/bombillas.png");
   background-size: cover;
   background-position: center center;
+  background-attachment: fixed;
 }
 
 #der .caja .contenido {
   max-width: 1200px;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 2%;
 }
 
@@ -427,6 +662,8 @@ main .imagen img {
 }
 
 #der .skills .contenido .botton {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: auto;
 }
@@ -434,8 +671,12 @@ main .imagen img {
 #der .skills .contenido .botton .izq, #der .skills .contenido .botton .der {
   width: 50%;
   padding: 4%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #der .skills .contenido .botton .izq .porcentajes, #der .skills .contenido .botton .der .porcentajes {
@@ -448,6 +689,8 @@ main .imagen img {
 }
 
 #der .skills .contenido .botton .izq .porcentajes div, #der .skills .contenido .botton .der .porcentajes div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 2em;
 }
@@ -465,6 +708,7 @@ main .imagen img {
 #der .skills .contenido .botton .izq .porcentajes .progress-bar, #der .skills .contenido .botton .der .porcentajes .progress-bar {
   width: 0%;
   height: 10px;
+  background: -webkit-gradient(linear, left top, right top, from(#4cd969), color-stop(#5ac8fa), color-stop(#0084ff), color-stop(#34aadc), color-stop(#5856d9), to(#ff2d53));
   background: linear-gradient(to right, #4cd969, #5ac8fa, #0084ff, #34aadc, #5856d9, #ff2d53);
   margin-top: 10px;
   background-size: 100% 5px;

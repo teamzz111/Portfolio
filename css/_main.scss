@@ -4,6 +4,7 @@ main {
     background-size: cover;
     z-index: 0;
     position: relative;
+    background-attachment: fixed;
     height: 50vh;
     .imagen {
         display: flex;
@@ -11,12 +12,7 @@ main {
         justify-content: center;
         height: 100%;
         margin: auto;
-        img {
-            height: 100%;
-            max-height: 210px;
-            margin: 8% auto;
-      
-        }
+
     }
 
 }

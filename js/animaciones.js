@@ -85,6 +85,6 @@ $(document).ready( function(){
         AOS.init();
         AOS.refresh();
         window.sr = ScrollReveal();
-        sr.reveal('.iconos, #der .contenedor h1, #der .contenedor, h2', { duration: 2000 }, 50);
+        sr.reveal('.iconos, #der .contenedor h1, #der .contenedor, h2', { duration: 600 }, 50);
      };
 });

@@ -1,38 +1,123 @@
 #der {
     //margin-left: 14.5em;
     .textabout {
-        background: url('../img/fondo.png');
+        background: url('../img/fondito.png');
         background-size: cover;
+        background-attachment: fixed;
+        height: 100vh;
         background-position: center;
         .contenedor {
             width: 100%;
             max-width: 1200px;
             margin: auto;
-            h1,
-            h2 {
-                text-align: center;
+            #navGrande {
+                display: flex;
+                background: transparent;
                 color: white;
-                font-family: 'Raleway';
-            }
-            h1 {
-                font-size: 3em;
-                padding-top: 2em;
-            }
-            .iconos {
-                margin: auto;
-                max-width: 40em;
-                border-top: 1px solid white;
-                margin-top: 1em;
-                text-align: center;
-                padding-top: 1em;
-                padding-bottom: 4em;
-                a {
-                    margin: 1%;
-                    text-decoration: none;
-                    text-align: center;
-                    i {
+                .izq {
+                    width: 30%;
+                    padding: 0.1em;
+                    display: flex;
+                    align-content: center;
+                    align-items: center;
+                    p {
+                        margin-left: .5em;
+                        font-family: 'Raleway';
+                        font-size: 1.5em;
+                    }
+                    img {
+                        margin-left: 0.45em;
+                        max-width: 100px;
+                        min-width: 100px;
+                    }
+                }
+                .der {
+                    width: 70%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    list-style-type: none;
+                    li {
+                        padding: 1%;
+                        padding-left: 8%;
+                        padding-right: 8%;
+                        transform: skew(20deg);
+                        height: 100%;
+                        width: 100%;
+                        max-width: 80px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        list-style-type: none;
+                        border-left: 6px solid transparent;
+                        transition-duration: 1s;
                         color: white;
-                        font-size: 1.9em;
+                        &:hover .ca a {
+                            color: white;
+                        }
+                        &:hover {
+                            background: black;
+                            cursor: pointer;
+                            border-color: rgb(5, 228, 80);
+                        }
+                        .ca {
+                            transform: skew(-20deg);
+                            a {
+                                text-decoration: none;
+                                color: white;
+                                font-family: 'Raleway';
+                                font-size: 1.5em;
+                            }
+                        }
+                    }
+                    #first {
+                        margin-right: 0.7em;
+                    }
+                }
+            }
+            .me {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                align-content: center;
+                justify-content: center;
+                .contenido {
+                    margin-top: -12em;
+                    text-align: center;
+                    img{
+                        max-width: 170px;
+                        max-height: 170px;
+                        border-radius: 100%;
+                        border: 5px solid rgba(255, 255, 255, 0.856);
+                    }
+                    h1,
+                    h2 {
+                        text-align: center;
+                        color: white;
+                        font-family: 'Raleway';
+                    }
+                    h1 {
+                        font-size: 2.5em;
+                        padding-top: 0.45em;
+                    }
+                    .iconos {
+                        margin: auto;
+                        max-width: 40em;
+                        border-top: 1px solid white;
+                        margin-top: 1em;
+                        text-align: center;
+                        padding-top: 1em;
+                        padding-bottom: 4em;
+                        width: 100%;
+                        a {
+                            margin: 1%;
+                            text-decoration: none;
+                            text-align: center;
+                            i {
+                                color: white;
+                                font-size: 1.9em;
+                            }
+                        }
                     }
                 }
             }
@@ -53,6 +138,7 @@
         .contenido {
             background: url('../img/arboles.png');
             background-size: cover;
+            background-attachment: fixed;
             background-position: center;
             .padre {
                 max-width: 1200px;
@@ -77,13 +163,11 @@
                         }
                     }
                 }
-                
                 text-align: center;
                 color: white;
                 h2 {
                     margin-bottom: 1em;
                     font-family: 'Raleway';
-        
                 }
                 p {
                     padding: 2%;
@@ -96,12 +180,25 @@
         }
     }
 }
+
 @media screen and (max-width: 620px) {
-    #der{
-        .titleabout{
-            .text{
+    #der {
+        .titleabout {
+            .text {
                 letter-spacing: 0.5em;
             }
         }
+    }
+}
+@media screen and (max-width: 560px) {
+    #der .textabout .contenedor #navGrande {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 560px) {
+
+    #der .textabout .contenedor .me .contenido {
+        margin-top: 4em;
     }
 }
