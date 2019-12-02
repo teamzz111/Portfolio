@@ -3,11 +3,37 @@ section.icons{
     .contenedor{
         text-align: center;
         h2{
-            font-size: 4em;
+            font-size: 3.7em;
             padding-top: 1em;
         }
         h4{
             margin-top: 2em;
+        }
+        .cards{
+            display: flex;
+            margin-top: 4em;
+            padding-bottom: 4em;
+            .card{
+                transition: .1s linear;
+                &:hover{
+                    transform: scale(1.05);
+                }
+                h4{
+                    margin-top: .1em;
+                }
+                border-radius: 10px;
+                width: 100%;
+                max-width: 300px;
+                background: #ffffff;
+                box-shadow: -2px 0px 26px -4px rgba(0,0,0,0.75);
+                padding: 1em;
+                margin: 0.5em;
+                img{
+                    width: 100%;
+                    max-width: 200px;
+                    margin-top: 1em;
+                }
+            }
         }
     }
 }
