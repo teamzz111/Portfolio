@@ -253,6 +253,23 @@ main .imagen {
   margin: auto;
 }
 
+section.icons {
+  background-color: #fafafa;
+}
+
+section.icons .contenedor {
+  text-align: center;
+}
+
+section.icons .contenedor h2 {
+  font-size: 4em;
+  padding-top: 1em;
+}
+
+section.icons .contenedor h4 {
+  margin-top: 2em;
+}
+
 #der .textabout {
   background: url("../img/fondito.png");
   background-size: cover;
