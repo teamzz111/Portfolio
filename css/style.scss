@@ -60,7 +60,7 @@ INICIALIZACIÓN
 }
 
 body {
-  background-image: url('../img/dust_scratches.png');
+  background-color: white;
 }
 
 .material-icons {
@@ -89,10 +89,18 @@ body {
   height: 100%;
 }
 
+
 .padre {
   display: flex;
 }
 
+$contrast: #00efb8;
+
+
+body {
+    font-family: Open Sans;
+
+}
 @import "header";
 @import "main";
 @import "about";
