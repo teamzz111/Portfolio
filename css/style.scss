@@ -87,6 +87,7 @@ body {
   max-width: 1200px;
   margin: auto;
   height: 100%;
+  
 }
 
 
@@ -102,9 +103,10 @@ body {
 
 }
 @import "header";
-@import "main";
 @import "icons";
 @import "about";
 @import "thebest";
 @import "skills";
 @import "loading";
+@import "me";
+ 
