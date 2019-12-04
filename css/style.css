@@ -251,6 +251,11 @@ section.icons .contenedor .cards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 4em;
   padding-bottom: 1em;
 }
@@ -697,5 +702,123 @@ section.me h2 {
   padding-top: 1em;
   color: white;
   text-align: center;
+}
+
+section.me div.father {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 3em;
+  text-align: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: 7em;
+}
+
+section.me div.father div.der, section.me div.father div.izq, section.me div.father div.cen {
+  width: 100%;
+  max-width: 400px;
+}
+
+section.me div.father div.der ul, section.me div.father div.izq ul, section.me div.father div.cen ul {
+  padding-left: 0;
+}
+
+section.me div.father div.der ul li, section.me div.father div.izq ul li, section.me div.father div.cen ul li {
+  margin-top: .4em;
+  list-style-type: none;
+  width: 100%;
+}
+
+section.me div.father div.der ul li a, section.me div.father div.izq ul li a, section.me div.father div.cen ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+  font-size: 1.08em;
+}
+
+section.me div.father div.der ul li a div.link, section.me div.father div.izq ul li a div.link, section.me div.father div.cen ul li a div.link {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.me div.father div.der ul li a div.link .icon, section.me div.father div.izq ul li a div.link .icon, section.me div.father div.cen ul li a div.link .icon {
+  width: 16%;
+  text-align: center;
+}
+
+section.me div.father div.der ul li a div.link .span, section.me div.father div.izq ul li a div.link .span, section.me div.father div.cen ul li a div.link .span {
+  width: 35%;
+  text-align: center;
+}
+
+section.me div.father div.der img, section.me div.father div.izq img, section.me div.father div.cen img {
+  margin: auto;
+}
+
+section.me div.father div.der img:nth-child(0), section.me div.father div.izq img:nth-child(0), section.me div.father div.cen img:nth-child(0) {
+  max-width: 128px;
+}
+
+section.me div.father div.der img:nth-child(1), section.me div.father div.izq img:nth-child(1), section.me div.father div.cen img:nth-child(1) {
+  max-width: 180px;
+}
+
+section.me div.father div.cen h3 {
+  font-size: 2em;
+  margin-top: .5em;
+}
+
+section.me div.father div.cen h4:nth-child(1) {
+  margin-top: .9em;
+}
+
+section.me div.father div.cen img {
+  -webkit-transition: linear .5s;
+  transition: linear .5s;
+  cursor: pointer;
+  max-width: 200px;
+  border-radius: 100%;
+  border: 10px solid rgba(255, 255, 255, 0.247);
+}
+
+section.me div.father div.cen img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  border: 2px solid white;
+}
+
+section.me div.father div.izq {
+  border-right: 1px solid white;
+}
+
+section.me div.father div.izq ul {
+  margin-top: 1.6em;
+}
+
+section.me div.father div.der {
+  border-left: 1px solid white;
+}
+
+section.me div.father div.der img {
+  margin-top: 1em;
+}
+
+section.me div.father div.der ul {
+  margin-top: 3.5em;
+}
+
+@media screen and (max-width: 1199px) {
+  div.father div.der, div.father div.izq, div.father div.cen {
+    margin-top: 3em;
+    border-color: transparent !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */
