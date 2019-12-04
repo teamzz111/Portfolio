@@ -257,6 +257,7 @@ section.icons .contenedor .cards {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 4em;
+  padding: 0;
   padding-bottom: 1em;
 }
 
@@ -265,7 +266,7 @@ section.icons .contenedor .cards .card {
   transition: .1s linear;
   border-radius: 10px;
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
   background: #ffffff;
   -webkit-box-shadow: -2px 0px 26px -4px rgba(0, 0, 0, 0.75);
           box-shadow: -2px 0px 26px -4px rgba(0, 0, 0, 0.75);
