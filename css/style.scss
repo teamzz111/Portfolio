@@ -60,7 +60,7 @@ INICIALIZACIÓN
 }
 
 body {
-  background-image: url('../img/dust_scratches.png');
+  background-color: #fafafa;
 }
 
 .material-icons {
@@ -84,18 +84,34 @@ body {
 }
 
 .contenedor {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
   height: 100%;
+  
+}
+h2{
+    font-size: 3.7em;
+    padding-top: 1em;
+    text-align: center;
 }
 
 .padre {
   display: flex;
 }
 
+$contrast: #00efb8;
+
+
+body {
+    font-family: Open Sans;
+
+}
 @import "header";
-@import "main";
+@import "icons";
 @import "about";
 @import "thebest";
 @import "skills";
 @import "loading";
+@import "me";
+@import "timeline";
+ 

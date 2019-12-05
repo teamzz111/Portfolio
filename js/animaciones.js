@@ -5,7 +5,240 @@ $(document).ready( function(){
     var $animation_elements = $('.botton');
     var $window = $(window);
     var $quemado = false;
+    var scroll = new SmoothScroll('a[href*="#"]');
+    let data = [
+        {
+            id: 1,
+            text: 'React Native',
+            percent: '85%'
+        },
+        {
+            id: "cpp",
+            text: 'C++',
+            percent: '30%'
+        },
+        {
+            id: 4,
+            text: 'C# Win.Forms',
+            percent: '50%'
+        },
+        {
+            id: 5,
+            text: 'Java Spring',
+            percent: '40%'
+        },
+        {
+            id: 6,
+            text: 'Android Studio',
+            percent: '35%'
+        },
+        {
+            id: 7,
+            text: 'ElectronJS',
+            percent: '20%'
+        },
+        {
+            id: 8,
+            text: 'Objective-C',
+            percent: '15%'
+        },
+        {
+            id: 9,
+            text: 'Ionic 3',
+            percent: '40%'
+        },
+        {
+            id: 10,
+            text: 'Unity',
+            percent: '10%'
+        },
+        {
+            id: 'rnac',
+            text: 'React Navigation',
+            percent: '70%'
+        },
 
+    ];
+    data.sort((a,b) => (a.percent < b.percent) ? 1 : -1);
+    let data2 = [
+        {
+            id: 11,
+            text: 'HTML',
+            percent: '80%'
+        },
+        {
+            id: 'cssa',
+            text: 'CSS',
+            percent: '79%'
+        },
+        {
+            id: 'sass',
+            text: 'SASS',
+            percent: '50%'
+        },
+
+        {
+            id: 'js',
+            text: 'JavaScript',
+            percent: '66%'
+        },
+        {
+            id: 'angu',
+            text: 'Angular',
+            percent: '60%'
+        },
+        {
+            id: 'php',
+            text: 'PHP / Yii / Laravel',
+            percent: '30%'
+        },
+        {
+            id: 'ror',
+            text: 'Ruby On Rails',
+            percent: '30%'
+        },
+        {
+            id: 'node',
+            text: 'NodeJS',
+            percent: '40%'
+        },
+        {
+            id: 'express',
+            text: 'Express',
+            percent: '30%'
+        },
+        {
+            id: 'react',
+            text: 'React',
+            percent: '40%'
+        },
+    ];
+    data2.sort((a, b) => (a.percent < b.percent) ? 1 : -1);
+
+    let data3 = [
+        {
+            id: 3,
+            text: 'MySQL',
+            percent: '55%'
+        },
+        {
+            id: "postg",
+            text: 'PostgreSQL',
+            percent: '45%'
+        },
+        {
+            id: "MariaDB",
+            text: 'MariaDB',
+            percent: '55%'
+        },
+        {
+            id: "sqlserver",
+            text: 'SQL Server',
+            percent: '25%'
+        },
+        {
+            id: "Mongo",
+            text: 'MongoDB',
+            percent: '15%'
+        },
+        {
+            id: "aws",
+            text: 'AWS',
+            percent: '25%'
+        },
+        {
+            id: "azure",
+            text: 'Azure',
+            percent: '15%'
+        },
+
+    ];
+    data3.sort((a, b) => (a.percent < b.percent) ? 1 : -1);
+
+    let data4 = [
+        {
+            id: 'docker',
+            text: 'Docker',
+            percent: '30%'
+        },
+        {
+            id: 'CircleCI',
+            text: 'CircleCI',
+            percent: '10%'
+        },
+        {
+            id: 'git',
+            text: 'GitHub',
+            percent: '80%'
+        },
+        {
+            id: 'Git',
+            text: 'Git',
+            percent: '90%'
+        },
+        {
+            id: 'GitLab',
+            text: 'GitLab',
+            percent: '30%'
+        },
+        {
+            id: 'bit',
+            text: 'Bitbucket',
+            percent: '40%'
+        },
+        {
+            id: "ibm",
+            text: 'IBM Cloud',
+            percent: '10%'
+        },
+    ];
+    data4.sort((a, b) => (a.percent < b.percent) ? 1 : -1);
+
+
+    for (let i = 0; i < data.length; i++) {
+        $("#dynamic").append(`
+            <div>
+                <h3>${data[i].text}</h3>
+                <h3 class="percent" >${data[i].percent}</h3>
+            </div>
+            <div class="progress-bar" id="${data[i].id}">
+                <div class="shadow"></div>
+            </div>
+        `);
+    }
+    for (let i = 0; i < data2.length; i++) {
+        $("#dynamic2").append(`
+            <div>
+                <h3>${data2[i].text}</h3>
+                <h3 class="percent" >${data2[i].percent}</h3>
+            </div>
+            <div class="progress-bar" id="${data2[i].id}">
+                <div class="shadow"></div>
+            </div>
+        `);
+    }
+    for (let i = 0; i < data3.length; i++) {
+        $("#dynamic3").append(`
+            <div>
+                <h3>${data3[i].text}</h3>
+                <h3 class="percent" >${data3[i].percent}</h3>
+            </div>
+            <div class="progress-bar" id="${data3[i].id}">
+                <div class="shadow"></div>
+            </div>
+        `);
+    }
+    for (let i = 0; i < data4.length; i++) {
+        $("#dynamic4").append(`
+            <div>
+                <h3>${data4[i].text}</h3>
+                <h3 class="percent" >${data4[i].percent}</h3>
+            </div>
+            <div class="progress-bar" id="${data4[i].id}">
+                <div class="shadow"></div>
+            </div>
+        `);
+    }
     function check_if_in_view() {
         var window_height = $window.height();
         var window_top_position = $window.scrollTop();
@@ -21,65 +254,28 @@ $(document).ready( function(){
             if ((element_bottom_position >= window_top_position) &&
                 (element_top_position <= window_bottom_position) && !$quemado) {
                     $quemado = true;
-                    $('#java').stop().animate({
-                    width: '62%'
-                },1500);
-                $('#pjava').text('62%');
-                $('#javafx').stop().animate({
-                    width: '43%'
-                }, 1500);
-                $('#pjavafx').text('43%');
-                $('#javaee').stop().animate({
-                    width: '30%'
-                }, 1500);
-                $('#pjavaee').text('30%');
-                $('#c').stop().animate({
-                    width: '60%'
-                }, 1500);
-                $('#pc').text('60%');
-                $('#kotlin').stop().animate({
-                    width: '10%'
-                }, 1500);
-                $('#pkotlin').text('10%');
-                $('#android').stop().animate({
-                    width: '20%'
-                }, 1500);
-                $('#pandroidstudio').text('20%');
-                $('#mysql').stop().animate({
-                    width: '52%'
-                }, 1500);
-                $('#pmysql').text('52%');
-                $('#html').stop().animate({
-                    width: '86%'
-                }, 1500);
-                $('#phtml').text('86%');
-                $('#css').stop().animate({
-                    width: '70%'
-                }, 1500);
-                $('#pcss').text('70%');
-                $('#javascript').stop().animate({
-                    width: '55%'
-                }, 1500);
-                $('#pjavascript').text('55%');
-                $('#jquery').stop().animate({
-                    width: '50%'
-                }, 1500);
-                $('#pjquery').text('50%');
-                $('#angular').stop().animate({
-                    width: '36%'
-                }, 1500);
-                $('#pangular').text('36%');
-                $('#php').stop().animate({
-                    width: '28%'
-                }, 1500);
-                $('#pphp').text('28%');
-                $('#typescript').stop().animate({
-                    width: '22%'
-                }, 1500);
-                $('#ptypescript').text('22%');
-
-            } else {
-            }
+                for (let i = 0; i < data.length; i++) {
+                
+                    $(`#${data[i].id}`).stop().animate({
+                        width: `${data[i].percent}`
+                    },1500);
+                } 
+                for (let i = 0; i < data2.length; i++) {
+                    $(`#${data2[i].id}`).stop().animate({
+                        width: `${data2[i].percent}`
+                    }, 1500);
+                } 
+                for (let i = 0; i < data3.length; i++) {
+                    $(`#${data3[i].id}`).stop().animate({
+                        width: `${data3[i].percent}`
+                    }, 1500);
+                } 
+                for (let i = 0; i < data4.length; i++) {
+                    $(`#${data4[i].id}`).stop().animate({
+                        width: `${data4[i].percent}`
+                    }, 1500);
+                } 
+            } 
         });
     }
 

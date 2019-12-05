@@ -1,140 +1,80 @@
+.c1{
+    background-color: #20205e;
+    margin-bottom: -.4em;
+}
 header{
- // border-bottom: 5px solid rgba(147, 166, 229, 0.842);
-  z-index: 1;
-  .barra{
-    height: 100vh;
-    display: none;
+  background-color: #20205e;
+  .bar{
+    width: 100%;
     position: fixed;
-    background: white;
-    width: 100%;
-    text-align: center;
-    padding-top: 1em;
-    max-width: 290px;
-    z-index: 2000;
-    border-right: 1px solid rgba(0, 0, 0, 0.514);
-    img{
-      width: 100%;
-      max-width: 150px;
-      margin: auto;
-      margin-top: 1em;
-    }
-    .top{
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      p{
-        margin-left: 0.5em;
-        font-size: 1.25em;
-        font-weight: 300;
-      }
-      i{
-        margin-left: 0.5em;
-        font-size: 1.6em;
-        //width: 100%;
-      }
-    }
-
-    nav{
-      margin-top: 2em;
-      #Especial{
-        border-top: 1px solid black;
-      }
-      li{
-        list-style-type: none;
-        padding: 2%;
-        border-bottom: 1px solid black;
-      
-        a{
-          text-decoration: none;
-          color: black;
-          font-size: 1.22em;
-        }
-      }
-    }
-  }
-  nav.pequeña{
-    display: none;
-    padding: 4%;
-    width: 100%;
-    background: white;
-    align-items: center;
-    z-index: 1000;
+    display: flex;
+    font-size: 1.3em;
+    color: white;
+    max-width: 1300px;
+    left: 50%;
+    padding: 1em 0em 2em 0em ;
+    transform: translateX(-50%);
     p{
-      font-family: 'Raleway';
+      width: 60%;
       margin-left: 1em;
     }
-  }
-  nav.grande{
- display: flex;
-    background: white;
-    color: black;
-    position: fixed;
-    width: 100%;
-    .izq{
-      width: 30%;
-      padding: 0.1em;
+    ul{
       display: flex;
-      align-content: center;
-      align-items: center;
-      p{
-        margin-left: .5em;
-        font-family: 'Raleway';
-      }
-      img{
-        width: 17%;
-        margin-left: 0.45em;
-        max-width: 55px;
-        min-width: 55px;
+      justify-content: space-around;
+      width: 40%;
+      li{
+        list-style-type: none;
+        a{
+          text-decoration: none;
+          color: white;
+        }
       }
     }
+  }
+  .father{
+    padding-top: 4em;
+    display: flex;
+    flex-wrap: wrap;
     .der{
-      width: 70%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      list-style-type: none;
-      li{
-        padding: 1%;
-        padding-left: 5%;
-        padding-right: 5%;
-        transform: skew(20deg); 
-        height: 100%;
+      width: 100%;
+      max-width: 600px;
+      img{
         width: 100%;
-        max-width: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        list-style-type: none;
-        border-left: 6px solid transparent;
-        transition-duration: 1s;
-         &:hover .ca a{
-          color: white;
-          
-        }
-        &:hover{
-          background: black;
-          cursor: pointer;
-          border-color: rgb(5, 228, 80);
-        }
-        
-        .ca{
-          transform: skew(-20deg);
-        a {
-          text-decoration: none;
-          color: black;
-          font-family: 'Raleway';
-
-        }
       }
+    }
+    .izq{
+      margin-top: 1em;
+      padding: 1em;
+      width: 100%;
+      max-width: 600px;
+      color: white;
+      p{
+        color: $contrast;
+        font-size: 1.4em;
       }
-      #first{
-        margin-right: 0.7em;
+      h3{
+        margin-bottom: 1em;
+      }
+      h1{
+        font-size: 4em;
+      }
+      small{
+        font-size: 1em;
+      }
+      button{
+        padding: 1em;
+        background-color: $contrast;
+        border-color: transparent;
+        margin-top: 2em;
+        border: 1px solid black;
+        font-size: 1em;
+        border-radius: 4px;
       }
     }
   }
 }
 
-@media screen and (max-width: 560px){
+@media screen and (max-width: 700px){
   #der .textabout .contenedor #navGrande {
     display: none;
   }
@@ -142,12 +82,18 @@ header{
     margin-top: 46em;
   }
     header{
-  nav.pequeña{
-    display: flex; 
-    position: fixed;
-    width: 100%r;
+    background-color: #20205e;
+    .bar{
+      p{
+        width: 20%;
+
+      }
+      ul{
+        width: 80%;
+        display: none;
+      }
+    }
   }
-}
 }
 
 .borroso{
@@ -158,3 +104,4 @@ header{
   filter: blur(1px);
   background: rgba(0, 0, 0, 0.993);
 }
+

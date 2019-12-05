@@ -7,177 +7,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Oswald:300" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet">
-  <link href="js/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">  <link href="js/aos.css" rel="stylesheet">
   <meta name="theme-color" content="#43f36f" />
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div class="loading">
-    <canvas class="fireworks"></canvas>
+  <!--
 
-  </div>
+    <div class="loading">
+      <canvas class="fireworks"></canvas>
+    </div>
+  -->
   <header>
-    <div class="barra">
-      <div class="foto">
-        <div class="top">
-            <i class="fas fa-align-justify"></i>
-          <p>Main menu</p>
-        </div>
+    <div class="bar">
+      <p>Portfolio</p>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Experience</a></li>
+        <li><a href="#">Skills</a></li>
+      </ul>
+    </div>
+    <div class="contenedor" data-aos="fade-up">
+      <div class="father">
+        <div class="izq">
+          <p>who am I?</p>
+          <h1>Andrés Largo</h1>
+          <h3>Full Stack Developer</h3>
+          <small>
+            I am a Systems engineering student focused on high level software development. I like to work on projects that have to
+            do with mobile development, like Android apps and Web apps. The depth or difficulty is not a problem to me, I can solve
+            it and make an amazing work for you. If you need to use some special language, I can make it happen.
+          </small>
           <br>
-        <img src="img/logo.png" alt="">
-        <nav>
-          <li id = "Especial">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Projects</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </nav>
+          <button>See more</button>
+        </div>
+        <div class="der">
+          <img src="./img/hand.jpg" alt="">
+        </div>
       </div>
     </div>
-    <nav class="pequeña">
-      <i class="fas fa-align-justify"></i>
-      <p>OFFICIAL CV</p>
-    </nav>
     
   </header>
-  <div id="der" style="z-index: 4">
-    <div class="textabout">
-      <div class="contenedor">
-            <nav id = "navGrande" class = "grande">
-              <div class="izq">
-                <img src="img/logo.png" alt="">
-                <p>OFFICIAL CV</p>
-              </div>
-              <div class="der">
-                <li >
-                  <div class="ca">
-                      <a href="#">Home</a>
+  <div class="c1">
+    <img src="./img/curva.svg" alt="">
+  </div>
+
+  <section class="icons" id = "About">
+    <div class="contenedor">
+      <h2>About me</h2>
+      <h4>I can guarantee my job will be clean, organized and lovely. I use all the last frameworks and libraries to make
+        efficient and push them to their full pontential.</h4>
+        <div class="cards">
+
+          <div class="card" data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000">
+            <a href="#me">
+              <h4> Profile</h4>
+              <img src="./img/undraw_dev_productivity_umsq.svg" alt="">
+            </a>
+          </div>
+          <div class="card" data-aos="flip-right">
+            <a href="#timeline">
+              
+              <h4>Time line</h4>
+              <img src="./img/undraw_personal_goals_edgd.svg" alt="">
+            </div>
+          </a>
+          <div class="card" data-aos="flip-left">
+            <a href="#der">
+
+              <h4>Skills</h4>
+              <img src="./img/undraw_up_to_date_rmbm.svg" alt="">
+            </a>
+          </div>
+          <div class="card" data-aos="flip-left">
+            <h4>Productive</h4>
+            <img src="./img/undraw_dev_productivity_umsq.svg" alt="">
+          </div>
+        </div>
+      </div>
+  </section>
+  
+  <section class="me" id = "me" >
+    <div class="c2">
+      <img src="./img/curva2.svg" alt="">
+    </div>
+    <div class="contenedor" data-aos="zoom-out-up">
+
+      <h2>Profile</h2>
+      <div class="father" data-aos="flip-up">
+        <div class="izq">
+          <img src="./img/code.png" alt="">
+          <ul>
+            <li>
+                <a href="https://github.com/teamzz111">
+                    <div class="link">
+                      <div class="icon">
+                        <i class="fab fa-github"></i>
+                      </div>
+                      <div class="span">
+                        <span>GitHub</span>
+                      </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/teamzz111">
+                  <div class="link">
+                    <div class="icon">
+                      <i class="fab fa-gitlab"></i>
+                    </div>
+                    <div class="span">
+                      <span>GitLab</span>
+                    </div>
                   </div>
-                </li>
-                <li>
-                  <div class="ca">
-                      <a href="#">Projects</a>
+                </a>
+            </li>
+            <li>
+                <a href="https://gitlab.com/teamzz111">
+                  <div class="link">
+                    <div class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="span">
+                      <span>Curriculum vitae</span>
+                    </div>
                   </div>
-                  
-                </li>
-                <li id = "first">
-                  <div class="ca">
-                      <a href="#">Contact</a>
+                </a>
+            </li>
+          </ul>
+
+        </div>
+        <div class="cen"  >
+          <img src="./img/me.png" alt="">
+          <h3>Jr. Consultant</h3>
+          <h4>Engineering Systems Student</h4>
+          <h4>Full Stack Developer</h4>
+          <h4>21 years old</h4>
+        </div>
+        <div class="der">
+          <img  src="./img/contact.png" alt="">
+          <ul>
+            <li>
+
+              <a href="mailto:contact@andreslargo.com">
+                  <div class="link">
+                    <div class="icon">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="span">
+                      <span>Email</span>
+                    </div>
                   </div>
-                  </li>
-              </div>
-            </nav>
-            <div class="me">
-              <div class="contenido">
-              <img src="img/me.png" alt="" data-aos="zoom-in">
-                <h1>
-                  I'M ANDRÉS LARGO
-                </h1>
-                <h2>FULL STACK DEVELOPER</h2>
-                <p class="iconos">
-                  <a href="https://github.com/teamzz111">
-                    <i class="fab fa-github"></i>
-                  </a>
-                  <a href="https://www.facebook.com/felipe.largo.5243">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                  <a href="mailto:andresf.largo@gmail.com">
-                    <i class="fas fa-envelope"></i>
-                  </a>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/felipe.largo.5243">
+                  <div class="link">
+                    <div class="icon">
+                      <i class="fab fa-facebook"></i>
+                    </div>
+                    <div class="span">
+                      <span>Facebook</span>
+                    </div>
+                  </div>
+              </a>
+            </li>
+            <li>
+              <a href="https://plus.google.com/u/0/110803730941288424609">
+                  <div class="link">
+                    <div class="icon">
+                      <i class="fab fa-google-plus-square"></i>
+                    </div>
+                    <div class="span">
+                      <span>Google+</span>
+                    </div>
+                  </div>
+              </a>
+            </li>
+          </ul>
 
-                  <a href="https://plus.google.com/u/0/110803730941288424609">
-                    <i class="fab fa-google-plus-square"></i>
-                  </a>
-                </p>
-              </div>
-            </div>
+          
+  
         </div>
+        
       </div>
-      <div class="titleabout" >
-        <div class="text">
-          ABOUT
-        </div>
-        <div class="contenido">
-          <div class="padre" >
-            <div class="foto"  data-aos="zoom-in">
+    </div>
+    
+  </section>
 
-              <h2>Who am I?</h2>
-            </div>
-            <p data-aos="zoom-in">I am a Systems engineering student focused on high level software development. I like to work on projects that
-              have to do with mobile development, like Android apps and Web apps. The depth or difficulty is not a problem
-              to me, I can solve it and make an amazing work for you. If you need to use some special language, I can make
-              it happen.</p>
+  <section class="timeline" id = "timeline">
+    <h2 >Experience</h2>    
+    <ul data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1000" class="timeline">
+    
+      <!-- Item 1 -->
+      <li>
+        <div class="direction-r">
+          <div class="flag-wrapper">
+            <span class="flag">Freelancer</span>
+            <span class="time-wrapper"><span class="time">2018 - present</span></span>
+          </div>
+          <div class="desc">FullStack develper avaliable for you since 2018 for freelance project! I worked with simple and complex landing pages, mobile apps.</div>
+        </div>
+      </li>
+    
+      <!-- Item 2 -->
+      <li>
+        <div class="direction-l">
+          <div class="flag-wrapper">
+            <span class="flag">HTQA S.A.S</span>
+            <span class="time-wrapper"><span class="time">jan. 2019 - mar. 2019</span></span>
+          </div>
+          <div class="desc">Developer in charge of coordinating activities with the entire team. Deepen in PHP (API REST), React Native, MySQL</div>
+        </div>
+      </li>
+      <li>
+        <div class="direction-r">
+          <div class="flag-wrapper">
+            <span class="flag">nuTask</span>
+            <span class="time-wrapper"><span class="time">ene. 2019 - present</span></span>
+          </div>
+          <div class="desc">Head of engineering / Technical lead
           </div>
         </div>
-      </div>
-      <div class="titleabout">
-        <div class="text">
-          THE BEST
+      </li>
+      <!-- Item 3 -->
+      <li>
+        <div class="direction-l">
+          <div class="flag-wrapper">
+            <span class="flag">DB Solution S.A.S</span>
+            <span class="time-wrapper"><span class="time">jul. 2019 - present</span></span>
+          </div>
+          <div class="desc">Jr. Consultant in charge of developing bridge apps, dashboards, landing pages and general backend.</div>
         </div>
-      </div>
+      </li>
+    
+    </ul>
 
-      <div class="caja">
-        <div class="contenido">
-          <div class="sub" data-aos="zoom-in-down">
-            <div class="foto">
-              <img src="img/11_104884.png" alt="">
-            </div>
-            <div class="text">
-              <h2>Curious</h2>
-            </div>
-          </div>
-          <div class="sub" data-aos="zoom-in-down">
-            <div class="foto">
-              <img src="img/29_104867.png" alt="">
-            </div>
-            <div class="text">
-              <h2>Effective</h2>
-            </div>
-          </div>
-          <div class="sub" data-aos="zoom-in-down">
-            <div class="foto">
-              <img src="img/chart.png" alt="">
-            </div>
-            <div class="text">
-              <h2>Productive</h2>
-            </div>
-          </div>
-          <div class="sub" data-aos="zoom-in-down">
-            <div class="foto">
-              <img src="img/32_104802.png" alt="">
-            </div>
-            <div class="text">
-              <h2>Communicative</h2>
-            </div>
-          </div>
-          <div class="sub" data-aos="zoom-in-down">
-            <div class="foto">
-              <img src="img/9_104878.png" alt="">
-            </div>
-            <div class="text">
-              <h2>Punctual</h2>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div class="titleabout">
-        <div class="text">
-          SKILLS
-        </div>
-      </div>
+  </section>
+  <div id="der" style="z-index: 4" >
+      <h2>Skills</h2>
       <div class="skills">
         <div class="contenido" data-aos="fade-up">
           <div class="top">
-            <h2>Here's my abilities</h2>
             <p>
               I can guarantee my job will be clean, organized and lovely. I use all the last frameworks and libraries to make efficient
               and push them to their full pontential. My skills include: Java, JavaFX, HTML5, CSS3, Javascript (AngularJS,
@@ -188,111 +264,35 @@
           </div>
           <div class="botton">
             <div class="der">
-              <div class="porcentajes">
-                <h2>DESKTOP AND MOBILE DEVELOPMENT</h2>
-                <div>
-                  <h3>JAVA</h3>
-                  <h3 class="percent" id="pjava">62%</h3>
-                </div>
-                <div class="progress-bar" id="java">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>C++ / C </h3>
-                  <h3 class="percent" id="pc">100%</h3>
-                </div>
-                <div class="progress-bar" id="c">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>MySQL</h3>
-                  <h3 class="percent" id="pmysql">100%</h3>
-                </div>
-                <div class="progress-bar" id="mysql">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>JavaFX</h3>
-                  <h3 class="percent" id="pjavafx">43%</h3>
-                </div>
-                <div class="progress-bar" id="javafx">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>JavaEE / Spring</h3>
-                  <h3 class="percent" id="pjavaee">30%</h3>
-                </div>
-                <div class="progress-bar" id="javaee">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>ANDROID STUDIO + JAVA</h3>
-                  <h3 class="percent" id="pandroidstudio">100%</h3>
-                </div>
-                <div class="progress-bar" id="android">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>ANDROID STUDIO +KOTLIN</h3>
-                  <h3 class="percent" id="pkotlin">100%</h3>
-                </div>
-                <div class="progress-bar" id="kotlin">
-                  <div class="shadow"></div>
-                </div>
+              
+              <div id="dynamic" class="porcentajes">
+                  <h3>MOBILE AND DESKTOP</h3>
+
               </div>
+
             </div>
             <div class="izq">
-              <div class="porcentajes">
-                <h2>WEB DEVELOPMENT</h2>
-                <div>
-                  <h3>HTML</h3>
-                  <h3 class="percent" id="phtml">100%</h3>
-                </div>
-                <div class="progress-bar" id="html">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>CSS</h3>
-                  <h3 class="percent" id="pcss">100%</h3>
-                </div>
-                <div class="progress-bar" id="css">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>JAVASCRIPT</h3>
-                  <h3 class="percent" id="pjavascript">100%</h3>
-                </div>
-                <div class="progress-bar" id="javascript">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>JQUERY</h3>
-                  <h3 class="percent" id="pjquery">100%</h3>
-                </div>
-                <div class="progress-bar" id="jquery">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>ANGULAR</h3>
-                  <h3 class="percent" id="pangular">100%</h3>
-                </div>
-                <div class="progress-bar" id="angular">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>PHP</h3>
-                  <h3 class="percent" id="pphp">100%</h3>
-                </div>
-                <div class="progress-bar" id="php">
-                  <div class="shadow"></div>
-                </div>
-                <div>
-                  <h3>TypeScript</h3>
-                  <h3 class="percent" id="ptypescript">50%</h3>
-                </div>
-                <div class="progress-bar" id="typescript">
-                  <div class="shadow"></div>
-                </div>
+              <div class="porcentajes" id = "dynamic2">
+                <h3>WEB DEVELOPMENT</h3>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contenido" data-aos="fade-up">
+          <div class="botton">
+            <div class="der">
+        
+              <div id="dynamic3" class="porcentajes">
+                <h3>DB / RELATIONATED</h3>
+        
+              </div>
+        
+            </div>
+            <div class="izq">
+              <div class="porcentajes" id="dynamic4">
+                <h3>DEVOPS / RELATIONATED</h3>
+        
               </div>
             </div>
           </div>
@@ -300,16 +300,14 @@
       </div>
     </div>
   </div>
-  <script>
-  
-  </script>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/anime.js"></script>
   <script src="js/loading.js"></script>
   <script src="js/animaciones.js"></script>
   <script src="js/aos.js"></script>
   <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 </body>
 
 </html>
