@@ -829,6 +829,8 @@ section.me div.father div.der ul {
 }
 
 section.timeline {
+  background: url("../img/email-pattern.png");
+  padding-bottom: 6em;
   /* ================ Timeline Media Queries ================ */
 }
 
