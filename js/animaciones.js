@@ -5,7 +5,7 @@ $(document).ready( function(){
     var $animation_elements = $('.botton');
     var $window = $(window);
     var $quemado = false;
-
+    var scroll = new SmoothScroll('a[href*="#"]');
     let data = [
         {
             id: 1,

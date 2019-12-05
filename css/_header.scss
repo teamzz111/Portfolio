@@ -74,7 +74,7 @@ header{
   }
 }
 
-@media screen and (max-width: 560px){
+@media screen and (max-width: 700px){
   #der .textabout .contenedor #navGrande {
     display: none;
   }
@@ -86,9 +86,11 @@ header{
     .bar{
       p{
         width: 20%;
+
       }
       ul{
         width: 80%;
+        display: none;
       }
     }
   }
@@ -102,3 +104,4 @@ header{
   filter: blur(1px);
   background: rgba(0, 0, 0, 0.993);
 }
+

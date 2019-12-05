@@ -207,7 +207,7 @@ header .father .izq button {
   border-radius: 4px;
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 700px) {
   #der .textabout .contenedor #navGrande {
     display: none;
   }
@@ -222,6 +222,7 @@ header .father .izq button {
   }
   header .bar ul {
     width: 80%;
+    display: none;
   }
 }
 
@@ -286,8 +287,13 @@ section.icons .contenedor .cards .card:hover {
   cursor: pointer;
 }
 
+section.icons .contenedor .cards .card a {
+  text-decoration: none;
+}
+
 section.icons .contenedor .cards .card h4 {
   margin-top: .1em;
+  text-decoration: none;
 }
 
 section.icons .contenedor .cards .card img {
