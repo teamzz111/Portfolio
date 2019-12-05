@@ -781,7 +781,7 @@ section.me div.father div.der img:nth-child(0), section.me div.father div.izq im
 }
 
 section.me div.father div.der img:nth-child(1), section.me div.father div.izq img:nth-child(1), section.me div.father div.cen img:nth-child(1) {
-  max-width: 180px;
+  max-width: 128px;
 }
 
 section.me div.father div.cen h3 {
