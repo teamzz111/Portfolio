@@ -23,12 +23,12 @@
     <div class="bar">
       <p>Portfolio</p>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Projects</a></li>
         <li><a href="#">About</a></li>
+        <li><a href="#">Experience</a></li>
+        <li><a href="#">Skills</a></li>
       </ul>
     </div>
-    <div class="contenedor">
+    <div class="contenedor" data-aos="fade-up">
       <div class="father">
         <div class="izq">
           <p>who am I?</p>
@@ -53,26 +53,36 @@
     <img src="./img/curva.svg" alt="">
   </div>
 
-  <section class="icons">
+  <section class="icons" id = "About">
     <div class="contenedor">
       <h2>About me</h2>
       <h4>I can guarantee my job will be clean, organized and lovely. I use all the last frameworks and libraries to make
         efficient and push them to their full pontential.</h4>
         <div class="cards">
 
-          <div class="card">
-            <h4>Profile</h4>
-            <img src="./img/undraw_dev_productivity_umsq.svg" alt="">
+          <div class="card" data-aos="flip-left"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="2000">
+            <a href="#me">
+              <h4> Profile</h4>
+              <img src="./img/undraw_dev_productivity_umsq.svg" alt="">
+            </a>
           </div>
-          <div class="card">
-            <h4>Time line</h4>
-            <img src="./img/undraw_personal_goals_edgd.svg" alt="">
+          <div class="card" data-aos="flip-right">
+            <a href="#timeline">
+              
+              <h4>Time line</h4>
+              <img src="./img/undraw_personal_goals_edgd.svg" alt="">
+            </div>
+          </a>
+          <div class="card" data-aos="flip-left">
+            <a href="#der">
+
+              <h4>Skills</h4>
+              <img src="./img/undraw_up_to_date_rmbm.svg" alt="">
+            </a>
           </div>
-          <div class="card">
-            <h4>Skills</h4>
-            <img src="./img/undraw_up_to_date_rmbm.svg" alt="">
-          </div>
-          <div class="card">
+          <div class="card" data-aos="flip-left">
             <h4>Productive</h4>
             <img src="./img/undraw_dev_productivity_umsq.svg" alt="">
           </div>
@@ -80,14 +90,14 @@
       </div>
   </section>
   
-  <section class="me">
+  <section class="me" id = "me" >
     <div class="c2">
       <img src="./img/curva2.svg" alt="">
     </div>
-    <div class="contenedor">
+    <div class="contenedor" data-aos="zoom-out-up">
 
       <h2>Profile</h2>
-      <div class="father">
+      <div class="father" data-aos="flip-up">
         <div class="izq">
           <img src="./img/code.png" alt="">
           <ul>
@@ -130,7 +140,7 @@
           </ul>
 
         </div>
-        <div class="cen">
+        <div class="cen"  >
           <img src="./img/me.png" alt="">
           <h3>Jr. Consultant</h3>
           <h4>Engineering Systems Student</h4>
@@ -188,9 +198,11 @@
     
   </section>
 
-  <section class="timeline">
-    <h2>Experience</h2>    
-    <ul class="timeline">
+  <section class="timeline" id = "timeline">
+    <h2 >Experience</h2>    
+    <ul data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="1000" class="timeline">
     
       <!-- Item 1 -->
       <li>
@@ -213,10 +225,19 @@
           <div class="desc">Developer in charge of coordinating activities with the entire team. Deepen in PHP (API REST), React Native, MySQL</div>
         </div>
       </li>
-    
-      <!-- Item 3 -->
       <li>
         <div class="direction-r">
+          <div class="flag-wrapper">
+            <span class="flag">nuTask</span>
+            <span class="time-wrapper"><span class="time">ene. 2019 - present</span></span>
+          </div>
+          <div class="desc">Head of engineering / Technical lead
+          </div>
+        </div>
+      </li>
+      <!-- Item 3 -->
+      <li>
+        <div class="direction-l">
           <div class="flag-wrapper">
             <span class="flag">DB Solution S.A.S</span>
             <span class="time-wrapper"><span class="time">jul. 2019 - present</span></span>
@@ -228,7 +249,7 @@
     </ul>
 
   </section>
-  <div id="der" style="z-index: 4">
+  <div id="der" style="z-index: 4" >
       <h2>Skills</h2>
       <div class="skills">
         <div class="contenido" data-aos="fade-up">
@@ -286,7 +307,7 @@
   <script src="js/animaciones.js"></script>
   <script src="js/aos.js"></script>
   <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 </body>
 
 </html>
