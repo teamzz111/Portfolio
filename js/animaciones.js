@@ -10,17 +10,17 @@ $(document).ready( function(){
         {
             id: 1,
             text: 'React Native',
-            percent: '85%'
+            percent: '90%'
         },
         {
             id: "cpp",
             text: 'C++',
-            percent: '30%'
+            percent: '20%'
         },
         {
             id: 4,
-            text: 'C# Win.Forms',
-            percent: '50%'
+            text: 'C# ASP.NET WEB APIS',
+            percent: '60%'
         },
         {
             id: 5,
@@ -50,12 +50,12 @@ $(document).ready( function(){
         {
             id: 10,
             text: 'Unity',
-            percent: '10%'
+            percent: '20%'
         },
         {
             id: 'rnac',
             text: 'React Navigation',
-            percent: '70%'
+            percent: '80%'
         },
 
     ];
@@ -74,18 +74,18 @@ $(document).ready( function(){
         {
             id: 'sass',
             text: 'SASS',
-            percent: '50%'
+            percent: '70%'
         },
 
         {
             id: 'js',
             text: 'JavaScript',
-            percent: '66%'
+            percent: '75%'
         },
         {
             id: 'angu',
             text: 'Angular',
-            percent: '60%'
+            percent: '80%'
         },
         {
             id: 'php',
@@ -100,17 +100,17 @@ $(document).ready( function(){
         {
             id: 'node',
             text: 'NodeJS',
-            percent: '40%'
+            percent: '60%'
         },
         {
             id: 'express',
             text: 'Express',
-            percent: '30%'
+            percent: '50%'
         },
         {
             id: 'react',
             text: 'React',
-            percent: '40%'
+            percent: '60%'
         },
     ];
     data2.sort((a, b) => (a.percent < b.percent) ? 1 : -1);
@@ -119,7 +119,7 @@ $(document).ready( function(){
         {
             id: 3,
             text: 'MySQL',
-            percent: '55%'
+            percent: '65%'
         },
         {
             id: "postg",
@@ -129,22 +129,22 @@ $(document).ready( function(){
         {
             id: "MariaDB",
             text: 'MariaDB',
-            percent: '55%'
+            percent: '65%'
         },
         {
             id: "sqlserver",
             text: 'SQL Server',
-            percent: '25%'
+            percent: '55%'
         },
         {
             id: "Mongo",
             text: 'MongoDB',
-            percent: '15%'
+            percent: '65%'
         },
         {
             id: "aws",
             text: 'AWS',
-            percent: '25%'
+            percent: '55%'
         },
         {
             id: "azure",
