@@ -36,10 +36,11 @@ export const Title = styled.h1`
   margin: 0 !important;
 `;
 
-export const Job = styled.h3`
+export const Job = styled.p`
   margin-bottom: 1em;
   font-weight: 300;
   opacity: 0.8;
+  font-size: 1.2em;
 `;
 
 export const ContainerResume = styled.div`
