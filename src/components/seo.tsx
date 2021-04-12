@@ -1,10 +1,16 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import { I18nextContext } from 'gatsby-plugin-react-i18next';
 
-const SEO = ({
-  description, lang, meta, title,
+interface ISEO {
+  title: string;
+}
+
+const SEO: React.FC<ISEO> = ({
+  title,
 }) => {
+  const context = React.useContext(I18nextContext);
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,12 +25,12 @@ const SEO = ({
     `,
   );
 
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = site.siteMetadata.description;
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: context.language
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
@@ -61,7 +67,7 @@ const SEO = ({
           name: 'twitter:description',
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]}
     />
   );
 }
