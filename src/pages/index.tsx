@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import { useTranslation } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
+import SEO from '../components/seo';
 
 // styles
 const pageStyles = {
@@ -133,6 +134,7 @@ const IndexPage = () => {
 
   return (
     <main style={pageStyles}>
+      <SEO title={''}/>
       <title>Home Page</title>
       <h1 style={headingStyles}>
         Congratulations
