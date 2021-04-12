@@ -1,5 +1,5 @@
 {
-  "name": "andr-s-largo",
+  "name": "andres-largo",
   "version": "1.0.0",
   "private": true,
   "description": "Andrés Largo",
@@ -17,9 +17,11 @@
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.2.1",
+    "gatsby-plugin-react-helmet": "^4.2.0",
     "gatsby-plugin-styled-components": "^4.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
