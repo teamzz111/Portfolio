@@ -8,15 +8,20 @@ module.exports = {
   plugins: [
     'gatsby-plugin-styled-components',
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, 
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Open Sans`,
-            variants: [`300`, `400`, `700`]
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: "Open Sans",
+              variants: ["300", "400", "500"],
+            },
+          ],
+        },
       },
     },
     {
