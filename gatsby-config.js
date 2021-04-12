@@ -26,7 +26,7 @@ module.exports = {
       options: {
         localeJsonSourceName: 'locale', // name given to `gatsby-source-filesystem` plugin.
         languages: ['en', 'es'],
-        defaultLanguage: 'es',
+        redirect: true,
         siteUrl: 'https://andreslargo.com/',
         i18nextOptions: {
           ns: ['home', 'translation'],
