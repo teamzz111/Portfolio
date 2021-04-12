@@ -1,24 +1,41 @@
 module.exports = {
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended'
+  ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   env: {
     browser: true,
-    es2021: true,
+    node: true,
+    es6: true
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-  ],
-  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', 'react'],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
-    ecmaVersion: 12,
-    sourceType: 'module',
+    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+    sourceType: 'module' // Allows for the use of imports
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
   rules: {
+    'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
+    '@typescript-eslint/explicit-function-return-type': 'off'
   },
+  overrides: [
+    // Override some TypeScript rules just for .js files
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off' //
+      }
+    }
+  ]
 };
