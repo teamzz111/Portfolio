@@ -1,12 +1,12 @@
-import styled from "styled-components";
-import { CONTRAST_COLOR, MAIN_COLOR } from "../../styles/color";
-
+import styled from 'styled-components';
+import {CONTRAST_COLOR, MAIN_COLOR} from '../../styles/color';
+import {StaticImage} from 'gatsby-plugin-image';
 
 export const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color: ${MAIN_COLOR};
-  justift-content: space-between;
+  justify-content: space-around;
 `;
 
 export const LeftContainer = styled.div`
@@ -20,6 +20,7 @@ export const RightContainer = styled.div`
   width: 100%;
   max-width: 600px;
   padding-bottom: 20px;
+  text-align: center;
 `;
 
 export const Background = styled.div`
@@ -68,4 +69,9 @@ export const Button = styled.button`
 
 export const SeeMore = styled.p`
   margin: 0 !important;
+`;
+
+export const ImageStatic = styled(StaticImage)`
+  width: 100%;
+  max-width: 200px;
 `;
