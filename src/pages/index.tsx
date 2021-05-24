@@ -6,6 +6,7 @@ import {useTranslation} from 'gatsby-plugin-react-i18next';
 import SEO from '../components/seo';
 import Header from '../components/header';
 import Presentation from '../components/presentation';
+import About from '../components/about';
 
 import 'normalize.css';
 import '../styles/fonts.css';
@@ -18,6 +19,7 @@ const IndexPage: React.FC = () => {
       <SEO title={t('title')} />
       <Header />
       <Presentation />
+      <About />
     </>
   );
 };
