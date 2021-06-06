@@ -24,7 +24,7 @@ const About: React.FC = () => {
             data-aos-easing="ease-out-cubic"
             data-aos-duration="2000">
             <TitleCard href="#me">
-              <h4> {t('profile')}</h4>
+              <p> {t('profile')}</p>
               <StaticImage
                 src="../../images/undraw_dev_productivity_umsq.svg"
                 alt=""
@@ -35,7 +35,7 @@ const About: React.FC = () => {
           </Card>
           <Card data-aos="flip-right">
             <TitleCard href="#timeline">
-              <h4>{t('timeline')}</h4>
+              <p>{t('timeline')}</p>
               <StaticImage
                 src="../../images/undraw_personal_goals_edgd.svg"
                 alt=""
@@ -46,7 +46,7 @@ const About: React.FC = () => {
           </Card>
           <Card data-aos="flip-left">
             <TitleCard href="#der">
-              <h4>Skills</h4>
+              <p>Skills</p>
               <StaticImage
                 src="../../images/undraw_up_to_date_rmbm.svg"
                 alt=""
