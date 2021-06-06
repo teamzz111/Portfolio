@@ -1,12 +1,13 @@
 {
   "title": "About me",
   "subTitle": "Who am I?",
-  "job": "FullStack Developer - Systems Engineer - Cloud Engineer",
+  "job": "FullStack Developer - Cloud Engineer",
   "resume": "Systems Engineer focused on high level software development. I love to work on projects that have to do with mobile development, like Android/iOS apps and Web apps. The depth or difficulty is not a problem to me, I can solve it and make an amazing work for you. If you need to use some special language, I can make it happen.",
   "seeMore": "See more",
   "aboutMe": "About me",
   "profile": "Profile",
   "timeline": "Timeline",
   "skills": "Habilidades",
-  "descr": "I can guarantee my job will be clean, organized and lovely. I use all the last frameworks and libraries to make efficient and push them to their full pontential."
+  "descr": "I can guarantee my job will be clean, organized and lovely. I use all the last frameworks and libraries to make efficient and push them to their full pontential.",
+  "ing": "Engineer Systems"
 }
