@@ -58,4 +58,9 @@ export const TitleCard = styled.a`
     color: black;
   }
   font-size: 1.3em;
+  p {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+  }
 `;
