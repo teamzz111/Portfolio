@@ -1,0 +1,21 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+a,
+span,
+small {
+  font-family: 'Open Sans';
+}
+
+.black::before {
+  background-color: rgba(0, 0, 0, 0.514) !important;
+}
+
+.vertical-timeline-element-subtitle {
+  font-size: 13px;
+  opacity: 0.7;
+  padding-top: 4px;
+}
