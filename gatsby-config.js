@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Andrés Largo',
-    description: 'I am a Systems engineering student focused on high level software development. I like to work on projects that have to do with mobile development, like Android apps and Web apps. The depth or difficulty is not a problem to me, I can solve it and make an amazing work for you. If you need to use some special language, I can make it happen.    ',
+    description:
+      'I am a Systems engineering student focused on high level software development. I like to work on projects that have to do with mobile development, like Android apps and Web apps. The depth or difficulty is not a problem to me, I can solve it and make an amazing work for you. If you need to use some special language, I can make it happen.    ',
     author: '@teamzz111',
     siteUrl: `https://www.andreslargo.com`,
   },
@@ -10,15 +11,16 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`, 
+    `gatsby-plugin-scroll-reveal`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {
         fonts: {
           google: [
             {
-              family: "Open Sans",
-              variants: ["300", "400", "500"],
+              family: 'Open Sans',
+              variants: ['300', '400', '500'],
             },
           ],
         },
