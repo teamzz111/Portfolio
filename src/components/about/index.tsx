@@ -20,9 +20,9 @@ const About: React.FC = () => {
         <SubTitle>{t('descr')}</SubTitle>
         <CardContainer>
           <Card
-            data-aos="flip-left"
-            data-aos-easing="ease-out-cubic"
-            data-aos-duration="2000">
+            data-sal="flip-left"
+            data-sal-easing="ease-out-cubic"
+            data-sal-delay="2000">
             <TitleCard href="#me">
               <p> {t('profile')}</p>
               <StaticImage
