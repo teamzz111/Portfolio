@@ -21,7 +21,7 @@ import {
 const Profile: React.FC = () => {
   const [t] = useTranslation();
   return (
-    <Section id="me">
+    <Section id="me" data-sal="fade">
       <div className="c2">
         <StaticImage
           src="../../images/curva2.svg"
@@ -30,7 +30,7 @@ const Profile: React.FC = () => {
           layout="fullWidth"
         />
       </div>
-      <Container data-aos="zoom-out-up">
+      <Container>
         <Title>{t('profile')}</Title>
         <ContainerFlex className="father" data-aos="flip-up">
           <LeftContainer className="izq">
