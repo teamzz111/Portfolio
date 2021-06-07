@@ -12,9 +12,15 @@ import 'normalize.css';
 import '../styles/fonts.css';
 import Profile from '../components/profile';
 import Experience from '../components/experience';
+import Skills from '../components/skills';
 
 const IndexPage: React.FC = () => {
   const {t} = useTranslation();
+
+  React.useEffect(() => {
+    const AOS = require('aos');
+    AOS.init();
+  }, []);
 
   return (
     <>
@@ -24,6 +30,7 @@ const IndexPage: React.FC = () => {
       <About />
       <Profile />
       <Experience />
+      <Skills />
     </>
   );
 };
