@@ -11,6 +11,7 @@ import About from '../components/about';
 import 'normalize.css';
 import '../styles/fonts.css';
 import Profile from '../components/profile';
+import Experience from '../components/experience';
 
 const IndexPage: React.FC = () => {
   const {t} = useTranslation();
@@ -22,6 +23,7 @@ const IndexPage: React.FC = () => {
       <Presentation />
       <About />
       <Profile />
+      <Experience />
     </>
   );
 };
