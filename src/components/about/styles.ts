@@ -13,7 +13,7 @@ export const Title = styled.h2`
   text-align: center;
 `;
 
-export const SubTitle = styled.h4`
+export const SubTitle = styled.span`
   margin-top: 2em;
   text-align: center;
   font-weight: 300;
