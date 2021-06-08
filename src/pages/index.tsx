@@ -17,11 +17,6 @@ import Skills from '../components/skills';
 const IndexPage: React.FC = () => {
   const {t} = useTranslation();
 
-  React.useEffect(() => {
-    const AOS = require('aos');
-    AOS.init();
-  }, []);
-
   return (
     <>
       <SEO title={t('title')} />
