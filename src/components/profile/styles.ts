@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {device} from '../../utils';
 
 export const Section = styled.section`
   background-color: #08aeea;
@@ -24,6 +25,10 @@ export const ContainerFlex = styled.div`
 export const LeftContainer = styled.div`
   width: 100%;
   max-width: 400px;
+  @media ${device.mobileL} {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
 `;
 
 export const UlList = styled.ul`
@@ -67,9 +72,17 @@ export const SubTitle = styled.span`
 export const CenterContainer = styled.div`
   width: 100%;
   max-width: 400px;
+  @media ${device.mobileL} {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
 `;
 
 export const RightContainer = styled.div`
   width: 100%;
   max-width: 400px;
+  @media ${device.mobileL} {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
 `;

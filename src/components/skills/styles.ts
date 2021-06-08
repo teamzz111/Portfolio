@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+import {device} from '../../utils';
 
-export const SkillsContainer = styled.div``;
+export const SkillsContainer = styled.div`
+  @media ${device.mobileL} {
+    padding: 10px;
+  }
+`;
 
 export const Contain = styled.div`
   max-width: 1200px;
@@ -16,7 +21,6 @@ export const TopText = styled.div`
 
 export const Title = styled.p`
   margin-top: 1.54em;
-  margin-bottom: -1em;
   font-weight: 300;
   font-size: 3em;
   text-align: center;
@@ -29,7 +33,7 @@ export const TextTitle = styled.p`
   margin-bottom: 1.54em;
   max-width: 800px;
   margin: auto;
-  padding: 4%;
+  padding: 3%;
 `;
 
 export const BottomContainer = styled.div`
@@ -45,6 +49,11 @@ export const ContainerMiddle = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 1em;
+  min-width: 200px;
+  @media ${device.mobileL} {
+    width: 100%;
+    padding: 1.5em;
+  }
 `;
 
 export const PercentContainer = styled.div`

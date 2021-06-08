@@ -118,6 +118,7 @@ const Experience: React.FC = () => {
           <span className="vertical-timeline-element-title">
             Freelancer Developer
           </span>
+          <br />
           <span className="vertical-timeline-element-subtitle">Bogotá D.C</span>
           <p>
             Freelancer developer at companies such as ArepaTech, KidWordExplorer

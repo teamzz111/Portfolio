@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {CONTRAST_COLOR, MAIN_COLOR} from '../../styles/color';
 import {StaticImage} from 'gatsby-plugin-image';
+import {device} from '../../utils';
 
 export const FlexContainer = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ export const LeftContainer = styled.div`
   width: 100%;
   max-width: 600px;
   color: white;
+  padding: 1em;
 `;
 
 export const RightContainer = styled.div`
@@ -21,6 +23,9 @@ export const RightContainer = styled.div`
   max-width: 600px;
   padding-bottom: 20px;
   text-align: center;
+  @media ${device.mobileL} {
+    display: none;
+  }
 `;
 
 export const Background = styled.div`
@@ -64,6 +69,9 @@ export const Button = styled.button`
     cursor: pointer;
     opacity: 0.67;
     transition: 1s;
+  }
+  @media ${device.mobileL} {
+    align-self: center;
   }
 `;
 

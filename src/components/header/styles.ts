@@ -1,7 +1,6 @@
-
-import styled from "styled-components";
-import { MAIN_COLOR } from "../../styles/color";
-
+import styled from 'styled-components';
+import {MAIN_COLOR} from '../../styles/color';
+import {device, size} from '../../utils';
 
 export const HeaderBar = styled.div`
   width: 100%;
@@ -16,6 +15,9 @@ export const HeaderBar = styled.div`
 export const WrapperHeader = styled.div`
   background-color: ${MAIN_COLOR};
   width: 100%;
+  @media ${device.mobileL} {
+    display: none !important;
+  }
 `;
 
 export const Title = styled.p`

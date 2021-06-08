@@ -1,15 +1,21 @@
 import styled from 'styled-components';
 import {StaticImage} from 'gatsby-plugin-image';
+import {device} from '../../utils';
 
 export const SectionAbout = styled.section`
   background-color: #fafafa;
   padding-bottom: 5em;
+  @media ${device.mobileL} {
+    padding: 1em;
+    padding-bottom: 5em;
+  }
 `;
 
 export const Title = styled.h2`
   font-size: 3.7em;
   margin: 0;
   padding-top: 1em;
+  padding-bottom: 1em;
   text-align: center;
 `;
 
@@ -24,7 +30,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 4em;
+  margin-top: 1em;
   padding: 0;
   padding-bottom: 1em;
 `;

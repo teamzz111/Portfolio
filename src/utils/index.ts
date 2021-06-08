@@ -1,3 +1,24 @@
+const size = {
+  mobileS: '220px',
+  mobileM: '375px',
+  mobileL: '500px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  desktop: '2560px',
+};
+
+const device = {
+  mobileS: `(max-width: ${size.mobileS})`,
+  mobileM: `(max-width: ${size.mobileM})`,
+  mobileL: `(max-width: ${size.mobileL})`,
+  tablet: `(max-width: ${size.tablet})`,
+  laptop: `(max-width: ${size.laptop})`,
+  laptopL: `(max-width: ${size.laptopL})`,
+  desktop: `(max-width: ${size.desktop})`,
+  desktopL: `(max-width: ${size.desktop})`,
+};
+
 const data = [
   {
     id: 11,
@@ -190,4 +211,4 @@ data2.sort((a, b) => (a.percent < b.percent ? 1 : -1));
 data3.sort((a, b) => (a.percent < b.percent ? 1 : -1));
 data4.sort((a, b) => (a.percent < b.percent ? 1 : -1));
 
-export {data, data3, data2, data4};
+export {data, data3, data2, data4, size, device};
