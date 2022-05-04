@@ -18,11 +18,11 @@ import {
 } from './styles';
 
 const Presentation: React.FC = () => {
-  const { t } = useTranslation();
-  
+  const {t} = useTranslation();
+
   const onClick = () => {
     window.open('https://www.linkedin.com/in/andreslargo/', '_blank');
-  }
+  };
 
   return (
     <Background>
@@ -37,9 +37,7 @@ const Presentation: React.FC = () => {
             </ContainerResume>
             <br />
             <Button onClick={onClick}>
-              <SeeMore>
-                {t('seeMore')}
-              </SeeMore>
+              <SeeMore>{t('seeMore')}</SeeMore>
             </Button>
           </LeftContainer>
           <RightContainer>
@@ -52,12 +50,7 @@ const Presentation: React.FC = () => {
           </RightContainer>
         </FlexContainer>
       </Container>
-      <StaticImage
-        src="../../images/1curva.svg"
-        alt="Curva"
-        placeholder="dominantColor"
-        layout="fullWidth"
-      />
+      <div style={{paddingBottom: 100}} />
     </Background>
   );
 };

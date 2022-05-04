@@ -167,6 +167,65 @@ const Experience: React.FC = () => {
             Redux persist, Socket.io.
           </p>
         </VerticalTimelineElement>
+
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          date="oct. 2020 - present"
+          iconStyle={{background: 'rgb(33, 150, 243)', color: '#fff'}}
+          icon={<MdWork />}>
+          <span className="vertical-timeline-element-title">
+            FullStack Developer
+          </span>
+          <br />
+
+          <span className="vertical-timeline-element-subtitle">Creci Inc.</span>
+          <p>
+            FullStack Developer in charge of development and implementation of
+            new features requested in a web application type product. (React +
+            Node.js + AWS)
+          </p>
+        </VerticalTimelineElement>
+
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          date="sept. 2021 - present"
+          iconStyle={{background: 'rgb(33, 150, 243)', color: '#fff'}}
+          icon={<MdWork />}>
+          <span className="vertical-timeline-element-title">
+            Mobile Developer
+          </span>
+          <br />
+
+          <span className="vertical-timeline-element-subtitle">
+            Imaginamos S.A.S
+          </span>
+          <p>
+            Mobile Developer in charge of implementing and solving customer
+            requests, deepening development with React Native, Expo, Redux,
+            ReduxSaga.
+          </p>
+        </VerticalTimelineElement>
+
+        <VerticalTimelineElement
+          className="vertical-timeline-element--work"
+          date="nov. 2021 - present"
+          iconStyle={{background: 'rgb(33, 150, 243)', color: '#fff'}}
+          icon={<MdWork />}>
+          <span className="vertical-timeline-element-title">
+            Sr. Full Stack Developer
+          </span>
+          <br />
+
+          <span className="vertical-timeline-element-subtitle">
+            Chamba Inc.
+          </span>
+          <p>
+            Full Stack Developer focused on mobile applications, with hybrid
+            technologies such as React Native & Flutter accompanied by NodeJS,
+            .NET Core.
+          </p>
+        </VerticalTimelineElement>
+
         <VerticalTimelineElement
           iconStyle={{background: 'rgb(16, 204, 82)', color: '#fff'}}
           icon={<MdWork />}
