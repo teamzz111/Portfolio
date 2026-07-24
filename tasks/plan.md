@@ -43,7 +43,7 @@ Contact (glow radial, headline serif, email link, cards LinkedIn/GitHub, footer)
 Landmarks, aria-hidden en decorativos (atmósfera, ghost years, caret), skip link, focus-visible, hreflang/aria-current en toggle, matriz reduced-motion completa.
 **AC:** revisión manual con emulación; tests de atributos aria clave; build OK.
 
-## T10 — Performance pass — [ ]
+## T10 — Performance pass — [x]
 Verificar code-split (three/R3F lazy), DPR adaptativo, will-change solo en grain, sin FOUT que rompa la intro (next/font preload).
 **AC:** build production; inspección de chunks en salida de build; notas de Lighthouse para el usuario.
 
