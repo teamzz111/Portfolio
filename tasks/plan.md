@@ -3,7 +3,7 @@
 Spec: `docs/SPEC.md`. Prototipo de referencia: `design_handoff_andres_portfolio/`.
 Ejecución en orden (cada tarea depende de la anterior salvo nota). Una tarea = un commit.
 
-## T0 — Scaffold Next.js 15 static export — [ ]
+## T0 — Scaffold Next.js 15 static export — [x]
 Borrar `index.html` (mantenimiento). Scaffold manual en el root: package.json (next ^15.5, react ^19, TS ^5, tailwind ^4), tsconfig, next.config.ts (`output:'export'`, `trailingSlash:true`, `images.unoptimized`), postcss, .gitignore, src/app mínimo, vitest + @testing-library/react configurados.
 **AC:** `npm run build` emite `out/` con HTML estático; `npm test` corre (smoke test verde).
 
