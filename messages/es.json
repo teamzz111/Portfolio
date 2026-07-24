@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "title": "Andrés Largo — Desarrollador FullStack",
+    "description": "Desarrollador FullStack en búsqueda de lo más allá. Ingeniero de Software Sr. — FullStack, Flujos con IA, Cloud & Móvil."
+  },
+  "nav": {
+    "about": "Sobre",
+    "work": "Proyectos",
+    "skills": "Stack",
+    "contact": "Contacto",
+    "status": "Disponible para proyectos"
+  },
+  "hero": {
+    "eyebrow": "Desarrollador FullStack en búsqueda de lo",
+    "beyond": "más allá",
+    "role": "Ingeniero de Software Sr. · FullStack · Flujos con IA · Cloud & Móvil",
+    "idx": "(01) — SISTEMA",
+    "cue": "Desplázate para entrar al sistema",
+    "deep": "Un sistema vivo — nodos, aristas, y los datos que viajan entre ellos."
+  },
+  "about": {
+    "kicker": "(02) — Sobre",
+    "role": "Ingeniero de Sistemas",
+    "s1lab": "Años enviando sistemas",
+    "s2lab": "Ingenieros habilitados",
+    "s3lab": "Financiación MVP levantada",
+    "lead": "Más de siete años construyendo sistemas full-stack escalables y soluciones cloud-native.",
+    "body": "Hoy, aumentado por IA — prompt engineering, generación de código spec-driven con Cursor y Claude, y pipelines de automatización que",
+    "bodyEm": " piensan en sistemas."
+  },
+  "exp": {
+    "kicker": "(03) — Trayectoria",
+    "title": "Una trayectoria en",
+    "titleEm": " sistemas.",
+    "r1": {
+      "role": "Ingeniero Frontend Senior",
+      "meta": "08/2025 — Presente · Remoto",
+      "desc": "Arquitectura frontend en Next.js / React / SCSS con integraciones Laravel para una plataforma de gestión de propiedades inteligente; evolución del design system."
+    },
+    "r2": {
+      "role": "Desarrollador FullStack Sr.",
+      "desc": "Plataforma de apuestas con pagos integrados para el mercado haitiano (Next.js, Nest.js, React Native, AWS, MongoDB). Integré Claude API y GPT-4 para procesamiento automatizado de reclamos de aviación y flujos de cumplimiento legal."
+    },
+    "r3": {
+      "role": "Desarrollador Full Stack Sr.",
+      "desc": "Lideré y mentoreé un equipo cross-funcional; librerías de componentes UI/UX en React para más de 200 personas. Node / Nest / AWS / Prisma / PostgreSQL."
+    },
+    "r4": {
+      "role": "Desarrollador Full Stack Sr.",
+      "desc": "Performance en el ecosistema React; móvil Flutter / React Native; microservicios DDD con NestJS y .NET Core."
+    },
+    "r5": {
+      "role": "Desarrollador Full Stack",
+      "desc": "Fintech con integraciones Plaid y Stripe; auditorías de seguridad."
+    },
+    "r6": {
+      "role": "Ingeniero Fundador",
+      "meta": "2019 — 2021 · Denver, Remoto",
+      "desc": "Construí el MVP que levantó $1M de inversión."
+    },
+    "r7": {
+      "role": "Desarrollador Móvil",
+      "desc": "App móvil nativa para Shell Colombia, publicada en App Store y Google Play."
+    }
+  },
+  "work": {
+    "kicker": "(04) — Proyectos",
+    "title": "Cosas que he",
+    "titleEm": " enviado.",
+    "p1": {
+      "tag": "Apuestas · Pagos · IA",
+      "tagline": "Una plataforma de apuestas que paga — y lee sus propios reclamos.",
+      "desc": "Plataforma de apuestas end-to-end con pagos integrados para el mercado haitiano. Integré Claude y GPT-4 para automatizar el procesamiento de reclamos de aviación y flujos de cumplimiento legal."
+    },
+    "p2": {
+      "tag": "Design system a escala",
+      "tagline": "Una librería de componentes, doscientos constructores.",
+      "desc": "Lideré y mentoreé un equipo cross-funcional, entregando las librerías de componentes UI/UX en React sobre las que construyeron más de 200 personas.",
+      "metric": "Ingenieros construyendo sobre ella"
+    },
+    "p3": {
+      "tag": "MVP fintech",
+      "tagline": "De cero a un millón en el banco.",
+      "desc": "Construí el MVP desde cero — el producto que levantó $1M de inversión y creció hasta el ecosistema Chamba.",
+      "metric": "Levantados con el MVP"
+    },
+    "p4": {
+      "tag": "Móvil nativo",
+      "tagline": "Una marca nacional, en tu bolsillo.",
+      "desc": "App móvil nativa para Shell Colombia en Imaginamos, publicada en App Store y Google Play."
+    }
+  },
+  "skills": {
+    "kicker": "(05) — Stack",
+    "title": "Un stack, cableado como",
+    "titleEm": " sistema.",
+    "core": "SISTEMA",
+    "catAI": "IA & Prompt Eng.",
+    "catFE": "Frontend",
+    "catMO": "Móvil",
+    "catBE": "Backend",
+    "catCL": "Cloud & DevOps",
+    "catDB": "Bases de datos"
+  },
+  "contact": {
+    "kicker": "(06) — Contacto",
+    "title": "Construyamos sistemas que",
+    "titleEm": " nos sobrevivan.",
+    "sub": "Abierto a roles senior & staff, producto AI-native y problemas de sistemas difíciles.",
+    "footerTag": "Desarrollador FullStack en búsqueda de lo más allá"
+  },
+  "form": {
+    "title": "O déjame un mensaje",
+    "name": "Nombre",
+    "namePh": "Tu nombre",
+    "email": "Email",
+    "emailPh": "tu@empresa.com",
+    "msg": "Mensaje",
+    "msgPh": "¿Qué estás construyendo?",
+    "send": "Enviar mensaje",
+    "sent": "Gracias — abriendo tu cliente de correo…"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "title": "Andrés Largo — FullStack Developer",
+    "description": "FullStack developer in search of beyond. Sr. Software Engineer — FullStack, AI Workflows, Cloud & Mobile."
+  },
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "skills": "Skills",
+    "contact": "Contact",
+    "status": "Available for work"
+  },
+  "hero": {
+    "eyebrow": "FullStack developer in search of",
+    "beyond": "beyond",
+    "role": "Sr. Software Engineer · FullStack · AI Workflows · Cloud & Mobile",
+    "idx": "(01) — SYSTEM",
+    "cue": "Scroll to enter the system",
+    "deep": "A living system — nodes, edges, and the data that travels between them."
+  },
+  "about": {
+    "kicker": "(02) — About",
+    "role": "Systems Engineer",
+    "s1lab": "Years shipping systems",
+    "s2lab": "Engineers enabled",
+    "s3lab": "MVP funding raised",
+    "lead": "Seven-plus years building scalable full-stack systems and cloud-native solutions.",
+    "body": "Today, augmented by AI — prompt engineering, spec-driven code generation with Cursor & Claude, and automation pipelines that",
+    "bodyEm": " think in systems."
+  },
+  "exp": {
+    "kicker": "(03) — Trajectory",
+    "title": "A trajectory in",
+    "titleEm": " systems.",
+    "r1": {
+      "role": "Senior Frontend Engineer",
+      "meta": "08/2025 — Present · Remote",
+      "desc": "Frontend architecture in Next.js / React / SCSS with Laravel integrations for a smart property-management platform; evolving the design system."
+    },
+    "r2": {
+      "role": "Sr. FullStack Developer",
+      "desc": "Betting platform with integrated payments for the Haitian market (Next.js, Nest.js, React Native, AWS, MongoDB). Wired Claude API & GPT-4 into automated aviation-claims processing and legal-compliance flows."
+    },
+    "r3": {
+      "role": "Sr. Full Stack Developer",
+      "desc": "Led and mentored a cross-functional team; built React UI/UX component libraries used by 200+ people. Node / Nest / AWS / Prisma / PostgreSQL."
+    },
+    "r4": {
+      "role": "Sr. Full Stack Developer",
+      "desc": "Performance across the React ecosystem; Flutter / React Native mobile; DDD microservices with NestJS and .NET Core."
+    },
+    "r5": {
+      "role": "Full Stack Developer",
+      "desc": "Fintech with Plaid & Stripe integrations; security audits."
+    },
+    "r6": {
+      "role": "Founding Engineer",
+      "meta": "2019 — 2021 · Denver, Remote",
+      "desc": "Built the MVP that raised $1M in investment."
+    },
+    "r7": {
+      "role": "Mobile Developer",
+      "desc": "Native mobile app for Shell Colombia, shipped to the App Store and Google Play."
+    }
+  },
+  "work": {
+    "kicker": "(04) — Selected work",
+    "title": "Things I've",
+    "titleEm": " shipped.",
+    "p1": {
+      "tag": "Betting · Payments · AI",
+      "tagline": "A wagering platform that pays out — and reads its own claims.",
+      "desc": "End-to-end betting platform with integrated payments for the Haitian market. I embedded Claude and GPT-4 to automate aviation-claims processing and legal-compliance flows."
+    },
+    "p2": {
+      "tag": "Design system at scale",
+      "tagline": "One component library, two hundred builders.",
+      "desc": "Led and mentored a cross-functional team, shipping the React UI/UX component libraries that 200+ people built on top of.",
+      "metric": "Engineers building on it"
+    },
+    "p3": {
+      "tag": "Fintech MVP",
+      "tagline": "From zero to a million in the bank.",
+      "desc": "Built the MVP from the ground up — the product that raised $1M in investment and grew into the Chamba ecosystem.",
+      "metric": "Raised on the MVP"
+    },
+    "p4": {
+      "tag": "Native mobile",
+      "tagline": "A national brand, in your pocket.",
+      "desc": "A native mobile app for Shell Colombia at Imaginamos, published on the App Store and Google Play."
+    }
+  },
+  "skills": {
+    "kicker": "(05) — Skills",
+    "title": "A stack, wired as a",
+    "titleEm": " system.",
+    "core": "SYSTEM",
+    "catAI": "AI & Prompt Eng.",
+    "catFE": "Frontend",
+    "catMO": "Mobile",
+    "catBE": "Backend",
+    "catCL": "Cloud & DevOps",
+    "catDB": "Databases"
+  },
+  "contact": {
+    "kicker": "(06) — Contact",
+    "title": "Let's build systems that",
+    "titleEm": " outlive us.",
+    "sub": "Open to senior & staff roles, AI-native product work, and hard systems problems.",
+    "footerTag": "FullStack developer in search of beyond"
+  },
+  "form": {
+    "title": "Or drop a line",
+    "name": "Name",
+    "namePh": "Your name",
+    "email": "Email",
+    "emailPh": "you@company.com",
+    "msg": "Message",
+    "msgPh": "What are you building?",
+    "send": "Send message",
+    "sent": "Thanks — opening your mail client…"
+  }
+}

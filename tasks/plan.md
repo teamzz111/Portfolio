@@ -11,7 +11,7 @@ Borrar `index.html` (mantenimiento). Scaffold manual en el root: package.json (n
 Clash Display woff2 self-hosted (Fontshare) via `next/font/local`; Instrument Serif + JetBrains Mono via `next/font/google`. Tokens del README en `globals.css` (colores, easing, hairlines, container 1360px, keyframes base).
 **AC:** build OK; página specimen temporal muestra 3 familias con pesos 200/300/400/500; test: CSS vars presentes en globals.css.
 
-## T2 — next-intl estático + mensajes — [ ]
+## T2 — next-intl estático + mensajes — [x]
 `src/i18n/request.ts` (sin middleware), `app/[locale]/layout.tsx` con `generateStaticParams` + `setRequestLocale`, port completo del objeto `T` (prototipo líneas 754–841) a `messages/en.json` + `messages/es.json` anidado por sección.
 **AC:** build emite `out/en/index.html` y `out/es/index.html` con `lang` correcto; test RED→GREEN: en.json y es.json tienen conjuntos de claves idénticos y no vacíos.
 
