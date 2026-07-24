@@ -21,7 +21,7 @@ export default async function Home({
         <SystemGraphLoader />
       </Atmosphere>
       <Nav />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Experience />

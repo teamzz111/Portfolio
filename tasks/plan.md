@@ -39,7 +39,7 @@ Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + ste
 Contact (glow radial, headline serif, email link, cards LinkedIn/GitHub, footer), ContactForm (uncontrolled, mailto compose con subject/body codificados, confirmación formSent).
 **AC:** test unit RED→GREEN de `buildMailto(name,email,msg)`; test render en ambos locales; build OK.
 
-## T9 — A11y / reduced-motion audit — [ ]
+## T9 — A11y / reduced-motion audit — [x]
 Landmarks, aria-hidden en decorativos (atmósfera, ghost years, caret), skip link, focus-visible, hreflang/aria-current en toggle, matriz reduced-motion completa.
 **AC:** revisión manual con emulación; tests de atributos aria clave; build OK.
 

@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { fontVariables } from "@/fonts";
 import { locales } from "@/i18n/locales";
 import LenisProvider from "@/providers/LenisProvider";
+import SkipLink from "@/components/SkipLink";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={fontVariables}>
       <body>
         <NextIntlClientProvider>
+          <SkipLink />
           <LenisProvider>{children}</LenisProvider>
         </NextIntlClientProvider>
       </body>

@@ -62,6 +62,33 @@ body {
   color: #fff;
 }
 
+/* ---------- Focus & skip link ---------- */
+:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.al-skip {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 50;
+  transform: translateY(-300%);
+  background: var(--bg2);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.al-skip:focus-visible {
+  transform: none;
+}
+
 /* ---------- Layout helpers ---------- */
 .al-container {
   max-width: 1360px;
