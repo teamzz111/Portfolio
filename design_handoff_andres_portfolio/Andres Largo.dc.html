@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  :root{
+    --bg:#060507; --bg2:#0a0c0e; --bg3:#0e1417;
+    --fg:#e9eef0; --muted:#727f85; --faint:#3a4247;
+    --accent:#42e6dd; --accent-2:#8ff6ef; --line:rgba(66,230,221,.14);
+    --font-display:'Clash Display','Helvetica Neue',sans-serif;
+    --font-serif:'Instrument Serif',Georgia,serif;
+    --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+    -webkit-font-smoothing:antialiased;overscroll-behavior:none;}
+  body{font-family:var(--font-display);}
+  a{color:var(--accent);text-decoration:none;transition:color .15s ease;}
+  a:hover{color:var(--accent-2);}
+  ::selection{background:rgba(66,230,221,.25);color:#fff;}
+  #al-grain{
+    position:fixed;inset:-150%;z-index:6;pointer-events:none;opacity:.075;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode:overlay;animation:al-grain 1.1s steps(4) infinite;will-change:transform;
+  }
+  @keyframes al-grain{
+    0%{transform:translate(0,0)}25%{transform:translate(-6%,3%)}
+    50%{transform:translate(4%,-5%)}75%{transform:translate(-3%,6%)}
+    100%{transform:translate(5%,2%)}
+  }
+  @keyframes al-blink{0%,48%{opacity:1}49%,100%{opacity:0}}
+  @keyframes al-cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}
+    55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  @media (prefers-reduced-motion: reduce){#al-grain{animation:none}}
+  .al-rev{opacity:0;transform:translateY(34px);
+    transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1);}
+  .al-rev.al-in{opacity:1;transform:none;}
+  @keyframes al-riseLine{from{transform:translateY(116%)}to{transform:translateY(0)}}
+  @keyframes al-fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .al-line{animation:al-riseLine 1.25s cubic-bezier(.16,1,.3,1) both;}
+  #al-name > span:nth-child(2) .al-line{animation-delay:.12s;}
+  #al-eyebrow{animation:al-fadeUp 1s cubic-bezier(.16,1,.3,1) .05s both;}
+  #al-role{animation:al-fadeUp 1s cubic-bezier(.16,1,.3,1) .5s both;}
+  #al-loc,#al-idx,#al-cue,#al-navL,#al-navR{animation:al-fadeUp .9s cubic-bezier(.16,1,.3,1) .6s both;}
+  @media (prefers-reduced-motion: reduce){
+    .al-rev{transition:none;}
+    .al-line,#al-eyebrow,#al-role,#al-loc,#al-idx,#al-cue,#al-navL,#al-navR{animation:none;}
+  }
+  @media (max-width:820px){#al-navC{display:none !important;}}
+  .al-field:focus{outline:none;border-color:var(--accent) !important;}
+  .al-field::placeholder{color:var(--faint);}
+</style>
+</helmet>
+
+<div style="position:relative;width:100%;background:var(--bg);">
+
+  <!-- ATMOSPHERE LAYERS -->
+  <div id="al-stagebg" style="position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 68% 8%, rgba(66,230,221,.10) 0%, rgba(66,230,221,0) 42%),
+      radial-gradient(90% 120% at 18% 108%, rgba(30,58,64,.42) 0%, rgba(6,5,7,0) 55%),
+      linear-gradient(180deg,#07080a 0%, #060507 60%, #050406 100%);"></div>
+  <div id="al-gl" style="position:fixed;inset:0;z-index:2;pointer-events:none;"></div>
+  <div id="al-vignette" style="position:fixed;inset:0;z-index:5;pointer-events:none;
+    background:radial-gradient(115% 95% at 50% 42%, rgba(0,0,0,0) 46%, rgba(0,0,0,.55) 100%);
+    box-shadow:inset 0 0 220px 40px rgba(0,0,0,.65);"></div>
+  <div id="al-grain"></div>
+
+  <!-- NAV -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;
+    align-items:center;padding:clamp(18px,2.4vw,30px) clamp(20px,4vw,58px);pointer-events:none;">
+    <div id="al-navL" style="display:flex;align-items:baseline;gap:14px;pointer-events:auto;">
+      <span style="font-family:var(--font-mono);font-size:12px;letter-spacing:.34em;color:var(--fg);">A—L</span>
+      <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.24em;color:var(--faint);">©2026</span>
+    </div>
+    <div id="al-navC" style="display:flex;align-items:center;gap:clamp(18px,2.4vw,36px);pointer-events:auto;">
+      <a data-nav="al-about" data-i18n="navAbout" href="#al-about" style="font-family:var(--font-mono);font-size:11px;
+        letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s ease;"
+        style-hover="color:var(--fg);">About</a>
+      <a data-nav="al-work-sec" data-i18n="navWork" href="#al-work-sec" style="font-family:var(--font-mono);font-size:11px;
+        letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s ease;"
+        style-hover="color:var(--fg);">Work</a>
+      <a data-nav="al-skills-sec" data-i18n="navSkills" href="#al-skills-sec" style="font-family:var(--font-mono);font-size:11px;
+        letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s ease;"
+        style-hover="color:var(--fg);">Skills</a>
+      <a data-nav="al-contact-sec" data-i18n="navContact" href="#al-contact-sec" style="font-family:var(--font-mono);font-size:11px;
+        letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:opacity .18s ease;"
+        style-hover="opacity:.7;">Contact</a>
+    </div>
+    <div id="al-navR" style="display:flex;align-items:center;gap:clamp(16px,2vw,30px);pointer-events:auto;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);
+          box-shadow:0 0 10px var(--accent);"></span>
+        <span data-i18n="status" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;
+          text-transform:uppercase;color:var(--muted);">Available for work</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;">
+        <button id="al-en" style="background:none;border:none;padding:2px 4px;cursor:pointer;color:var(--fg);
+          font-family:inherit;font-size:inherit;letter-spacing:inherit;">EN</button>
+        <span style="color:var(--faint);">/</span>
+        <button id="al-es" style="background:none;border:none;padding:2px 4px;cursor:pointer;color:var(--faint);
+          font-family:inherit;font-size:inherit;letter-spacing:inherit;">ES</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FIXED STAGE OVERLAY -->
+  <div id="al-hero" style="position:fixed;inset:0;z-index:10;pointer-events:none;will-change:transform,opacity;">
+
+    <!-- location, top-right -->
+    <div id="al-loc" style="position:absolute;top:clamp(78px,10vh,120px);right:clamp(20px,4vw,58px);
+      text-align:right;">
+      <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;color:var(--fg);">Bogotá D.C., Colombia</div>
+      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;color:var(--faint);margin-top:5px;">04°42′N · 74°04′W</div>
+    </div>
+
+    <!-- headline block, lower-left -->
+    <div style="position:absolute;left:clamp(20px,4vw,58px);top:50%;transform:translateY(-46%);
+      max-width:min(1120px,92vw);">
+      <div id="al-eyebrow" style="font-family:var(--font-mono);font-size:clamp(.7rem,1vw,.86rem);
+        letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(14px,2vw,26px);
+        display:flex;align-items:baseline;gap:.5em;flex-wrap:wrap;">
+        <span data-i18n="eyebrow">FullStack developer in search of</span>
+        <span data-i18n="beyond" style="font-family:var(--font-serif);font-style:italic;text-transform:none;
+          letter-spacing:0;font-size:clamp(1.7rem,4.2vw,3.4rem);line-height:.7;color:var(--accent);">beyond</span>
+      </div>
+
+      <div id="al-name" style="font-family:var(--font-display);line-height:.8;letter-spacing:-.03em;
+        text-transform:none;">
+        <span style="display:block;overflow:hidden;padding-bottom:clamp(14px,2.6vw,46px);margin-bottom:clamp(-46px,-2.6vw,-14px);">
+          <span class="al-line" style="display:block;font-weight:200;font-size:clamp(3.4rem,15vw,14rem);color:var(--fg);">Andrés</span>
+        </span>
+        <span style="display:block;overflow:hidden;padding-bottom:clamp(14px,2.6vw,46px);margin-bottom:clamp(-46px,-2.6vw,-14px);">
+          <span class="al-line" style="display:block;font-weight:500;font-size:clamp(3.4rem,15vw,14rem);
+            color:var(--fg);text-indent:clamp(30px,7vw,120px);">Largo<span style="color:var(--accent);">.</span></span>
+        </span>
+      </div>
+
+      <div id="al-role" style="margin-top:clamp(18px,2.6vw,34px);font-family:var(--font-mono);
+        font-size:clamp(.72rem,1vw,.9rem);letter-spacing:.06em;color:var(--muted);
+        display:flex;align-items:center;gap:.5em;">
+        <span data-i18n="role">Sr. Software Engineer · FullStack · AI Workflows · Cloud &amp; Mobile</span>
+        <span style="display:inline-block;width:.5em;height:1.05em;background:var(--accent);
+          animation:al-blink 1.1s steps(1) infinite;transform:translateY(.14em);"></span>
+      </div>
+    </div>
+
+    <!-- index marker, bottom-left corner meta -->
+    <div id="al-idx" style="position:absolute;left:clamp(20px,4vw,58px);bottom:clamp(30px,5vh,54px);
+      font-family:var(--font-mono);font-size:10.5px;letter-spacing:.24em;color:var(--faint);">
+      <span data-i18n="idx">(01) — SYSTEM</span>
+    </div>
+
+    <!-- scroll cue, bottom-right -->
+    <div id="al-cue" style="position:absolute;right:clamp(20px,4vw,58px);bottom:clamp(30px,5vh,54px);
+      display:flex;align-items:center;gap:14px;">
+      <span data-i18n="cue" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;
+        text-transform:uppercase;color:var(--muted);">Scroll to enter the system</span>
+      <span style="display:block;width:1px;height:38px;background:var(--accent);
+        animation:al-cue 2.4s ease-in-out infinite;"></span>
+    </div>
+  </div>
+
+  <!-- SCROLL TRACK (generates scroll distance for the hero fly-through) -->
+  <div id="al-track" style="position:relative;height:170vh;z-index:1;"></div>
+
+  <!-- (02) ABOUT -->
+  <section id="al-about" style="position:relative;z-index:10;
+    background:linear-gradient(180deg, rgba(6,5,7,0) 0%, rgba(6,5,7,.72) 12%, var(--bg) 26%, var(--bg) 100%);
+    padding:clamp(130px,22vh,240px) clamp(20px,4vw,58px) clamp(120px,18vh,200px);">
+    <div style="max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;
+      gap:clamp(44px,6vw,110px);align-items:flex-start;">
+
+      <!-- left rail: kicker + ledger -->
+      <div style="flex:1 1 240px;min-width:220px;display:flex;flex-direction:column;gap:clamp(38px,5vw,64px);">
+        <div class="al-rev" style="display:flex;align-items:center;gap:14px;">
+          <span style="display:block;width:26px;height:1px;background:var(--accent);"></span>
+          <span data-i18n="aboutKicker" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;
+            text-transform:uppercase;color:var(--muted);">(02) — About</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;">
+          <div class="al-rev" style="padding:18px 0;border-top:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,3vw,2.7rem);
+              line-height:1;color:var(--fg);letter-spacing:-.02em;">07+</div>
+            <div data-i18n="s1lab" style="margin-top:8px;font-family:var(--font-mono);font-size:10.5px;
+              letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Years shipping systems</div>
+          </div>
+          <div class="al-rev" style="padding:18px 0;border-top:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,3vw,2.7rem);
+              line-height:1;color:var(--fg);letter-spacing:-.02em;">200+</div>
+            <div data-i18n="s2lab" style="margin-top:8px;font-family:var(--font-mono);font-size:10.5px;
+              letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Engineers enabled</div>
+          </div>
+          <div class="al-rev" style="padding:18px 0;border-top:1px solid rgba(255,255,255,.08);
+            border-bottom:1px solid rgba(255,255,255,.08);">
+            <div style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,3vw,2.7rem);
+              line-height:1;color:var(--accent);letter-spacing:-.02em;">$1M</div>
+            <div data-i18n="s3lab" style="margin-top:8px;font-family:var(--font-mono);font-size:10.5px;
+              letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">MVP funding raised</div>
+          </div>
+        </div>
+
+        <div class="al-rev" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--faint);">
+          <span data-i18n="aboutRole">Systems Engineer</span>
+        </div>
+      </div>
+
+      <!-- main: statement -->
+      <div style="flex:2.5 1 460px;min-width:300px;">
+        <p class="al-rev" style="margin:0;font-family:var(--font-display);font-weight:300;
+          font-size:clamp(1.9rem,4.4vw,4rem);line-height:1.06;letter-spacing:-.02em;color:var(--fg);
+          text-wrap:balance;">
+          <span data-i18n="aboutLead">Seven-plus years building scalable full-stack systems and cloud-native solutions.</span>
+        </p>
+        <p class="al-rev" style="margin:clamp(28px,4vw,52px) 0 0;max-width:30em;
+          font-family:var(--font-display);font-weight:300;font-size:clamp(1.05rem,1.7vw,1.6rem);
+          line-height:1.42;color:#aeb7bb;">
+          <span data-i18n="aboutBody">Today, augmented by AI — prompt engineering, spec-driven code generation with Cursor &amp; Claude, and automation pipelines that</span>
+          <span data-i18n="aboutBodyEm" style="font-family:var(--font-serif);font-style:italic;
+            color:var(--accent);font-size:1.18em;line-height:1;"> think in systems.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- (03) EXPERIENCE / TRAJECTORY -->
+  <section id="al-exp-sec" style="position:relative;z-index:10;background:var(--bg);
+    padding:clamp(60px,10vh,140px) clamp(20px,4vw,58px) clamp(120px,18vh,200px);">
+    <div style="max-width:1360px;margin:0 auto;">
+
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+        gap:24px;margin-bottom:clamp(48px,7vw,96px);">
+        <div class="al-rev" style="display:flex;align-items:center;gap:14px;">
+          <span style="display:block;width:26px;height:1px;background:var(--accent);"></span>
+          <span data-i18n="expKicker" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;
+            text-transform:uppercase;color:var(--muted);">(03) — Trajectory</span>
+        </div>
+        <h2 class="al-rev" style="margin:0;font-family:var(--font-display);font-weight:300;
+          font-size:clamp(2rem,4.6vw,4rem);line-height:1;letter-spacing:-.02em;color:var(--fg);
+          text-align:right;">
+          <span data-i18n="expTitle">A trajectory in</span>
+          <span data-i18n="expTitleEm" style="font-family:var(--font-serif);font-style:italic;
+            color:var(--accent);font-size:1.1em;"> systems.</span>
+        </h2>
+      </div>
+
+      <div>
+        <!-- row 1 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(233,238,240,.035);letter-spacing:-.03em;">2025</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">01</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp1role">Senior Frontend Engineer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">Lula — Smarter Property</span>
+              <span data-i18n="exp1meta" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">08/2025 — Present · Remote</span>
+            </div>
+          </div>
+          <p data-i18n="exp1desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Frontend architecture in Next.js / React / SCSS with Laravel integrations for a smart property-management platform; evolving the design system.</p>
+        </article>
+
+        <!-- row 2 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(233,238,240,.035);letter-spacing:-.03em;">2024</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">02</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp2role">Sr. FullStack Developer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">ByYuto LLC</span>
+              <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">2024 — 2025 · Fort Lauderdale</span>
+            </div>
+          </div>
+          <p data-i18n="exp2desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Betting platform with integrated payments for the Haitian market (Next.js, Nest.js, React Native, AWS, MongoDB). Wired Claude API &amp; GPT-4 into automated aviation-claims processing and legal-compliance flows.</p>
+        </article>
+
+        <!-- row 3 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(233,238,240,.035);letter-spacing:-.03em;">2022</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">03</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp3role">Sr. Full Stack Developer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">Nowports</span>
+              <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">2022 — 2023 · Bogotá</span>
+            </div>
+          </div>
+          <p data-i18n="exp3desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Led and mentored a cross-functional team; built React UI/UX component libraries used by 200+ people. Node / Nest / AWS / Prisma / PostgreSQL.</p>
+        </article>
+
+        <!-- row 4 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(233,238,240,.035);letter-spacing:-.03em;">2021</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">04</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp4role">Sr. Full Stack Developer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">Chamba App</span>
+              <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">2021 — 2022</span>
+            </div>
+          </div>
+          <p data-i18n="exp4desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Performance across the React ecosystem; Flutter / React Native mobile; DDD microservices with NestJS and .NET Core.</p>
+        </article>
+
+        <!-- row 5 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(233,238,240,.035);letter-spacing:-.03em;">2021</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">05</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp5role">Full Stack Developer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">Creci Finance</span>
+              <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">2021 — 2022</span>
+            </div>
+          </div>
+          <p data-i18n="exp5desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Fintech with Plaid &amp; Stripe integrations; security audits.</p>
+        </article>
+
+        <!-- row 6 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(66,230,221,.05);letter-spacing:-.03em;">2019</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">06</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp6role">Founding Engineer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">Chamba LLC</span>
+              <span data-i18n="exp6meta" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">2019 — 2021 · Denver, Remote</span>
+            </div>
+          </div>
+          <p data-i18n="exp6desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Built the MVP that raised $1M in investment.</p>
+        </article>
+
+        <!-- row 7 -->
+        <article class="al-exp al-rev" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.09);
+          border-bottom:1px solid rgba(255,255,255,.09);
+          display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,54px);align-items:baseline;
+          padding:clamp(28px,3.6vw,46px) clamp(6px,1.4vw,22px);border-left:2px solid transparent;
+          transition:transform .28s cubic-bezier(.16,1,.3,1),background .28s ease;" style-hover="background:rgba(66,230,221,.045);transform:translateX(12px);">
+          <span class="al-year" style="position:absolute;right:0;top:-.24em;pointer-events:none;
+            font-family:var(--font-display);font-weight:500;font-size:clamp(4rem,10vw,10.5rem);line-height:1;
+            color:rgba(233,238,240,.035);letter-spacing:-.03em;">↗</span>
+          <span style="flex:0 0 auto;width:38px;font-family:var(--font-mono);font-size:.82rem;
+            letter-spacing:.1em;color:var(--faint);">07</span>
+          <div style="flex:1.5 1 300px;min-width:270px;position:relative;z-index:1;">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:400;
+              font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.02;letter-spacing:-.01em;color:var(--fg);"
+              data-i18n="exp7role">Mobile Developer</h3>
+            <div style="margin-top:12px;display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;">
+              <span style="font-family:var(--font-serif);font-style:italic;color:var(--accent);
+                font-size:clamp(1.15rem,1.7vw,1.55rem);">Imaginamos</span>
+              <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);">React Native · Shell Colombia</span>
+            </div>
+          </div>
+          <p data-i18n="exp7desc" style="flex:1 1 240px;min-width:240px;max-width:40em;margin:0;position:relative;z-index:1;
+            font-family:var(--font-display);font-weight:300;font-size:clamp(.95rem,1.15vw,1.12rem);
+            line-height:1.5;color:#97a0a4;">Native mobile app for Shell Colombia, shipped to the App Store and Google Play.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- (04) SELECTED WORK -->
+  <section id="al-work-sec" style="position:relative;z-index:10;background:var(--bg);
+    padding:clamp(60px,10vh,120px) clamp(20px,4vw,58px) clamp(120px,18vh,200px);">
+    <div style="max-width:1360px;margin:0 auto;">
+
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+        gap:24px;margin-bottom:clamp(56px,8vw,110px);">
+        <div class="al-rev" style="display:flex;align-items:center;gap:14px;">
+          <span style="display:block;width:26px;height:1px;background:var(--accent);"></span>
+          <span data-i18n="workKicker" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;
+            text-transform:uppercase;color:var(--muted);">(04) — Selected work</span>
+        </div>
+        <h2 class="al-rev" style="margin:0;font-family:var(--font-display);font-weight:300;
+          font-size:clamp(2rem,4.6vw,4rem);line-height:1;letter-spacing:-.02em;color:var(--fg);text-align:right;">
+          <span data-i18n="workTitle">Things I've</span>
+          <span data-i18n="workTitleEm" style="font-family:var(--font-serif);font-style:italic;
+            color:var(--accent);font-size:1.1em;"> shipped.</span>
+        </h2>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(80px,12vh,180px);">
+
+        <!-- P1 ByYuto -->
+        <article class="al-work al-rev" style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,84px);align-items:center;">
+          <figure style="flex:1.15 1 440px;min-width:300px;margin:0;">
+            <div style="position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+              background:var(--bg2);transition:transform .32s cubic-bezier(.16,1,.3,1),border-color .32s ease;"
+              style-hover="transform:translateY(-6px);border-color:rgba(66,230,221,.42);">
+              <image-slot id="work-byyuto" shape="rect" placeholder="Drop ByYuto app screens"></image-slot>
+              <span style="position:absolute;top:14px;left:16px;font-family:var(--font-mono);font-size:10px;
+                letter-spacing:.24em;color:#fff;mix-blend-mode:difference;pointer-events:none;">/ 01</span>
+            </div>
+          </figure>
+          <div style="flex:1 1 340px;min-width:290px;">
+            <div data-i18n="p1tag" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;
+              text-transform:uppercase;color:var(--accent);margin-bottom:18px;">Betting · Payments · AI</div>
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:300;font-size:clamp(2.2rem,4.4vw,3.6rem);
+              line-height:.98;letter-spacing:-.02em;color:var(--fg);">ByYuto</h3>
+            <p data-i18n="p1tagline" style="margin:16px 0 0;font-family:var(--font-serif);font-style:italic;
+              font-size:clamp(1.2rem,1.9vw,1.7rem);line-height:1.2;color:#c3cccf;">A wagering platform that pays out — and reads its own claims.</p>
+            <p data-i18n="p1desc" style="margin:22px 0 0;max-width:34em;font-family:var(--font-display);font-weight:300;
+              font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.5;color:#97a0a4;">End-to-end betting platform with integrated payments for the Haitian market. I embedded Claude and GPT-4 to automate aviation-claims processing and legal-compliance flows.</p>
+            <div style="margin-top:26px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);
+              font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--faint);">Next.js · Nest.js · React Native · AWS · MongoDB · Claude API · GPT-4</div>
+          </div>
+        </article>
+
+        <!-- P2 Nowports (text first) -->
+        <article class="al-work al-rev" style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,84px);align-items:center;">
+          <div style="flex:1 1 340px;min-width:290px;order:1;">
+            <div data-i18n="p2tag" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;
+              text-transform:uppercase;color:var(--accent);margin-bottom:18px;">Design system at scale</div>
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:300;font-size:clamp(2.2rem,4.4vw,3.6rem);
+              line-height:.98;letter-spacing:-.02em;color:var(--fg);">Nowports</h3>
+            <p data-i18n="p2tagline" style="margin:16px 0 0;font-family:var(--font-serif);font-style:italic;
+              font-size:clamp(1.2rem,1.9vw,1.7rem);line-height:1.2;color:#c3cccf;">One component library, two hundred builders.</p>
+            <p data-i18n="p2desc" style="margin:22px 0 0;max-width:34em;font-family:var(--font-display);font-weight:300;
+              font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.5;color:#97a0a4;">Led and mentored a cross-functional team, shipping the React UI/UX component libraries that 200+ people built on top of.</p>
+            <div style="margin-top:28px;display:flex;align-items:baseline;gap:16px;">
+              <span style="font-family:var(--font-display);font-weight:300;font-size:clamp(2.6rem,5vw,4.2rem);
+                line-height:1;letter-spacing:-.03em;color:var(--accent);">200+</span>
+              <span data-i18n="p2metric" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);max-width:12em;">Engineers building on it</span>
+            </div>
+            <div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);
+              font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--faint);">React · Node · Nest · AWS · Prisma · PostgreSQL</div>
+          </div>
+          <figure style="flex:1.15 1 440px;min-width:300px;margin:0;order:2;">
+            <div style="position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+              background:var(--bg2);transition:transform .32s cubic-bezier(.16,1,.3,1),border-color .32s ease;"
+              style-hover="transform:translateY(-6px);border-color:rgba(66,230,221,.42);">
+              <image-slot id="work-nowports" shape="rect" placeholder="Drop Nowports design-system shots"></image-slot>
+              <span style="position:absolute;top:14px;left:16px;font-family:var(--font-mono);font-size:10px;
+                letter-spacing:.24em;color:#fff;mix-blend-mode:difference;pointer-events:none;">/ 02</span>
+            </div>
+          </figure>
+        </article>
+
+        <!-- P3 Chamba -->
+        <article class="al-work al-rev" style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,84px);align-items:center;">
+          <figure style="flex:1.15 1 440px;min-width:300px;margin:0;">
+            <div style="position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+              background:var(--bg2);transition:transform .32s cubic-bezier(.16,1,.3,1),border-color .32s ease;"
+              style-hover="transform:translateY(-6px);border-color:rgba(66,230,221,.42);">
+              <image-slot id="work-chamba" shape="rect" placeholder="Drop Chamba MVP shots"></image-slot>
+              <span style="position:absolute;top:14px;left:16px;font-family:var(--font-mono);font-size:10px;
+                letter-spacing:.24em;color:#fff;mix-blend-mode:difference;pointer-events:none;">/ 03</span>
+            </div>
+          </figure>
+          <div style="flex:1 1 340px;min-width:290px;">
+            <div data-i18n="p3tag" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;
+              text-transform:uppercase;color:var(--accent);margin-bottom:18px;">Fintech MVP</div>
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:300;font-size:clamp(2.2rem,4.4vw,3.6rem);
+              line-height:.98;letter-spacing:-.02em;color:var(--fg);">Chamba</h3>
+            <p data-i18n="p3tagline" style="margin:16px 0 0;font-family:var(--font-serif);font-style:italic;
+              font-size:clamp(1.2rem,1.9vw,1.7rem);line-height:1.2;color:#c3cccf;">From zero to a million in the bank.</p>
+            <p data-i18n="p3desc" style="margin:22px 0 0;max-width:34em;font-family:var(--font-display);font-weight:300;
+              font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.5;color:#97a0a4;">Built the MVP from the ground up — the product that raised $1M in investment and grew into the Chamba ecosystem.</p>
+            <div style="margin-top:28px;display:flex;align-items:baseline;gap:16px;">
+              <span style="font-family:var(--font-display);font-weight:300;font-size:clamp(2.6rem,5vw,4.2rem);
+                line-height:1;letter-spacing:-.03em;color:var(--accent);">$1M</span>
+              <span data-i18n="p3metric" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+                text-transform:uppercase;color:var(--muted);max-width:12em;">Raised on the MVP</span>
+            </div>
+            <div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);
+              font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--faint);">React · React Native · NestJS · .NET Core</div>
+          </div>
+        </article>
+
+        <!-- P4 Shell (text first) -->
+        <article class="al-work al-rev" style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,84px);align-items:center;">
+          <div style="flex:1 1 340px;min-width:290px;order:1;">
+            <div data-i18n="p4tag" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;
+              text-transform:uppercase;color:var(--accent);margin-bottom:18px;">Native mobile</div>
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:300;font-size:clamp(2.2rem,4.4vw,3.6rem);
+              line-height:.98;letter-spacing:-.02em;color:var(--fg);">Shell Colombia</h3>
+            <p data-i18n="p4tagline" style="margin:16px 0 0;font-family:var(--font-serif);font-style:italic;
+              font-size:clamp(1.2rem,1.9vw,1.7rem);line-height:1.2;color:#c3cccf;">A national brand, in your pocket.</p>
+            <p data-i18n="p4desc" style="margin:22px 0 0;max-width:34em;font-family:var(--font-display);font-weight:300;
+              font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.5;color:#97a0a4;">A native mobile app for Shell Colombia at Imaginamos, published on the App Store and Google Play.</p>
+            <div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09);
+              font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--faint);">React Native · Expo · App Store · Google Play</div>
+          </div>
+          <figure style="flex:1.15 1 440px;min-width:300px;margin:0;order:2;">
+            <div style="position:relative;aspect-ratio:16/10;overflow:hidden;border:1px solid rgba(255,255,255,.1);
+              background:var(--bg2);transition:transform .32s cubic-bezier(.16,1,.3,1),border-color .32s ease;"
+              style-hover="transform:translateY(-6px);border-color:rgba(66,230,221,.42);">
+              <image-slot id="work-shell" shape="rect" placeholder="Drop Shell Colombia app shots"></image-slot>
+              <span style="position:absolute;top:14px;left:16px;font-family:var(--font-mono);font-size:10px;
+                letter-spacing:.24em;color:#fff;mix-blend-mode:difference;pointer-events:none;">/ 04</span>
+            </div>
+          </figure>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- (05) SKILLS / STACK CONSTELLATION -->
+  <section id="al-skills-sec" style="position:relative;z-index:10;background:var(--bg);
+    padding:clamp(60px,10vh,120px) clamp(20px,4vw,58px) clamp(120px,18vh,200px);">
+    <div style="max-width:1360px;margin:0 auto;">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;">
+        <div class="al-rev" style="display:flex;align-items:center;gap:14px;">
+          <span style="display:block;width:26px;height:1px;background:var(--accent);"></span>
+          <span data-i18n="skillsKicker" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;
+            text-transform:uppercase;color:var(--muted);">(05) — Skills</span>
+        </div>
+        <h2 class="al-rev" style="margin:0;font-family:var(--font-display);font-weight:300;
+          font-size:clamp(2rem,4.6vw,4rem);line-height:1;letter-spacing:-.02em;color:var(--fg);text-align:right;">
+          <span data-i18n="skillsTitle">A stack, wired as a</span>
+          <span data-i18n="skillsTitleEm" style="font-family:var(--font-serif);font-style:italic;
+            color:var(--accent);font-size:1.1em;"> system.</span>
+        </h2>
+      </div>
+      <div id="al-skillmap" class="al-rev" style="position:relative;width:100%;margin-top:clamp(40px,6vw,80px);"></div>
+    </div>
+  </section>
+
+  <!-- (06) CONTACT -->
+  <section id="al-contact-sec" style="position:relative;z-index:10;overflow:hidden;
+    background:radial-gradient(120% 90% at 78% 8%, rgba(66,230,221,.09) 0%, rgba(66,230,221,0) 46%), var(--bg);
+    padding:clamp(80px,14vh,180px) clamp(20px,4vw,58px) clamp(48px,7vh,80px);">
+    <div style="max-width:1360px;margin:0 auto;">
+
+      <div class="al-rev" style="display:flex;align-items:center;gap:14px;margin-bottom:clamp(40px,6vw,72px);">
+        <span style="display:block;width:26px;height:1px;background:var(--accent);"></span>
+        <span data-i18n="contactKicker" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.24em;
+          text-transform:uppercase;color:var(--muted);">(06) — Contact</span>
+      </div>
+
+      <h2 class="al-rev" style="margin:0;max-width:16ch;font-family:var(--font-display);font-weight:200;
+        font-size:clamp(2.6rem,8vw,7rem);line-height:.96;letter-spacing:-.03em;color:var(--fg);text-wrap:balance;">
+        <span data-i18n="contactTitle">Let's build systems that</span>
+        <span data-i18n="contactTitleEm" style="font-family:var(--font-serif);font-style:italic;font-weight:400;
+          color:var(--accent);"> outlive us.</span>
+      </h2>
+
+      <p data-i18n="contactSub" class="al-rev" style="margin:clamp(24px,3vw,40px) 0 0;max-width:34em;
+        font-family:var(--font-display);font-weight:300;font-size:clamp(1rem,1.4vw,1.35rem);line-height:1.5;color:#9aa3a7;">
+        Open to senior & staff roles, AI-native product work, and hard systems problems.</p>
+
+      <a href="mailto:contacto@andreslargo.com" class="al-rev" style="display:inline-block;
+        margin:clamp(40px,6vw,72px) 0 clamp(48px,7vw,88px);font-family:var(--font-display);font-weight:300;
+        font-size:clamp(1.5rem,5vw,3.4rem);letter-spacing:-.02em;color:var(--fg);text-decoration:none;
+        border-bottom:1px solid rgba(255,255,255,.16);padding-bottom:.12em;word-break:break-word;
+        transition:color .2s ease,border-color .2s ease;"
+        style-hover="color:var(--accent);border-color:var(--accent);">contacto@andreslargo.com</a>
+
+      <div class="al-rev" style="display:flex;flex-wrap:wrap;gap:clamp(16px,2vw,28px);">
+        <a href="https://www.linkedin.com/in/andreslargo/" target="_blank" rel="noopener"
+          style="flex:1 1 260px;min-width:230px;display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+          padding:clamp(20px,2.4vw,30px) 0;border-top:1px solid rgba(255,255,255,.12);text-decoration:none;
+          transition:padding-left .28s cubic-bezier(.16,1,.3,1);" style-hover="padding-left:14px;">
+          <span style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">LinkedIn</span>
+            <span style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--fg);">/in/andreslargo</span>
+          </span>
+          <span style="font-family:var(--font-mono);font-size:1.1rem;color:var(--accent);">↗</span>
+        </a>
+        <a href="https://github.com/teamzz111" target="_blank" rel="noopener"
+          style="flex:1 1 260px;min-width:230px;display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+          padding:clamp(20px,2.4vw,30px) 0;border-top:1px solid rgba(255,255,255,.12);text-decoration:none;
+          transition:padding-left .28s cubic-bezier(.16,1,.3,1);" style-hover="padding-left:14px;">
+          <span style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);">GitHub</span>
+            <span style="font-family:var(--font-display);font-weight:300;font-size:clamp(1.2rem,2vw,1.7rem);color:var(--fg);">@teamzz111</span>
+          </span>
+          <span style="font-family:var(--font-mono);font-size:1.1rem;color:var(--accent);">↗</span>
+        </a>
+      </div>
+
+      <form id="al-form" class="al-rev" novalidate style="margin-top:clamp(72px,10vw,130px);">
+        <div data-i18n="formTitle" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.2em;
+          text-transform:uppercase;color:var(--muted);margin-bottom:clamp(28px,4vw,44px);">Or drop a line</div>
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,56px);">
+          <label style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:12px;">
+            <span data-i18n="formName" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;
+              text-transform:uppercase;color:var(--faint);">Name</span>
+            <input class="al-field" name="name" type="text" data-i18n-ph="formNamePh" placeholder="Your name"
+              style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.18);
+              color:var(--fg);font-family:var(--font-display);font-weight:300;font-size:clamp(1.05rem,1.6vw,1.4rem);
+              padding:12px 0;width:100%;transition:border-color .2s ease;">
+          </label>
+          <label style="flex:1 1 260px;min-width:240px;display:flex;flex-direction:column;gap:12px;">
+            <span data-i18n="formEmail" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;
+              text-transform:uppercase;color:var(--faint);">Email</span>
+            <input class="al-field" name="email" type="email" data-i18n-ph="formEmailPh" placeholder="you@company.com"
+              style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.18);
+              color:var(--fg);font-family:var(--font-display);font-weight:300;font-size:clamp(1.05rem,1.6vw,1.4rem);
+              padding:12px 0;width:100%;transition:border-color .2s ease;">
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:12px;margin-top:clamp(28px,4vw,44px);">
+          <span data-i18n="formMsg" style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;
+            text-transform:uppercase;color:var(--faint);">Message</span>
+          <textarea class="al-field" name="message" rows="3" data-i18n-ph="formMsgPh" placeholder="What are you building?"
+            style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.18);
+            color:var(--fg);font-family:var(--font-display);font-weight:300;font-size:clamp(1.05rem,1.6vw,1.4rem);
+            padding:12px 0;width:100%;resize:vertical;transition:border-color .2s ease;"></textarea>
+        </label>
+        <div style="margin-top:clamp(36px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:24px;">
+          <button type="submit" data-i18n="formSend" style="background:transparent;border:1px solid var(--accent);
+            color:var(--accent);font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+            padding:16px 34px;cursor:pointer;transition:background .2s ease,color .2s ease;"
+            style-hover="background:var(--accent);color:#04100f;">Send message</button>
+          <span id="al-form-msg" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;
+            color:var(--accent);opacity:0;transition:opacity .3s ease;"></span>
+        </div>
+      </form>
+
+      <footer style="margin-top:clamp(64px,10vw,140px);padding-top:24px;border-top:1px solid rgba(255,255,255,.1);
+        display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;
+        font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);">
+        <span>© 2026 Andrés Largo · Bogotá D.C.</span>
+        <span data-i18n="footerTag">FullStack developer in search of beyond</span>
+      </footer>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#42e6dd&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Atmosphere&quot;},&quot;grain&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.14,&quot;min&quot;:0,&quot;max&quot;:0.18,&quot;step&quot;:0.005,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Atmosphere&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:4,&quot;min&quot;:1,&quot;max&quot;:10,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Atmosphere&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    // tear down any previous instance (hot-reload / remount safety)
+    try{ window.__AL_raf && cancelAnimationFrame(window.__AL_raf); }catch(e){}
+    try{ window.__AL_lenis && window.__AL_lenis.destroy(); }catch(e){}
+    try{ window.ScrollTrigger && window.ScrollTrigger.getAll && window.ScrollTrigger.getAll().forEach(t=>t.kill()); }catch(e){}
+    try{ const m=document.getElementById('al-gl'); if(m) m.innerHTML=''; }catch(e){}
+    this.$ = (id)=>document.getElementById(id);
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.mobile = Math.min(window.innerWidth, window.innerHeight) < 760;
+    this.mouse = {x:0,y:0,tx:0,ty:0};
+    this.progress = 0; this.smoothP = 0;
+    this.locale = 'en';
+    this.motion = Math.max(1, Math.min(10, this.props.motion ?? 7)) / 7;
+
+    // apply tweakable accent + grain
+    if (this.props.accent) document.documentElement.style.setProperty('--accent', this.props.accent);
+    const g = this.$('al-grain'); if (g && this.props.grain != null) g.style.opacity = String(this.props.grain);
+
+    this.setupI18n();
+    this.initReveals();
+    this.initSkills();
+    this.initNav();
+    this.initContactForm();
+    this.loadLibs()
+      .then(()=>{ this.initScene(); this.initScroll(); this.initMouse(); })
+      .catch((e)=>{ console.warn('[AL] libs failed, CSS fallback', e); });
+  }
+
+  componentWillUnmount(){
+    try{ cancelAnimationFrame(this._rafId); }catch(e){}
+    try{ this._io && this._io.disconnect(); }catch(e){}
+    try{ this._skIO && this._skIO.disconnect(); }catch(e){}
+    try{ this._skRO && this._skRO.disconnect(); }catch(e){}
+    try{ cancelAnimationFrame(this._skRafId); }catch(e){}
+    try{ this._lenis && this._lenis.destroy(); }catch(e){}
+    try{ window.ScrollTrigger && window.ScrollTrigger.getAll().forEach(t=>t.kill()); }catch(e){}
+    try{ this._renderer && this._renderer.dispose(); }catch(e){}
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('mousemove', this._onMove);
+  }
+
+  /* ---------- i18n ---------- */
+  setupI18n(){
+    this.T = {
+      en:{ status:'Available for work', eyebrow:'FullStack developer in search of', beyond:'beyond',
+        role:'Sr. Software Engineer · FullStack · AI Workflows · Cloud & Mobile',
+        idx:'(01) — SYSTEM', cue:'Scroll to enter the system',
+        deep:'A living system — nodes, edges, and the data that travels between them.',
+        aboutKicker:'(02) — About', aboutRole:'Systems Engineer',
+        s1lab:'Years shipping systems', s2lab:'Engineers enabled', s3lab:'MVP funding raised',
+        aboutLead:'Seven-plus years building scalable full-stack systems and cloud-native solutions.',
+        aboutBody:'Today, augmented by AI — prompt engineering, spec-driven code generation with Cursor & Claude, and automation pipelines that',
+        aboutBodyEm:' think in systems.',
+        expKicker:'(03) — Trajectory', expTitle:'A trajectory in', expTitleEm:' systems.',
+        exp1role:'Senior Frontend Engineer', exp1meta:'08/2025 — Present · Remote',
+        exp1desc:'Frontend architecture in Next.js / React / SCSS with Laravel integrations for a smart property-management platform; evolving the design system.',
+        exp2role:'Sr. FullStack Developer',
+        exp2desc:'Betting platform with integrated payments for the Haitian market (Next.js, Nest.js, React Native, AWS, MongoDB). Wired Claude API & GPT-4 into automated aviation-claims processing and legal-compliance flows.',
+        exp3role:'Sr. Full Stack Developer',
+        exp3desc:'Led and mentored a cross-functional team; built React UI/UX component libraries used by 200+ people. Node / Nest / AWS / Prisma / PostgreSQL.',
+        exp4role:'Sr. Full Stack Developer',
+        exp4desc:'Performance across the React ecosystem; Flutter / React Native mobile; DDD microservices with NestJS and .NET Core.',
+        exp5role:'Full Stack Developer',
+        exp5desc:'Fintech with Plaid & Stripe integrations; security audits.',
+        exp6role:'Founding Engineer', exp6meta:'2019 — 2021 · Denver, Remote',
+        exp6desc:'Built the MVP that raised $1M in investment.',
+        exp7role:'Mobile Developer',
+        exp7desc:'Native mobile app for Shell Colombia, shipped to the App Store and Google Play.',
+        workKicker:'(04) — Selected work', workTitle:"Things I've", workTitleEm:' shipped.',
+        p1tag:'Betting · Payments · AI', p1tagline:'A wagering platform that pays out — and reads its own claims.',
+        p1desc:'End-to-end betting platform with integrated payments for the Haitian market. I embedded Claude and GPT-4 to automate aviation-claims processing and legal-compliance flows.',
+        p2tag:'Design system at scale', p2tagline:'One component library, two hundred builders.',
+        p2desc:'Led and mentored a cross-functional team, shipping the React UI/UX component libraries that 200+ people built on top of.', p2metric:'Engineers building on it',
+        p3tag:'Fintech MVP', p3tagline:'From zero to a million in the bank.',
+        p3desc:'Built the MVP from the ground up — the product that raised $1M in investment and grew into the Chamba ecosystem.', p3metric:'Raised on the MVP',
+        p4tag:'Native mobile', p4tagline:'A national brand, in your pocket.',
+        p4desc:'A native mobile app for Shell Colombia at Imaginamos, published on the App Store and Google Play.',
+        skillsKicker:'(05) — Skills', skillsTitle:'A stack, wired as a', skillsTitleEm:' system.',
+        catAI:'AI & Prompt Eng.', catFE:'Frontend', catMO:'Mobile', catBE:'Backend', catCL:'Cloud & DevOps', catDB:'Databases',
+        coreLabel:'SYSTEM',
+        navAbout:'About', navWork:'Work', navSkills:'Skills', navContact:'Contact',
+        contactKicker:'(06) — Contact', contactTitle:"Let's build systems that", contactTitleEm:' outlive us.',
+        contactSub:'Open to senior & staff roles, AI-native product work, and hard systems problems.',
+        footerTag:'FullStack developer in search of beyond',
+        formTitle:'Or drop a line', formName:'Name', formNamePh:'Your name',
+        formEmail:'Email', formEmailPh:'you@company.com', formMsg:'Message', formMsgPh:'What are you building?',
+        formSend:'Send message', formSent:'Thanks — opening your mail client…' },
+      es:{ status:'Disponible para proyectos', eyebrow:'Desarrollador FullStack en búsqueda de lo', beyond:'más allá',
+        role:'Ingeniero de Software Sr. · FullStack · Flujos con IA · Cloud & Móvil',
+        idx:'(01) — SISTEMA', cue:'Desplázate para entrar al sistema',
+        deep:'Un sistema vivo — nodos, aristas, y los datos que viajan entre ellos.',
+        aboutKicker:'(02) — Sobre', aboutRole:'Ingeniero de Sistemas',
+        s1lab:'Años enviando sistemas', s2lab:'Ingenieros habilitados', s3lab:'Financiación MVP levantada',
+        aboutLead:'Más de siete años construyendo sistemas full-stack escalables y soluciones cloud-native.',
+        aboutBody:'Hoy, aumentado por IA — prompt engineering, generación de código spec-driven con Cursor y Claude, y pipelines de automatización que',
+        aboutBodyEm:' piensan en sistemas.',
+        expKicker:'(03) — Trayectoria', expTitle:'Una trayectoria en', expTitleEm:' sistemas.',
+        exp1role:'Ingeniero Frontend Senior', exp1meta:'08/2025 — Presente · Remoto',
+        exp1desc:'Arquitectura frontend en Next.js / React / SCSS con integraciones Laravel para una plataforma de gestión de propiedades inteligente; evolución del design system.',
+        exp2role:'Desarrollador FullStack Sr.',
+        exp2desc:'Plataforma de apuestas con pagos integrados para el mercado haitiano (Next.js, Nest.js, React Native, AWS, MongoDB). Integré Claude API y GPT-4 para procesamiento automatizado de reclamos de aviación y flujos de cumplimiento legal.',
+        exp3role:'Desarrollador Full Stack Sr.',
+        exp3desc:'Lideré y mentoreé un equipo cross-funcional; librerías de componentes UI/UX en React para más de 200 personas. Node / Nest / AWS / Prisma / PostgreSQL.',
+        exp4role:'Desarrollador Full Stack Sr.',
+        exp4desc:'Performance en el ecosistema React; móvil Flutter / React Native; microservicios DDD con NestJS y .NET Core.',
+        exp5role:'Desarrollador Full Stack',
+        exp5desc:'Fintech con integraciones Plaid y Stripe; auditorías de seguridad.',
+        exp6role:'Ingeniero Fundador', exp6meta:'2019 — 2021 · Denver, Remoto',
+        exp6desc:'Construí el MVP que levantó $1M de inversión.',
+        exp7role:'Desarrollador Móvil',
+        exp7desc:'App móvil nativa para Shell Colombia, publicada en App Store y Google Play.',
+        workKicker:'(04) — Proyectos', workTitle:'Cosas que he', workTitleEm:' enviado.',
+        p1tag:'Apuestas · Pagos · IA', p1tagline:'Una plataforma de apuestas que paga — y lee sus propios reclamos.',
+        p1desc:'Plataforma de apuestas end-to-end con pagos integrados para el mercado haitiano. Integré Claude y GPT-4 para automatizar el procesamiento de reclamos de aviación y flujos de cumplimiento legal.',
+        p2tag:'Design system a escala', p2tagline:'Una librería de componentes, doscientos constructores.',
+        p2desc:'Lideré y mentoreé un equipo cross-funcional, entregando las librerías de componentes UI/UX en React sobre las que construyeron más de 200 personas.', p2metric:'Ingenieros construyendo sobre ella',
+        p3tag:'MVP fintech', p3tagline:'De cero a un millón en el banco.',
+        p3desc:'Construí el MVP desde cero — el producto que levantó $1M de inversión y creció hasta el ecosistema Chamba.', p3metric:'Levantados con el MVP',
+        p4tag:'Móvil nativo', p4tagline:'Una marca nacional, en tu bolsillo.',
+        p4desc:'App móvil nativa para Shell Colombia en Imaginamos, publicada en App Store y Google Play.',
+        skillsKicker:'(05) — Stack', skillsTitle:'Un stack, cableado como', skillsTitleEm:' sistema.',
+        catAI:'IA & Prompt Eng.', catFE:'Frontend', catMO:'Móvil', catBE:'Backend', catCL:'Cloud & DevOps', catDB:'Bases de datos',
+        coreLabel:'SISTEMA',
+        navAbout:'Sobre', navWork:'Proyectos', navSkills:'Stack', navContact:'Contacto',
+        contactKicker:'(06) — Contacto', contactTitle:'Construyamos sistemas que', contactTitleEm:' nos sobrevivan.',
+        contactSub:'Abierto a roles senior & staff, producto AI-native y problemas de sistemas difíciles.',
+        footerTag:'Desarrollador FullStack en búsqueda de lo más allá',
+        formTitle:'O déjame un mensaje', formName:'Nombre', formNamePh:'Tu nombre',
+        formEmail:'Email', formEmailPh:'tu@empresa.com', formMsg:'Mensaje', formMsgPh:'¿Qué estás construyendo?',
+        formSend:'Enviar mensaje', formSent:'Gracias — abriendo tu cliente de correo…' }
+    };
+    const paint = (loc)=>{
+      this.locale = loc;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k = el.getAttribute('data-i18n'); if(this.T[loc][k]!=null) el.textContent = this.T[loc][k];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+        const k = el.getAttribute('data-i18n-ph'); if(this.T[loc][k]!=null) el.placeholder = this.T[loc][k];
+      });
+      const en=this.$('al-en'), es=this.$('al-es');
+      if(en) en.style.color = loc==='en' ? 'var(--fg)' : 'var(--faint)';
+      if(es) es.style.color = loc==='es' ? 'var(--fg)' : 'var(--faint)';
+    };
+    this.$('al-en') && this.$('al-en').addEventListener('click', ()=>paint('en'));
+    this.$('al-es') && this.$('al-es').addEventListener('click', ()=>paint('es'));
+  }
+
+  /* ---------- lib loading ---------- */
+  loadScript(src){
+    return new Promise((res,rej)=>{
+      if(document.querySelector(`script[src="${src}"]`)) return res();
+      const s=document.createElement('script'); s.src=src; s.async=true;
+      s.onload=()=>res(); s.onerror=()=>rej(new Error('load '+src));
+      document.head.appendChild(s);
+    });
+  }
+  async loadLibs(){
+    const gsapChain = this.loadScript('https://unpkg.com/gsap@3.12.5/dist/gsap.min.js')
+      .then(()=>this.loadScript('https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js'));
+    await Promise.all([
+      this.loadScript('https://unpkg.com/three@0.128.0/build/three.min.js'),
+      this.loadScript('https://unpkg.com/lenis@1.1.13/dist/lenis.min.js'),
+      gsapChain,
+    ]);
+    window.gsap.registerPlugin(window.ScrollTrigger);
+  }
+
+  /* ---------- 3D graph ---------- */
+  initScene(){
+    const THREE = window.THREE, mount = this.$('al-gl');
+    let renderer;
+    try{
+      renderer = new THREE.WebGLRenderer({ alpha:true, antialias: !this.mobile, powerPreference:'high-performance' });
+    }catch(e){ throw new Error('no webgl'); }
+    this._renderer = renderer;
+    renderer.setClearColor(0x000000, 0);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio||1, this.mobile?1.5:2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    mount.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(52, window.innerWidth/window.innerHeight, 0.1, 300);
+    cam.position.set(0,0,62);
+    const group = new THREE.Group(); scene.add(group);
+    this._scene=scene; this._cam=cam; this._group=group;
+
+    const accent = new THREE.Color(this.props.accent || '#42e6dd');
+
+    // --- nodes in clustered subsystems ---
+    const N = this.mobile ? 84 : 132;
+    const clusters = [];
+    const CC = 6;
+    for(let c=0;c<CC;c++){
+      clusters.push(new THREE.Vector3(
+        (Math.random()-0.5)*46, (Math.random()-0.5)*30, (Math.random()-0.5)*48));
+    }
+    const base = new Float32Array(N*3);
+    const cur  = new Float32Array(N*3);
+    const size = new Float32Array(N);
+    const phase= new Float32Array(N);
+    const cidx = new Int16Array(N);
+    for(let i=0;i<N;i++){
+      const c = clusters[i % CC]; cidx[i]=i%CC;
+      const spread = 9 + Math.random()*7;
+      const x=c.x+(Math.random()-0.5)*spread, y=c.y+(Math.random()-0.5)*spread*0.8, z=c.z+(Math.random()-0.5)*spread;
+      base[i*3]=x; base[i*3+1]=y; base[i*3+2]=z;
+      cur[i*3]=x; cur[i*3+1]=y; cur[i*3+2]=z;
+      size[i]= 2.2 + Math.random()*4.2 + (Math.random()<0.12?5:0);
+      phase[i]= Math.random()*Math.PI*2;
+    }
+    this._N=N; this._base=base; this._cur=cur; this._phase=phase;
+
+    const nodeGeo = new THREE.BufferGeometry();
+    nodeGeo.setAttribute('position', new THREE.BufferAttribute(cur,3));
+    nodeGeo.setAttribute('aSize', new THREE.BufferAttribute(size,1));
+    nodeGeo.setAttribute('aPhase', new THREE.BufferAttribute(phase,1));
+    const nodeMat = new THREE.ShaderMaterial({
+      uniforms:{ uTime:{value:0}, uColor:{value:accent}, uPR:{value:renderer.getPixelRatio()} },
+      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      vertexShader:`attribute float aSize; attribute float aPhase; uniform float uTime; uniform float uPR;
+        varying float vA;
+        void main(){ vec4 mv = modelViewMatrix * vec4(position,1.0);
+          gl_Position = projectionMatrix * mv;
+          float s = aSize * (1.0 + 0.32*sin(uTime*0.9 + aPhase));
+          gl_PointSize = s * uPR * (320.0 / max(-mv.z, 1.0));
+          vA = clamp(1.0 - (-mv.z)/130.0, 0.0, 1.0); }`,
+      fragmentShader:`uniform vec3 uColor; varying float vA;
+        void main(){ vec2 c = gl_PointCoord - 0.5; float d = length(c);
+          float glow = smoothstep(0.5,0.0,d); float core = smoothstep(0.16,0.0,d);
+          vec3 col = uColor*(glow*0.55 + core*1.35);
+          gl_FragColor = vec4(col, (glow*0.42 + core)*vA); }`
+    });
+    group.add(new THREE.Points(nodeGeo, nodeMat));
+    this._nodeGeo=nodeGeo; this._nodeMat=nodeMat;
+
+    // --- edges: connect near neighbours (mostly intra-cluster) ---
+    const edges=[];
+    for(let i=0;i<N;i++){
+      const dists=[];
+      for(let j=0;j<N;j++){ if(i===j) continue;
+        const dx=base[i*3]-base[j*3], dy=base[i*3+1]-base[j*3+1], dz=base[i*3+2]-base[j*3+2];
+        dists.push([dx*dx+dy*dy+dz*dz, j]); }
+      dists.sort((a,b)=>a[0]-b[0]);
+      const k = 2 + (Math.random()<0.4?1:0);
+      for(let n=0;n<k;n++){ const j=dists[n][1]; if(i<j) edges.push([i,j]); }
+    }
+    this._edges=edges;
+    const linePos = new Float32Array(edges.length*6);
+    const lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(linePos,3));
+    const lineMat = new THREE.LineBasicMaterial({ color:accent, transparent:true, opacity:0.16,
+      blending:THREE.AdditiveBlending, depthWrite:false });
+    group.add(new THREE.LineSegments(lineGeo, lineMat));
+    this._lineGeo=lineGeo; this._linePos=linePos;
+
+    // --- data-flow particles travelling along a subset of edges ---
+    const F = Math.min(edges.length, this.mobile?34:58);
+    const flows=[];
+    for(let f=0;f<F;f++){
+      const e = edges[Math.floor(Math.random()*edges.length)];
+      flows.push({ a:e[0], b:e[1], t:Math.random(), sp:0.12+Math.random()*0.5 });
+    }
+    this._flows=flows;
+    const flowPos = new Float32Array(F*3);
+    const flowGeo = new THREE.BufferGeometry();
+    flowGeo.setAttribute('position', new THREE.BufferAttribute(flowPos,3));
+    const flowMat = new THREE.ShaderMaterial({
+      uniforms:{ uColor:{value:new THREE.Color(this.props.accent||'#8ff6ef')}, uPR:{value:renderer.getPixelRatio()} },
+      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      vertexShader:`uniform float uPR; varying float vA;
+        void main(){ vec4 mv = modelViewMatrix*vec4(position,1.0);
+          gl_Position=projectionMatrix*mv; gl_PointSize=5.5*uPR*(320.0/max(-mv.z,1.0));
+          vA=clamp(1.0-(-mv.z)/130.0,0.0,1.0); }`,
+      fragmentShader:`uniform vec3 uColor; varying float vA;
+        void main(){ float d=length(gl_PointCoord-0.5); float core=smoothstep(0.5,0.0,d);
+          gl_FragColor=vec4(uColor*1.6, core*core*vA); }`
+    });
+    group.add(new THREE.Points(flowGeo, flowMat));
+    this._flowGeo=flowGeo; this._flowPos=flowPos;
+
+    this._clock = new THREE.Clock();
+
+    this._onResize = ()=>{
+      cam.aspect = window.innerWidth/window.innerHeight; cam.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', this._onResize);
+
+    // independent rAF loop (drives lenis + 3D render; not tied to gsap.ticker so it never sleeps)
+    const loop = (time)=>{
+      this._rafId = requestAnimationFrame(loop);
+      window.__AL_raf = this._rafId;
+      if(this._lenis) this._lenis.raf(time);
+      this.renderFrame();
+    };
+    this._rafId = requestAnimationFrame(loop);
+    window.__AL_raf = this._rafId;
+  }
+
+  renderFrame(){
+    const THREE=window.THREE; if(!this._renderer) return;
+    const t=this._clock.getElapsedTime();
+    const dt=Math.min(this._clock.getDelta ? 0.016 : 0.016, 0.05);
+    this.mouse.x += (this.mouse.tx-this.mouse.x)*0.05;
+    this.mouse.y += (this.mouse.ty-this.mouse.y)*0.05;
+    this.smoothP += (this.progress-this.smoothP)*0.06;
+    const p=this.smoothP, N=this._N, base=this._base, cur=this._cur, ph=this._phase;
+
+    // node drift + gentle cursor attraction (xy plane of the group)
+    const mx=this.mouse.x*34, my=-this.mouse.y*22;
+    for(let i=0;i<N;i++){
+      const bx=base[i*3]+Math.sin(t*0.3+ph[i])*1.3;
+      const by=base[i*3+1]+Math.cos(t*0.26+ph[i])*1.1;
+      const bz=base[i*3+2]+Math.sin(t*0.22+ph[i]*1.7)*1.3;
+      const dx=mx-bx, dy=my-by; const d2=dx*dx+dy*dy;
+      const k=0.16*Math.exp(-d2*0.0016);
+      cur[i*3]=bx+dx*k; cur[i*3+1]=by+dy*k; cur[i*3+2]=bz;
+    }
+    this._nodeGeo.attributes.position.needsUpdate=true;
+    this._nodeMat.uniforms.uTime.value=t;
+
+    // edges follow nodes
+    const lp=this._linePos, E=this._edges;
+    for(let e=0;e<E.length;e++){ const a=E[e][0]*3,b=E[e][1]*3,o=e*6;
+      lp[o]=cur[a];lp[o+1]=cur[a+1];lp[o+2]=cur[a+2];
+      lp[o+3]=cur[b];lp[o+4]=cur[b+1];lp[o+5]=cur[b+2]; }
+    this._lineGeo.attributes.position.needsUpdate=true;
+
+    // data flows travel a->b
+    const fp=this._flowPos, F=this._flows;
+    for(let f=0;f<F.length;f++){ const fl=F[f]; fl.t+=fl.sp*dt; if(fl.t>1) fl.t-=1;
+      const a=fl.a*3,b=fl.b*3,o=f*3,tt=fl.t;
+      fp[o]=cur[a]+(cur[b]-cur[a])*tt;
+      fp[o+1]=cur[a+1]+(cur[b+1]-cur[a+1])*tt;
+      fp[o+2]=cur[a+2]+(cur[b+2]-cur[a+2])*tt; }
+    this._flowGeo.attributes.position.needsUpdate=true;
+
+    // scroll-driven camera fly-through + mouse parallax
+    const cam=this._cam, grp=this._group, m=this.motion;
+    cam.position.z = 62 - p*80;
+    cam.position.x = this.mouse.x*6*m + Math.sin(p*Math.PI)*5;
+    cam.position.y = -this.mouse.y*4*m + p*3;
+    cam.lookAt(0, p*3, cam.position.z-22);
+    grp.rotation.y = this.mouse.x*0.22*m + t*0.018 + p*0.25;
+    grp.rotation.x = -this.mouse.y*0.16*m;
+
+    // name parallax (own rAF, independent of gsap)
+    if(this._nameEl) this._nameEl.style.transform =
+      'translate('+(this.mouse.x*14*m).toFixed(2)+'px,'+(this.mouse.y*8*m).toFixed(2)+'px)';
+
+    this._renderer.render(this._scene, this._cam);
+  }
+
+  /* ---------- scroll ---------- */
+  initScroll(){
+    const gsap=window.gsap, ST=window.ScrollTrigger;
+    if(!this.reduced){
+      const lenis = new window.Lenis({ lerp:0.09, smoothWheel:true });
+      this._lenis=lenis; window.__AL_lenis=lenis;
+      lenis.on('scroll', ST.update);
+    }
+    ST.create({ trigger:'#al-track', start:'top top', end:'bottom bottom', scrub:true,
+      onUpdate:(s)=>{ this.progress=s.progress; } });
+    // hero text recedes
+    gsap.to('#al-hero', { yPercent:-14, opacity:0, ease:'none',
+      scrollTrigger:{ trigger:'#al-track', start:'top top', end:'55% top', scrub:true } });
+
+  }
+
+  /* ---------- reveals (IntersectionObserver + CSS, independent of gsap) ---------- */
+  initReveals(){
+    const els=[...document.querySelectorAll('.al-rev')];
+    if(this.reduced || !('IntersectionObserver' in window)){ els.forEach(e=>e.classList.add('al-in')); return; }
+
+    // primary: IntersectionObserver
+    const io=new IntersectionObserver((ents)=>{
+      ents.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('al-in'); io.unobserve(en.target); } });
+    }, { threshold:0.15, rootMargin:'0px 0px -8% 0px' });
+    els.forEach(e=>io.observe(e));
+    this._io=io;
+
+    // fallback 1: geometry check on scroll/resize (covers contexts where IO never fires)
+    const reveal=()=>{
+      let remaining=0;
+      els.forEach(e=>{
+        if(e.classList.contains('al-in')) return;
+        const r=e.getBoundingClientRect();
+        if(r.top < window.innerHeight*0.9 && r.bottom > 0){ e.classList.add('al-in'); io.unobserve(e); }
+        else remaining++;
+      });
+      if(remaining===0){ window.removeEventListener('scroll',reveal); window.removeEventListener('resize',reveal); }
+    };
+    this._revealScan=reveal;
+    window.addEventListener('scroll',reveal,{passive:true});
+    window.addEventListener('resize',reveal);
+    reveal();
+
+    // fallback 2: safety net — never leave content invisible
+    this._revealSafety=setTimeout(()=>els.forEach(e=>e.classList.add('al-in')), 2600);
+  }
+
+  /* ---------- nav (smooth scroll to sections) ---------- */
+  initNav(){
+    const scrollTo=(el)=>{
+      if(!el) return;
+      if(this._lenis){ this._lenis.scrollTo(el, { offset:0, duration:1.1 }); }
+      else { const y=el.getBoundingClientRect().top + window.pageYOffset; window.scrollTo({ top:y, behavior:'smooth' }); }
+    };
+    document.querySelectorAll('[data-nav]').forEach(a=>{
+      a.addEventListener('click',(e)=>{ e.preventDefault(); scrollTo(this.$(a.getAttribute('data-nav'))); });
+    });
+  }
+
+  /* ---------- contact form (mailto compose) ---------- */
+  initContactForm(){
+    const f=this.$('al-form'); if(!f) return;
+    f.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const fd=new FormData(f);
+      const name=(fd.get('name')||'').toString().trim();
+      const email=(fd.get('email')||'').toString().trim();
+      const msg=(fd.get('message')||'').toString().trim();
+      const subject=encodeURIComponent('Portfolio contact'+(name?(' — '+name):''));
+      const body=encodeURIComponent((msg||'')+(email?('\n\n— '+name+' · '+email):''));
+      window.location.href='mailto:contacto@andreslargo.com?subject='+subject+'&body='+body;
+      const m=this.$('al-form-msg');
+      if(m){ m.textContent=this.T[this.locale].formSent; m.style.opacity='1'; }
+    });
+  }
+
+  /* ---------- skills constellation (independent SVG viz) ---------- */
+  initSkills(){
+    const mount=this.$('al-skillmap'); if(!mount) return;
+    const accent=this.props.accent||'#42e6dd';
+    const cats=[
+      {k:'AI', key:'catAI', name:'AI & Prompt Eng.', skills:['Claude API','GPT-4','Cursor','MCP servers','RAG','Agentic workflows']},
+      {k:'FE', key:'catFE', name:'Frontend', skills:['React','Next.js','TypeScript','Tailwind']},
+      {k:'MO', key:'catMO', name:'Mobile', skills:['React Native','Flutter','Expo']},
+      {k:'BE', key:'catBE', name:'Backend', skills:['Node / Nest','.NET','Laravel','GraphQL','Microservices','DDD']},
+      {k:'CL', key:'catCL', name:'Cloud & DevOps', skills:['AWS','Docker','Serverless','Stripe','Plaid']},
+      {k:'DB', key:'catDB', name:'Databases', skills:['PostgreSQL','MySQL','MongoDB','Prisma']},
+    ];
+    this._cats=cats;
+    const narrow = window.innerWidth < 760;
+    if(this.reduced || narrow){ this.buildSkillsList(mount,cats,accent); return; }
+    this.buildSkillsMap(mount,cats,accent);
+  }
+
+  buildSkillsList(mount,cats,accent){
+    mount.innerHTML='';
+    const wrap=document.createElement('div');
+    wrap.style.cssText='display:flex;flex-direction:column;gap:0;';
+    cats.forEach(c=>{
+      const row=document.createElement('div');
+      row.style.cssText='padding:22px 0;border-top:1px solid rgba(255,255,255,.09);';
+      const h=document.createElement('div');
+      h.setAttribute('data-i18n',c.key); h.textContent=c.name;
+      h.style.cssText='font-family:var(--font-display);font-weight:300;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--fg);letter-spacing:-.01em;';
+      const s=document.createElement('div');
+      s.textContent=c.skills.join('  ·  ');
+      s.style.cssText='margin-top:10px;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;color:'+accent+';line-height:1.7;';
+      row.appendChild(h); row.appendChild(s); wrap.appendChild(row);
+    });
+    const last=wrap.lastChild; if(last) last.style.borderBottom='1px solid rgba(255,255,255,.09)';
+    mount.appendChild(wrap);
+  }
+
+  buildSkillsMap(mount,cats,accent){
+    const NS='http://www.w3.org/2000/svg';
+    mount.innerHTML='';
+    const svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('width','100%');
+    svg.style.display='block';
+    const gEdges=document.createElementNS(NS,'g');
+    const gNodes=document.createElementNS(NS,'g');
+    svg.appendChild(gEdges); svg.appendChild(gNodes);
+    mount.appendChild(svg);
+    this._skSvg=svg;
+
+    const mk=(tag,attrs)=>{ const e=document.createElementNS(NS,tag); for(const a in attrs) e.setAttribute(a,attrs[a]); return e; };
+
+    // core node
+    const nodes=[]; const edges=[]; const clusters=[];
+    const core={type:'core', phase:Math.random()*6.28, amp:3};
+    core.circle=mk('circle',{r:7,fill:accent}); core.circle.style.filter='drop-shadow(0 0 8px '+accent+')';
+    core.label=mk('text',{'font-family':'var(--font-mono)','font-size':11,'letter-spacing':'2','fill':'#e9eef0','text-anchor':'middle'});
+    core.label.setAttribute('data-i18n','coreLabel'); core.label.textContent='SYSTEM';
+    gNodes.appendChild(core.circle); gNodes.appendChild(core.label);
+    nodes.push(core);
+
+    cats.forEach((c)=>{
+      const cg=document.createElementNS(NS,'g'); cg.style.transition='opacity .3s ease'; gNodes.appendChild(cg);
+      const ceg=document.createElementNS(NS,'g'); gEdges.appendChild(ceg);
+      const hub={type:'hub', k:c.k, phase:Math.random()*6.28, amp:5};
+      hub.circle=mk('circle',{r:5,fill:accent}); hub.circle.style.filter='drop-shadow(0 0 6px '+accent+')';
+      hub.label=mk('text',{'font-family':'var(--font-mono)','font-size':12.5,'letter-spacing':'1.5','fill':'#e9eef0'});
+      hub.label.setAttribute('data-i18n',c.key); hub.label.textContent=c.name;
+      cg.appendChild(hub.circle); cg.appendChild(hub.label);
+      const hubIdx=nodes.length; nodes.push(hub);
+      // core -> hub edge
+      const eCore=mk('line',{stroke:accent,'stroke-width':0.9}); eCore.style.opacity='0.3';
+      ceg.appendChild(eCore); edges.push({line:eCore,a:0,b:hubIdx,base:0.3,k:c.k});
+      c.skills.forEach((s)=>{
+        const sn={type:'skill', k:c.k, phase:Math.random()*6.28, amp:4};
+        sn.circle=mk('circle',{r:3,fill:accent}); sn.circle.style.opacity='0.9';
+        sn.label=mk('text',{'font-family':'var(--font-mono)','font-size':10.5,'letter-spacing':'.4','fill':'#98a1a5'});
+        sn.label.textContent=s;
+        cg.appendChild(sn.circle); cg.appendChild(sn.label);
+        const sIdx=nodes.length; nodes.push(sn);
+        const e=mk('line',{stroke:accent,'stroke-width':0.7}); e.style.opacity='0.16';
+        ceg.appendChild(e); edges.push({line:e,a:hubIdx,b:sIdx,base:0.16,k:c.k});
+      });
+      const clus={k:c.k, g:cg, eg:ceg, hub};
+      clusters.push(clus);
+      cg.addEventListener('mouseenter',()=>this.skHover(c.k));
+      cg.addEventListener('mouseleave',()=>this.skHover(null));
+    });
+
+    this._skNodes=nodes; this._skEdges=edges; this._skClusters=clusters;
+
+    const layout=()=>{
+      const W=mount.clientWidth||900;
+      const H=Math.max(540, Math.min(window.innerHeight*0.8, 820));
+      svg.setAttribute('height',H); svg.setAttribute('viewBox','0 0 '+W+' '+H);
+      const cx=W/2, cy=H/2;
+      core.bx=cx; core.by=cy;
+      const rx=Math.min(W*0.32,500), ry=H*0.33;
+      let ni=1;
+      cats.forEach((c,i)=>{
+        const ang=-Math.PI/2 + i/cats.length*Math.PI*2;
+        const hx=cx+Math.cos(ang)*rx, hy=cy+Math.sin(ang)*ry;
+        const hub=nodes[ni++]; hub.bx=hx; hub.by=hy; hub.right=hx>=cx;
+        const R=Math.min(W,H)*0.13, spread=Math.PI*0.95, n=c.skills.length;
+        c.skills.forEach((s,j)=>{
+          const a2=ang - spread/2 + (n>1? j/(n-1):0.5)*spread;
+          const rr=R*(0.72+(j%2)*0.55);
+          const sn=nodes[ni++]; sn.bx=hx+Math.cos(a2)*rr; sn.by=hy+Math.sin(a2)*rr; sn.right=sn.bx>=cx;
+        });
+      });
+    };
+    layout();
+    this._skLayout=layout;
+    this._skRO=new ResizeObserver(()=>{ layout(); }); this._skRO.observe(mount);
+
+    // animate only while in view
+    this._skActive=false; this._skT0=performance.now();
+    this._skIO=new IntersectionObserver((ents)=>{
+      ents.forEach(en=>{ this._skActive=en.isIntersecting; if(this._skActive && !this._skRafId) this.skLoop(); });
+    },{threshold:0.02});
+    this._skIO.observe(mount);
+    this.skFrame();
+  }
+
+  skHover(k){
+    if(!this._skClusters) return;
+    this._skClusters.forEach(c=>{ c.g.style.opacity=(!k||c.k===k)?'1':'0.2'; c.eg.style.opacity=(!k||c.k===k)?'1':'0.12'; });
+  }
+
+  skFrame(){
+    const nodes=this._skNodes, edges=this._skEdges; if(!nodes) return;
+    const t=(performance.now()-this._skT0)/1000;
+    for(let i=0;i<nodes.length;i++){ const n=nodes[i];
+      n.x=n.bx+Math.sin(t*0.5+n.phase)*n.amp; n.y=n.by+Math.cos(t*0.42+n.phase)*n.amp;
+      n.circle.setAttribute('cx',n.x.toFixed(1)); n.circle.setAttribute('cy',n.y.toFixed(1));
+      if(n.type==='core'){ n.label.setAttribute('x',n.x.toFixed(1)); n.label.setAttribute('y',(n.y+26).toFixed(1)); }
+      else if(n.type==='hub'){ n.label.setAttribute('x',(n.x+(n.right?11:-11)).toFixed(1)); n.label.setAttribute('y',(n.y-13).toFixed(1)); n.label.setAttribute('text-anchor',n.right?'start':'end'); }
+      else { n.label.setAttribute('x',(n.x+(n.right?8:-8)).toFixed(1)); n.label.setAttribute('y',(n.y+3.5).toFixed(1)); n.label.setAttribute('text-anchor',n.right?'start':'end'); }
+    }
+    for(let e=0;e<edges.length;e++){ const ed=edges[e],a=nodes[ed.a],b=nodes[ed.b];
+      ed.line.setAttribute('x1',a.x.toFixed(1)); ed.line.setAttribute('y1',a.y.toFixed(1));
+      ed.line.setAttribute('x2',b.x.toFixed(1)); ed.line.setAttribute('y2',b.y.toFixed(1)); }
+  }
+
+  skLoop(){
+    if(!this._skActive){ this._skRafId=null; return; }
+    this.skFrame();
+    this._skRafId=requestAnimationFrame(()=>this.skLoop());
+  }
+
+  /* ---------- mouse (feeds 3D + name parallax; parallax applied in renderFrame) ---------- */
+  initMouse(){
+    this._nameEl = this.$('al-name');
+    this._onMove = (e)=>{
+      this.mouse.tx = (e.clientX/window.innerWidth - 0.5)*2;
+      this.mouse.ty = (e.clientY/window.innerHeight - 0.5)*2;
+    };
+    window.addEventListener('mousemove', this._onMove);
+  }
+}
+</script>
+</body>
+</html>
