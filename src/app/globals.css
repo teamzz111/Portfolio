@@ -195,6 +195,29 @@ body {
   }
 }
 
+/* ---------- Contact form fields ---------- */
+.al-field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  padding: 12px 0;
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.al-field:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.al-field::placeholder {
+  color: var(--faint);
+}
+
 /* ---------- Section hover interactions ---------- */
 .al-exp {
   border-top: 1px solid rgba(255, 255, 255, 0.09);

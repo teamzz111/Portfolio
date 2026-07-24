@@ -35,7 +35,7 @@ Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + ste
 `skills-data.ts`, `SkillsList` (render por defecto/SSR), `SkillsConstellation` (SVG imperativa: layout ellipse del prototipo, rAF gated por IO, ResizeObserver, hover dim 0.2/0.12), swap ≥760px && !reduced.
 **AC:** tests: skills-data (6 categorías, skills correctos), layout puro (hubs en ellipse, anchors por lado); build OK.
 
-## T8 — Contact + ContactForm — [ ]
+## T8 — Contact + ContactForm — [x]
 Contact (glow radial, headline serif, email link, cards LinkedIn/GitHub, footer), ContactForm (uncontrolled, mailto compose con subject/body codificados, confirmación formSent).
 **AC:** test unit RED→GREEN de `buildMailto(name,email,msg)`; test render en ambos locales; build OK.
 
