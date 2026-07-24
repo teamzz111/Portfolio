@@ -3,6 +3,9 @@ import Atmosphere from "@/components/Atmosphere";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import SystemGraphLoader from "@/components/SystemGraphLoader";
+import About from "@/components/About";
+import Experience from "@/components/Experience";
+import SelectedWork from "@/components/SelectedWork";
 
 export default async function Home({
   params,
@@ -18,6 +21,9 @@ export default async function Home({
       <Nav />
       <main>
         <Hero />
+        <About />
+        <Experience />
+        <SelectedWork />
       </main>
     </>
   );

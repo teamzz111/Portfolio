@@ -27,7 +27,7 @@ Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + ste
 `lib/graph.ts` (port puro: 6 clusters, N=132/84, aristas 2–3 vecinos i<j, flows 58/34), `lib/shaders.ts` (GLSL literal), `SystemGraph.tsx` (`<Canvas frameloop="never" flat>`, useFrame = port de renderFrame con delta real clamp 0.05, registra advance), `SystemGraphLoader` (dynamic ssr:false + gates WebGL/reduced-motion).
 **AC:** tests unit de graph.ts (conteos de nodos/aristas/flows, dedupe, clusters); build OK con three en chunk aparte; verificación manual side-by-side con prototipo.
 
-## T6 — Secciones + reveals (About, Experience, SelectedWork) — [ ]
+## T6 — Secciones + reveals (About, Experience, SelectedWork) — [x]
 `useReveal` (IO + geometry-scan + safety 2.6s; sin JS visible), `Reveal.tsx`, About (ledger 3 stats + statement + gradiente hand-off), Experience (7 filas de content.ts+messages, ghost years, hover), SelectedWork (4 proyectos alternados con placeholders 16:10, overlay /0N).
 **AC:** tests: render con copy EN y ES exacto del prototipo; content.ts consistente (7 exp, 4 proyectos); build OK.
 
