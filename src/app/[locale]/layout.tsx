@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { fontVariables } from "@/fonts";
 import { locales } from "@/i18n/locales";
+import LenisProvider from "@/providers/LenisProvider";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -37,7 +38,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={fontVariables}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <LenisProvider>{children}</LenisProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

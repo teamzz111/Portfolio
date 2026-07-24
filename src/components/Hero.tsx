@@ -1,6 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { useGSAP } from "@gsap/react";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { MOTION_MULT, motionState } from "@/lib/motion-state";
 import { site } from "@/lib/content";
 
 const NAME_SIZE = "clamp(3.4rem,15vw,14rem)";
@@ -9,12 +13,56 @@ const MASK_MARGIN = "clamp(-46px,-2.6vw,-14px)";
 
 export default function Hero() {
   const t = useTranslations("hero");
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const nameRef = useRef<HTMLHeadingElement>(null);
+
+  // Scroll-linked tweens (scrub only — the render loop is the provider's rAF).
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      ScrollTrigger.create({
+        trigger: trackRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+        onUpdate: (self) => {
+          motionState.progress = self.progress;
+        },
+      });
+      gsap.to(overlayRef.current, {
+        yPercent: -14,
+        opacity: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: trackRef.current,
+          start: "top top",
+          end: "55% top",
+          scrub: true,
+        },
+      });
+    });
+  });
+
+  // Mouse parallax on the name group, applied in the shared rAF loop.
+  useEffect(() => {
+    const el = nameRef.current;
+    if (!el) return;
+    const apply = () => {
+      el.style.transform = `translate(${(motionState.mouse.x * 14 * MOTION_MULT).toFixed(2)}px,${(motionState.mouse.y * 8 * MOTION_MULT).toFixed(2)}px)`;
+    };
+    motionState.onFrame.add(apply);
+    return () => {
+      motionState.onFrame.delete(apply);
+    };
+  }, []);
 
   return (
     <>
-      {/* Fixed stage overlay — fades/recedes on scroll (T4) */}
+      {/* Fixed stage overlay — fades/recedes on scroll */}
       <div
         id="hero-overlay"
+        ref={overlayRef}
         className="pointer-events-none fixed inset-0 z-10 will-change-transform"
       >
         {/* location, top-right */}
@@ -66,6 +114,7 @@ export default function Hero() {
 
           <h1
             id="hero-name"
+            ref={nameRef}
             className="font-display m-0"
             style={{ lineHeight: 0.8, letterSpacing: "-.03em" }}
           >
@@ -147,7 +196,12 @@ export default function Hero() {
       </div>
 
       {/* Scroll track — generates the fly-through scroll distance */}
-      <div id="hero-track" className="relative z-[1]" style={{ height: "170vh" }} />
+      <div
+        id="hero-track"
+        ref={trackRef}
+        className="relative z-[1]"
+        style={{ height: "170vh" }}
+      />
     </>
   );
 }

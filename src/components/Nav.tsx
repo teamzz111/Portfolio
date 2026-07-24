@@ -1,18 +1,26 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { useLenis } from "@/providers/LenisProvider";
 import { navSections, site } from "@/lib/content";
 
 export default function Nav() {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const lenis = useLenis();
 
   const handleNavClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
     target: string,
   ) => {
     event.preventDefault();
-    document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(target);
+    if (!el) return;
+    if (lenis) {
+      lenis.scrollTo(el, { offset: 0, duration: 1.1 });
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (

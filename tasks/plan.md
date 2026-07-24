@@ -19,7 +19,7 @@ Clash Display woff2 self-hosted (Fontshare) via `next/font/local`; Instrument Se
 Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + steps(4)), Nav fixed z20 (monograma, links centro ocultos <820px, dot, toggle EN/ES como Links), Hero overlay z10 (eyebrow+beyond serif, nombre enmascarado con riseLine, role+caret, location, idx, cue) + track 170vh.
 **AC:** render de ambos locales con copy exacto; intro CSS con stagger; reduced-motion desactiva animaciones (CSS); test: componentes renderizan textos clave de messages.
 
-## T4 — Motion core (Lenis + rAF único + ScrollTrigger) — [ ]
+## T4 — Motion core (Lenis + rAF único + ScrollTrigger) — [x]
 `lib/motion-state.ts` singleton, `LenisProvider` (dueño del único rAF: lenis.raf → lerps → onFrame → advance), `lenis.on('scroll', ScrollTrigger.update)`, refresh tras fonts.ready, ScrollTriggers del hero (progress scrub + recede 55% con `gsap.matchMedia`), mousemove → parallax nombre (callback onFrame).
 **AC:** test unit: lerp de smoothProgress/mouse en motion-state; build OK; verificación manual: scroll suave, hero recede, progress 0→1.
 
