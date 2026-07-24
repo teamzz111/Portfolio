@@ -10,10 +10,15 @@ rama `master`. Amplify detecta `amplify.yml` en el root (baseDirectory `out`).
 
 ## 1.b Node 20 en el build (obligatorio)
 
-La imagen de build por defecto de Amplify puede traer Node 16. El
-`amplify.yml` ya fuerza Node 20 con `nvm install 20 && nvm use 20` en preBuild.
-Alternativa equivalente en consola: **App settings → Build settings → Build
-image settings** → imagen `Amazon Linux:2023` (Node 20 por defecto).
+La imagen por defecto (Amazon Linux 2) trae Node 16 y su GLIBC no puede
+ejecutar Node 20 (falla con `GLIBC_2.28 not found` aunque nvm lo instale).
+Cambia la imagen en **App settings → Build settings → Build image settings**:
+
+- Opción A: imagen **`Amazon Linux:2023`** (el preBuild usa nvm para fijar 20).
+- Opción B: **Custom Build Image** → `public.ecr.aws/docker/library/node:20`.
+
+Guarda y lanza un build nuevo (push o Redeploy después de guardar). El paso
+`node -v` del log debe imprimir `v20.x` sin errores de GLIBC.
 
 ## 2. Rewrites & redirects (obligatorio)
 

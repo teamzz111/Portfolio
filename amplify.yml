@@ -3,8 +3,9 @@ frontend:
   phases:
     preBuild:
       commands:
-        - nvm install 20
-        - nvm use 20
+        # Needs Node >= 20 with modern glibc: AL2023 image (nvm) or a
+        # custom node:20 image (no nvm). The old AL2 image cannot run Node 20.
+        - if command -v nvm >/dev/null 2>&1; then nvm install 20 && nvm use 20; fi
         - node -v
         - npm ci
     build:
