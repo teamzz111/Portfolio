@@ -6,6 +6,7 @@ import SystemGraphLoader from "@/components/SystemGraphLoader";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import SelectedWork from "@/components/SelectedWork";
+import Skills from "@/components/Skills";
 
 export default async function Home({
   params,
@@ -24,6 +25,7 @@ export default async function Home({
         <About />
         <Experience />
         <SelectedWork />
+        <Skills />
       </main>
     </>
   );

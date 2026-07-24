@@ -31,7 +31,7 @@ Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + ste
 `useReveal` (IO + geometry-scan + safety 2.6s; sin JS visible), `Reveal.tsx`, About (ledger 3 stats + statement + gradiente hand-off), Experience (7 filas de content.ts+messages, ghost years, hover), SelectedWork (4 proyectos alternados con placeholders 16:10, overlay /0N).
 **AC:** tests: render con copy EN y ES exacto del prototipo; content.ts consistente (7 exp, 4 proyectos); build OK.
 
-## T7 — Skills constellation + fallback — [ ]
+## T7 — Skills constellation + fallback — [x]
 `skills-data.ts`, `SkillsList` (render por defecto/SSR), `SkillsConstellation` (SVG imperativa: layout ellipse del prototipo, rAF gated por IO, ResizeObserver, hover dim 0.2/0.12), swap ≥760px && !reduced.
 **AC:** tests: skills-data (6 categorías, skills correctos), layout puro (hubs en ellipse, anchors por lado); build OK.
 
