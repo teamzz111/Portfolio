@@ -47,6 +47,6 @@ Landmarks, aria-hidden en decorativos (atmósfera, ghost years, caret), skip lin
 Verificar code-split (three/R3F lazy), DPR adaptativo, will-change solo en grain, sin FOUT que rompa la intro (next/font preload).
 **AC:** build production; inspección de chunks en salida de build; notas de Lighthouse para el usuario.
 
-## T11 — Amplify config — [ ]
+## T11 — Amplify config — [x]
 `amplify.yml` (baseDirectory `out`), documentar reglas de redirect en `docs/DEPLOY.md` (/ → /en/ 302, /en → /en/ 301, /es → /es/ 301, /<*> → 404).
 **AC:** amplify.yml válido; DEPLOY.md con las reglas JSON listas para pegar en la consola.
