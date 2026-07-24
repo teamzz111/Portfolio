@@ -23,7 +23,7 @@ Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + ste
 `lib/motion-state.ts` singleton, `LenisProvider` (dueño del único rAF: lenis.raf → lerps → onFrame → advance), `lenis.on('scroll', ScrollTrigger.update)`, refresh tras fonts.ready, ScrollTriggers del hero (progress scrub + recede 55% con `gsap.matchMedia`), mousemove → parallax nombre (callback onFrame).
 **AC:** test unit: lerp de smoothProgress/mouse en motion-state; build OK; verificación manual: scroll suave, hero recede, progress 0→1.
 
-## T5 — SystemGraph R3F — [ ]
+## T5 — SystemGraph R3F — [x]
 `lib/graph.ts` (port puro: 6 clusters, N=132/84, aristas 2–3 vecinos i<j, flows 58/34), `lib/shaders.ts` (GLSL literal), `SystemGraph.tsx` (`<Canvas frameloop="never" flat>`, useFrame = port de renderFrame con delta real clamp 0.05, registra advance), `SystemGraphLoader` (dynamic ssr:false + gates WebGL/reduced-motion).
 **AC:** tests unit de graph.ts (conteos de nodos/aristas/flows, dedupe, clusters); build OK con three en chunk aparte; verificación manual side-by-side con prototipo.
 
