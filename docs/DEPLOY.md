@@ -40,18 +40,35 @@ importa):
   `out/en/index.html`, `out/es/index.html` gracias a `trailingSlash: true`).
 - Cualquier otra ruta sirve el `404.html` exportado por Next.
 
-## 3. Verificación post-deploy
+## 3. Dominio / URLs absolutas (SEO)
+
+El dominio de producción es **`https://andreslargo.com`**: conectarlo en
+**Amplify → Domain management**. Canonical, hreflang, Open Graph,
+`sitemap.xml` y `robots.txt` ya lo usan por defecto (ver `src/lib/seo.ts`), así
+que no hace falta configurar nada más. Solo si algún entorno se sirviera desde
+otro dominio (p. ej. un preview `*.amplifyapp.com`), define la variable de
+entorno de build `NEXT_PUBLIC_SITE_URL` en
+**App settings → Environment variables** con la URL correcta (sin slash final).
+
+Amplify detecta `customHttp.yml` en el root: fija el `Content-Type: image/png`
+de `/opengraph-image` y `/apple-icon` (Next los exporta sin extensión).
+
+## 4. Verificación post-deploy
 
 - `https://<dominio>/` redirige a `/en/` y carga el hero.
 - `https://<dominio>/es/` carga la versión en español (deep link directo).
 - Toggle EN/ES navega entre locales.
 - Una ruta inexistente muestra el 404.
 - El formulario abre el cliente de correo (mailto) sobre HTTPS.
+- `/sitemap.xml` y `/robots.txt` responden y apuntan al dominio correcto.
+- `/opengraph-image` responde con `Content-Type: image/png`.
+- El favicon (pestaña) y la tarjeta al compartir el enlace (LinkedIn Post
+  Inspector / opengraph.xyz) se ven correctos.
 
 ## Pendientes del cliente
 
 - Screenshots reales de los 4 proyectos → `public/images/work/` y reemplazar
   los placeholders de `SelectedWork.tsx` por `next/image` (unoptimized).
-- Dominio custom (Amplify → Domain management) si aplica.
+- Conectar `andreslargo.com` en Amplify → Domain management.
 - Fuentes licenciadas PP Neue Montreal / PP Editorial New si se licencian
   (swap en `src/fonts/`).

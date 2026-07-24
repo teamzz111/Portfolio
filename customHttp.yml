@@ -1,0 +1,12 @@
+# Amplify custom headers. The metadata image routes export without a file
+# extension, so Amplify would serve them as application/octet-stream and
+# social scrapers could reject them.
+customHeaders:
+  - pattern: '/opengraph-image'
+    headers:
+      - key: 'Content-Type'
+        value: 'image/png'
+  - pattern: '/apple-icon'
+    headers:
+      - key: 'Content-Type'
+        value: 'image/png'
