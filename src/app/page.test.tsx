@@ -6,7 +6,7 @@ describe("scaffold", () => {
   it("renders the placeholder home page", () => {
     render(<Home />);
     expect(
-      screen.getByRole("heading", { name: "Andrés Largo" }),
+      screen.getByRole("heading", { name: /Andrés Largo/ }),
     ).toBeInTheDocument();
   });
 });

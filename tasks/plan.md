@@ -7,7 +7,7 @@ Ejecución en orden (cada tarea depende de la anterior salvo nota). Una tarea = 
 Borrar `index.html` (mantenimiento). Scaffold manual en el root: package.json (next ^15.5, react ^19, TS ^5, tailwind ^4), tsconfig, next.config.ts (`output:'export'`, `trailingSlash:true`, `images.unoptimized`), postcss, .gitignore, src/app mínimo, vitest + @testing-library/react configurados.
 **AC:** `npm run build` emite `out/` con HTML estático; `npm test` corre (smoke test verde).
 
-## T1 — Tokens + fuentes — [ ]
+## T1 — Tokens + fuentes — [x]
 Clash Display woff2 self-hosted (Fontshare) via `next/font/local`; Instrument Serif + JetBrains Mono via `next/font/google`. Tokens del README en `globals.css` (colores, easing, hairlines, container 1360px, keyframes base).
 **AC:** build OK; página specimen temporal muestra 3 familias con pesos 200/300/400/500; test: CSS vars presentes en globals.css.
 

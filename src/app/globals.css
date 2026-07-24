@@ -1,14 +1,165 @@
 @import "tailwindcss";
 
+/* ---------- Design tokens (handoff README) ---------- */
 :root {
   --bg: #060507;
+  --bg2: #0a0c0e;
+  --bg3: #0e1417;
   --fg: #e9eef0;
+  --muted: #727f85;
+  --faint: #3a4247;
+  --accent: #42e6dd;
+  --accent-2: #8ff6ef;
+  --line: rgba(66, 230, 221, 0.14);
+  --dim-1: #97a0a4;
+  --dim-2: #aeb7bb;
+  --dim-3: #c3cccf;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.12);
+  --hover-tint: rgba(66, 230, 221, 0.045);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --gutter: clamp(20px, 4vw, 58px);
+  --font-display: var(--font-clash), "Helvetica Neue", sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-bg3: var(--bg3);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-dim-1: var(--dim-1);
+  --color-dim-2: var(--dim-2);
+  --color-dim-3: var(--dim-3);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --ease-al: var(--ease);
+}
+
+/* ---------- Base ---------- */
 html,
 body {
   margin: 0;
   padding: 0;
   background: var(--bg);
   color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background: rgba(66, 230, 221, 0.25);
+  color: #fff;
+}
+
+/* ---------- Layout helpers ---------- */
+.al-container {
+  max-width: 1360px;
+  margin-inline: auto;
+}
+
+.al-gutter {
+  padding-inline: var(--gutter);
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes al-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-6%, 3%);
+  }
+  50% {
+    transform: translate(4%, -5%);
+  }
+  75% {
+    transform: translate(-3%, 6%);
+  }
+  100% {
+    transform: translate(5%, 2%);
+  }
+}
+
+@keyframes al-blink {
+  0%,
+  48% {
+    opacity: 1;
+  }
+  49%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes al-cue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes al-riseLine {
+  from {
+    transform: translateY(116%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes al-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Reveal (IntersectionObserver adds .al-in; default = visible without JS) ---------- */
+.al-rev[data-reveal-armed] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.95s var(--ease),
+    transform 0.95s var(--ease);
+}
+
+.al-rev.al-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .al-rev[data-reveal-armed] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
