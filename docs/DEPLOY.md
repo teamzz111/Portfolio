@@ -8,6 +8,13 @@ No requiere cómputo SSR: en Amplify se sirve como hosting puro (capa gratuita).
 Amplify Console → **New app → Host web app** → GitHub → `teamzz111/Portfolio`,
 rama `master`. Amplify detecta `amplify.yml` en el root (baseDirectory `out`).
 
+## 1.b Node 20 en el build (obligatorio)
+
+La imagen de build por defecto de Amplify puede traer Node 16. El
+`amplify.yml` ya fuerza Node 20 con `nvm install 20 && nvm use 20` en preBuild.
+Alternativa equivalente en consola: **App settings → Build settings → Build
+image settings** → imagen `Amazon Linux:2023` (Node 20 por defecto).
+
 ## 2. Rewrites & redirects (obligatorio)
 
 El export no genera una página en `/` — solo `/en/` y `/es/`. En
