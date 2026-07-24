@@ -15,7 +15,7 @@ Clash Display woff2 self-hosted (Fontshare) via `next/font/local`; Instrument Se
 `src/i18n/request.ts` (sin middleware), `app/[locale]/layout.tsx` con `generateStaticParams` + `setRequestLocale`, port completo del objeto `T` (prototipo líneas 754–841) a `messages/en.json` + `messages/es.json` anidado por sección.
 **AC:** build emite `out/en/index.html` y `out/es/index.html` con `lang` correcto; test RED→GREEN: en.json y es.json tienen conjuntos de claves idénticos y no vacíos.
 
-## T3 — Atmosphere + Nav + Hero estático — [ ]
+## T3 — Atmosphere + Nav + Hero estático — [x]
 Capas fixed (gradiente z0, slot z2, vignette z5, grain z6 con feTurbulence + steps(4)), Nav fixed z20 (monograma, links centro ocultos <820px, dot, toggle EN/ES como Links), Hero overlay z10 (eyebrow+beyond serif, nombre enmascarado con riseLine, role+caret, location, idx, cue) + track 170vh.
 **AC:** render de ambos locales con copy exacto; intro CSS con stagger; reduced-motion desactiva animaciones (CSS); test: componentes renderizan textos clave de messages.
 
