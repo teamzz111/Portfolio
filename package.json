@@ -2,6 +2,13 @@
   "name": "andres-largo-portfolio",
   "version": "0.1.0",
   "private": true,
+  "description": "Personal portfolio of Andrés Largo: a bilingual (EN/ES) Next.js static site with a real-time Three.js system-graph hero and GSAP scrollytelling.",
+  "author": "Andrés Largo <contacto@andreslargo.com>",
+  "homepage": "https://www.andreslargo.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teamzz111/Portfolio.git"
+  },
   "engines": {
     "node": ">=20.19.0"
   },
